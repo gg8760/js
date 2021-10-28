@@ -6,7 +6,7 @@ MIDU_SIGN 为 "https://apiwz.midukanshu.com/wz/task/" 完整请求体，格式�
 多账号退出一账号可能某些任务会提示失效
 由于运行时间较长，则只在Actions运行
 */
-const cookieName = '米读阅读时长'
+const cookieName = '米读阅读1-峰'
 const $ = new Env(cookieName)
 let tokenArr = [], TimeArr = [], SignArr = [];
 const bind = true;
