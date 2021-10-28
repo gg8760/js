@@ -7,7 +7,7 @@ MIDU_SIGN 为 "https://apiwz.midukanshu.com/wz/task/" 完整请求体，格式�
 由于运行时间较长，则只在Actions运行
 */
 const cookieName = '米读阅读2-峰2'
-const $ = new Env(cookieName)
+const $ = new Env('米读阅读2-峰2')
 let tokenArr = [], TimeArr = [],SignArr= [];
  const bind = true;
 if ($.isNode()) {
