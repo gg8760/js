@@ -3,7 +3,7 @@ const Notice = 90;//设置运行多少次才通知。
 const $ = new Env('九章头条7-vx怀念');//声明必须
 
 
-let jiuzhang = require('./raw_main_九章头条_account_parameter');
+let jiuzhang = require('./raw_main_jiuzhang_account_parameter');
 let cookie = "";
 let readTime = 30
 let ad_readTime = 28 //看广告用时
