@@ -200,7 +200,7 @@ console.log(`\n === 脚本执行 ${bjTime} ===\n`);
                 try {
                     let bodyobj = JSON.parse(data);
 
-                    console.log("body-info------\n",bodyobj);
+//                     console.log("body-info------\n",bodyobj);
                     
                     if (bodyobj.error_code == "200007" && !$.isNode()) {
     
@@ -236,7 +236,7 @@ console.log(`\n === 脚本执行 ${bjTime} ===\n`);
                 try {
                     let bodyobj = JSON.parse(data);
 
-                    console.log("body-info------\n",bodyobj);
+//                     console.log("body-info------\n",bodyobj);
                     
                     if (bodyobj.error_code == "200007" && !$.isNode()) {
     
