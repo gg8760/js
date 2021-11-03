@@ -158,7 +158,7 @@ function Rotary(jc_cookie1,cookie_id,time) {
             try {
                 const result = JSON.parse(data)
 
-                console.log(result);
+//                 console.log(result);
 
                 if(result.status === 1 ){
                     if(result.data.score !== 0){
