@@ -25,6 +25,8 @@ let breakCountVideo = 0;
 let lookbody = '';
 let gainbody = '';
 let articlebody = '';
+let kankanDeleteArray = [];
+let liulanDeleteArray = [];
 
 let youth = require('./raw_youth_read_article_parameter');
 
@@ -155,6 +157,10 @@ console.log(`\n === 脚本执行 ${bjTime} ===\n`);
         }
         console.log(`===============🤡结束阅读视频的任务🤡===============\n\n`);
     }
+    
+    console.log("看看赚要删除的body--------------\n",kankanDeleteArray);
+    console.log("浏览赚要删除的body--------------\n",liulanDeleteArray);
+    
 
 
 
@@ -171,6 +177,8 @@ console.log(`\n === 脚本执行 ${bjTime} ===\n`);
                         // smbody = $.getdata('youth_look').replace(lookbody + "&", "");
                         // $.setdata(smbody, 'youth_look');
                         // $.log(startlk.message + "已自动删除")
+                        kankanDeleteArray.push(lookbody)
+                        
                     } else {
                         comstate = startlk.items.comtele_state;
                         if (comstate == 0) {
@@ -266,6 +274,7 @@ console.log(`\n === 脚本执行 ${bjTime} ===\n`);
                         // smbody = $.getdata('youth_start').replace(gainbody + "&", "");
                         // $.setdata(smbody, 'youth_start');
                         // $.log(startres.message + "已自动删除")
+                        liulanDeleteArray.push(gainbody)
                     } else {
                         comstate = startres.items.comtele_state;
                         if (comstate == 0) {
@@ -321,6 +330,7 @@ console.log(`\n === 脚本执行 ${bjTime} ===\n`);
                         // smbody = $.getdata('youth_look').replace(lookbody + "&", "");
                         // $.setdata(smbody, 'youth_look');
                         // $.log(startlk.message + "已自动删除")
+                        kankanDeleteArray.push(lookbody)
                     } else {
                         comstate = startlk.items.comtele_state;
                         if (comstate == 0) {
