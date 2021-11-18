@@ -1,11 +1,7 @@
 /*
-中青看点浏览赚&看看赚
 
-作者:Sunert
-
-更新时间: 2021-02-26 11:32
-
-多个请求体时用'&'号或者换行隔开，本脚本可自动删除失效请求，请须知 ‼️
+[Script]
+cron "0 23 * * *"  script-path=youth_browse_small_videos.js,tag=中青看点浏览小视频
 
 */
 
