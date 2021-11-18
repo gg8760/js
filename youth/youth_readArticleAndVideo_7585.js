@@ -470,7 +470,7 @@ console.log("浏览赚要删除的body--------------\n",liulanDeleteArray);
                 try {
                     let readres = JSON.parse(data);
                     //$.log(JSON.stringify(readres,null,2))
-                    console.log(readres)
+//                     console.log(readres)
                     if (readres.items.complete == 1) {
                         $.log(readres.items.max_notice)
                         if (readres.items.max_notice.indexOf("上限") > -1) {
