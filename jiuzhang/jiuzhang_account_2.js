@@ -1,4 +1,8 @@
+/* 
 
+[Script]
+cron "20 8-20/2 * * *"  script-path=jiuzhang_account_2.js,tag=九章头条2-峰2
+*/
 
 const $ = new Env('九章头条2-峰2');//声明必须
 
