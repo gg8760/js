@@ -1,4 +1,9 @@
+/* 
 
+[Script]
+cron "20 8-20/2 * * *"  script-path=jiuzhang_account_5.js,tag=九章头条5-峰0306
+
+*/
 const $ = new Env('九章头条5-峰0306');//声明必须
 
 let jiuzhang = require('./raw_main_jiuzhang_account_parameter');
