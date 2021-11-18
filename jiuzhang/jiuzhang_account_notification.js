@@ -1,5 +1,10 @@
 
+/* 
 
+[Script]
+cron "20 12 * * *"  script-path=jiuzhang_account_notification.js,tag=九章头条-通知推送
+
+*/
 const $ = new Env('九章头条-通知推送');//声明必须
 
 let jiuzhang = require('./raw_main_jiuzhang_account_parameter');
