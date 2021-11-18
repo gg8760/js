@@ -41,6 +41,14 @@ let jdNotify = false;//是否关闭通知，false打开通知推送，true关闭
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
 let goodsUrl = '', taskInfoKey = [];
 let randomCount = $.isNode() ? 20 : 5;
+
+let helpArray = ['MTAxODc2NTE0NzAwMDAwMDAwNjMwNzYyMQ==',
+                'MTAxODc2NTEzNDAwMDAwMDAwMzY3MDc0MQ==',
+                'MTAxODc2NTE0NzAwMDAwMDAwNjMyMTU0NQ==',
+                'MTE1NDQ5MzYwMDAwMDAwNDQ5MjcxMzk=',
+                'MTAxODc2NTEzMTAwMDAwMDAwMzY3ODA3Nw==',
+                'MTEzMzI1MTE4NTAwMDAwMDA1NjkyNjQ0OQ==']
+
 !(async () => {
   await requireConfig();
   if (!cookiesArr[0]) {
@@ -507,20 +515,20 @@ function submitCode() {
 function shareCodesFormat() {
   return new Promise(async resolve => {
     // console.log(`第${$.index}个京东账号的助力码:::${$.shareCodesArr[$.index - 1]}`)
-    newShareCodes = [];
-    if ($.shareCodesArr[$.index - 1]) {
-      newShareCodes = $.shareCodesArr[$.index - 1].split('@');
-    } else {
-      console.log(`由于您第${$.index}个京东账号未提供shareCode,将采纳本脚本自带的助力码\n`)
-      const tempIndex = $.index > shareCodes.length ? (shareCodes.length - 1) : ($.index - 1);
-      newShareCodes = shareCodes[tempIndex].split('@');
-    }
-    //因好友助力功能下线。故暂时屏蔽
-    try{readShareCodeRes = await readShareCode();}catch(e){}
-    //const readShareCodeRes = null;
-    if (readShareCodeRes && readShareCodeRes.code === 200) {
-      newShareCodes = [...new Set([...newShareCodes, ...(readShareCodeRes.data || [])])];
-    }
+    newShareCodes = helpArray;
+//     if ($.shareCodesArr[$.index - 1]) {
+//       newShareCodes = $.shareCodesArr[$.index - 1].split('@');
+//     } else {
+//       console.log(`由于您第${$.index}个京东账号未提供shareCode,将采纳本脚本自带的助力码\n`)
+//       const tempIndex = $.index > shareCodes.length ? (shareCodes.length - 1) : ($.index - 1);
+//       newShareCodes = shareCodes[tempIndex].split('@');
+//     }
+//     //因好友助力功能下线。故暂时屏蔽
+//     try{readShareCodeRes = await readShareCode();}catch(e){}
+//     //const readShareCodeRes = null;
+//     if (readShareCodeRes && readShareCodeRes.code === 200) {
+//       newShareCodes = [...new Set([...newShareCodes, ...(readShareCodeRes.data || [])])];
+//     }
     console.log(`第${$.index}个京东账号将要助力的好友${JSON.stringify(newShareCodes)}`)
     resolve();
   })
