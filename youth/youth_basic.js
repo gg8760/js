@@ -2,7 +2,7 @@
 其中打卡挑战赛，报名时间为23点，早起打卡时间为早6点，报名需1000青豆押金，打卡成功可返1000+青豆，打卡失败则押金不予返还，请注意时间运行，
 
 [Script]
-cron "0 6,17-22/1 * * *"  script-path=youth_basic.js,tag=中青看点
+cron "0 6,18-23/1 * * *"  script-path=youth_basic.js,tag=中青看点
 
 */
 
