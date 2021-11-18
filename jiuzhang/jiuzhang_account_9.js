@@ -1,4 +1,9 @@
+/* 
 
+[Script]
+cron "20 8-20/2 * * *"  script-path=jiuzhang_account_9.js,tag=九章头条9-vx星云
+
+*/
 const Notice = 90;//设置运行多少次才通知。
 const $ = new Env('九章头条9-vx星云');//声明必须
 
