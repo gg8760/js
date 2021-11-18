@@ -6,6 +6,10 @@ https:\/\/www\.xiaodouzhuan\.cn\/jkd\/newMobileMenu\/infoMe\.action url script-r
 可自动提现，提现需填写微信真实姓名，设置提现金额，默认30，此设置可以boxjs内完成，也可本地配置
 hostname = www.xiaodouzhuan.cn
 ~~~~~~~~~~~~~~~~
+
+[Script]
+cron "15,45 6-23 * * *"  script-path=ju_kan_dian.js,tag=聚看点
+
 */
 const $ = new Env('聚看点')
 const drawcash = $.getdata('jukan_cash') || "30" //提现金额
