@@ -1,4 +1,9 @@
+/* 
 
+[Script]
+cron "2 10,16 * * *"  script-path=lookZhuan_basic.js,tag=晶彩看点基础任务
+
+*/
 const $ = new Env("晶彩看点基础任务")
 
 const notify = require('./sendNotify') || '';
