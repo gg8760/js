@@ -1,4 +1,9 @@
+/* 
 
+[Script]
+cron "20 8 * * *"  script-path=jiuzhang_account_withdraw.js,tag=九章头条-提现
+
+*/
 
 const $ = new Env('九章头条-提现');//声明必须
 
