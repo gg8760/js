@@ -1,4 +1,9 @@
+/* 
 
+[Script]
+cron "22 6,12 * * *"  script-path=lookZhuan_gain_look_video_article4-7585.js,tag=晶彩看点看看赚&视频啊&文章
+
+*/
 const $ = new Env("晶彩看点看看赚&视频啊&文章")
 
 const notify = require('./sendNotify') || '';
