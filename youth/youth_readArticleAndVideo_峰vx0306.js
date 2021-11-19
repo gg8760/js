@@ -5,7 +5,7 @@ cron "5 7-13/2 * * *"  script-path=youth_readArticleAndVideo_峰vx0306.js,tag=�
 
 */
 
-const $ = new Env("中青看点阅读文章，视频-格vx0306")
+const $ = new Env("中青看点阅读文章，视频-峰vx0306")
 //const notify = $.isNode() ? require('./sendNotify') : '';
 
 let YouthArticleBodys = [];
