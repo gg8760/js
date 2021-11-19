@@ -57,29 +57,12 @@ function withdrawQualify() {
       try {
         let obj = JSON.parse(data)
         let array = obj.data.list
-        // console.log(array)
+        console.log(array)
 
-        let shareFinish = false;
-        let videoFinish = false;
-        for (let index = 0; index < array.length; index++) {
-          const element = array[index];
-          if (element.type == 'share') {
-            if (element.is_finish == 1) {
-              shareFinish = true
-            }
-          }
-          if (element.type == 'video') {
-            if (element.is_finish == 1) {
-              videoFinish = true
-            }
-          }
-        }
+        let finish = array.every(item => item.is_finish === 1)  
 
-        // console.log('share', shareFinish)
-        // console.log('video', videoFinish)
-
-        if (shareFinish == true && videoFinish == true) {
-          console.log('\n去提现，秒到账哦-------');
+        if (finish) {
+          
           await withdraw()
         } else {
           console.log(`\n账号--${accountInfo}不满足提现${withdrawMoney}元条件`)
