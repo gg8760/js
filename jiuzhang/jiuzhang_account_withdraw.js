@@ -7,7 +7,7 @@ cron "20 8 * * *"  script-path=jiuzhang_account_withdraw.js,tag=九章头条-提
 
 const $ = new Env('九章头条-提现');//声明必须
 
-let jiuzhang = require('./raw_main_jiuzhang_account_parameter');
+let jiuzhang = require('./raw_main_九章头条_account_parameter');
 let cookie = "";
 let ad_readTime = 25 //看广告用时
 let withdrawMoney = '0.3'
@@ -32,26 +32,25 @@ let withdrawMoney = '0.3'
     console.log(`\n🍀🍀🍀🍀 账号--${accountInfo}刷新提现条件🍀🍀🍀🍀\n`);
 
     for (let index = 0; index < 3; index++) {
-      console.log(`\n开始第${index + 1}次分享-------`);
+      console.log(`\n开始第${index + 1}次分享--------`);
       await shareWechat()
       await shareWechat2()
       await $.wait(2 * 1000);
     }
   
-    console.log(`\n开始看广告${ad_readTime}秒-------`);
+    console.log(`\n开始看广告${ad_readTime}秒--------`);
     await $.wait(ad_readTime * 1000);
     await watch_ad()
     await withdrawQualify()
 
   }
 
-
 })()
 
 
 // https://api.st615.com/v1/cash/qualify?token=38RH-bvbFxsLHRq7GefCeP0-87i2yNK5&money=0.3
 function withdrawQualify() {
-  console.log(`\n------------🍒 验证 账号--${accountInfo} 是否满足提现要求🍒-------------\n`)
+  console.log(`\n🍒 验证账号${accountInfo} 是否满足提现要求🍒\n`)
   return new Promise((resolve, reject) => {
     $.get(apiHost(`v1/cash/qualify?money=${withdrawMoney}&token=${cookie}`), async (error, resp, data) => {
       try {
@@ -84,7 +83,7 @@ function withdrawQualify() {
 
 function shareWechat() {
   return new Promise((resolve, reject) => {
-    console.log(`\n------------🍒 账号--${accountInfo} 分享微信 1🍒-------------\n`)
+    console.log(`\n🍒 账号${accountInfo} 分享微信 1🍒-\n`)
     $.get(apiHost(`v1/share/info?token=${cookie}&type=1`), async (error, resp, data) => {
       try {
         let obj = JSON.parse(data)
@@ -109,7 +108,7 @@ function shareWechat() {
 // https://api.st615.com/v1/article/share
 
 function shareWechat2() {
-  console.log(`\n------------🍒 账号--${accountInfo} 分享微信 2🍒-------------\n`)
+  console.log(`\n🍒 账号${accountInfo} 分享微信 2🍒\n`)
   return new Promise((resolve, reject) => {
     $.post(apiHost(`v1/article/share`, `device=iPhone&token=${cookie}&source=cash&os=14.0.1&id=`), async (error, resp, data) => {
       try {
@@ -132,7 +131,7 @@ function shareWechat2() {
 function watch_ad() {
   return new Promise((resolve, reject) => {
 
-    console.log("path", apiHost(`v1/cash/ads?token=${cookie}&source=cash`))
+    // console.log("path", apiHost(`v1/cash/ads?token=${cookie}&source=cash`))
 
     $.get(apiHost(`v1/cash/ads?token=${cookie}&source=cash`), async (error, resp, data) => {
 
@@ -159,7 +158,7 @@ function watch_ad() {
 // money	0.3
 
 function withdraw() {
-  console.log("\n------------🍒 去提现 🍒-------------\n")
+  console.log("\n🍒 去提现 🍒\n")
   return new Promise((resolve, reject) => {
     $.post(apiHost(`v1/cash/withdraw-new`, `type=1&token=${cookie}&money=${withdrawMoney}`), async (error, resp, data) => {
       try {
