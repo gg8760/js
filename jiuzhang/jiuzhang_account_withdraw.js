@@ -29,7 +29,7 @@ let withdrawMoney = '0.3'
     accountInfo = itemDic["accountInfo"]
     cookie = itemDic["token"]
 
-    console.log(`\n🍀🍀🍀🍀 账号--${accountInfo}刷新提现条件🍀🍀🍀🍀\n`);
+    console.log(`\n🍀🍀🍀🍀 账号${accountInfo}刷新提现条件🍀🍀🍀🍀\n`);
 
     for (let index = 0; index < 3; index++) {
       console.log(`\n开始第${index + 1}次分享--------`);
