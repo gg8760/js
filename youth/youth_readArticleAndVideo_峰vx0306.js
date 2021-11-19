@@ -1,7 +1,7 @@
 /* 
 
 [Script]
-cron "5 7-13/2 * * *"  script-path=youth_readArticleAndVideo_峰vx0306.js,tag=中青看点阅读文章，视频-格vx0306
+cron "5 7-13/2 * * *"  script-path=youth_readArticleAndVideo_峰vx0306.js,tag=中青看点阅读文章，视频-峰vx0306
 
 */
 
