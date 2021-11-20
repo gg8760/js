@@ -10,46 +10,46 @@ MIDU_SIGN 为 "https://apiwz.midukanshu.com/wz/task/" 完整请求体，格式�
 cron "2 * * * *"  script-path=midu_account_2.js,tag=米读阅读2-峰2
 
 */
-const cookieName = '米读阅读2-峰2'
-const $ = new Env('米读阅读2-峰2')
+const cookieName = '米读阅读时长'
+const $ = new Env(cookieName)
 let tokenArr = [], TimeArr = [],SignArr= [];
  const bind = true;
-if ($.isNode()) {
-  if (process.env.MIDU_TOKEN && process.env.MIDU_TOKEN.indexOf('#') > -1) {
-      miduToken = process.env.MIDU_TOKEN.split('#');
-  } else {
-      miduToken = process.env.MIDU_TOKEN.split()
-  };
- if (process.env.MIDU_TIME && process.env.MIDU_TIME.indexOf('#') > -1) {
-     ReadBodys = process.env.MIDU_TIME.split('#');
-  } else {
-      ReadBodys = process.env.MIDU_TIME.split()
-  };
-  if (process.env.MIDU_SIGN && process.env.MIDU_SIGN.split('#') && process.env.MIDU_SIGN.indexOf('#') > -1) {
-     SignBodys = process.env.MIDU_SIGN.split('#');
-  } else {
-      SignBodys = process.env.MIDU_SIGN.split()
-  };
-    Object.keys(miduToken).forEach((item) => {
-        if (miduToken[item]) {
-          tokenArr.push(miduToken[item])
-        }
-      });
-    Object.keys(ReadBodys).forEach((item) => {
-        if (ReadBodys[item]) {
-          TimeArr.push(ReadBodys[item])
-        }
-      });
-    Object.keys(SignBodys).forEach((item) => {
-        if (SignBodys[item]) {
-          SignArr.push(SignBodys[item])
-        }
-      });
-  } else {
-      tokenArr.push($.getdata('tokenMidu_read'));
-      TimeArr.push($.getdata('senku_readTimebody_midu'));
-      SignArr.push($.getdata('senku_signbody_midu'))
-}
+// if ($.isNode()) {
+//   if (process.env.MIDU_TOKEN && process.env.MIDU_TOKEN.indexOf('#') > -1) {
+//       miduToken = process.env.MIDU_TOKEN.split('#');
+//   } else {
+//       miduToken = process.env.MIDU_TOKEN.split()
+//   };
+//  if (process.env.MIDU_TIME && process.env.MIDU_TIME.indexOf('#') > -1) {
+//      ReadBodys = process.env.MIDU_TIME.split('#');
+//   } else {
+//       ReadBodys = process.env.MIDU_TIME.split()
+//   };
+//   if (process.env.MIDU_SIGN && process.env.MIDU_SIGN.split('#') && process.env.MIDU_SIGN.indexOf('#') > -1) {
+//      SignBodys = process.env.MIDU_SIGN.split('#');
+//   } else {
+//       SignBodys = process.env.MIDU_SIGN.split()
+//   };
+//     Object.keys(miduToken).forEach((item) => {
+//         if (miduToken[item]) {
+//           tokenArr.push(miduToken[item])
+//         }
+//       });
+//     Object.keys(ReadBodys).forEach((item) => {
+//         if (ReadBodys[item]) {
+//           TimeArr.push(ReadBodys[item])
+//         }
+//       });
+//     Object.keys(SignBodys).forEach((item) => {
+//         if (SignBodys[item]) {
+//           SignArr.push(SignBodys[item])
+//         }
+//       });
+//   } else {
+//       tokenArr.push($.getdata('tokenMidu_read'));
+//       TimeArr.push($.getdata('senku_readTimebody_midu'));
+//       SignArr.push($.getdata('senku_signbody_midu'))
+// }
 
 !(async () => {
   
@@ -70,7 +70,10 @@ if ($.isNode()) {
             "mobile-brand" : "iPhone 7",
             }) 
 
+    // MIDU_TIME
       bodyVal = 'dataEncStr=MjdCNzNERkRBMEJFMUU0OTI2QTE1QUEwQkM0QkJGMDAuY0dGeVlXMGZiV1IzZW54Q016UTFORGcxTVMxQlJqRXpMVFF5TTBFdE9UQTFSQzFEUWtVeU1EVTFOamxFTmtVZWRtVnljMmx2Ymg4eUhuQnNZWFJtYjNKdEgybHZjeDVsWXg4eC49BlMAxr0Hq7SwOtvn9sjqDDR9qxeoQ0Rv1XQQwzdDHAhiFpsdyn5ysxXMdBQySakQSZI9ycgjk%2BS0IUiYmVviT0F/RWcHnZr%2BU2Tc0vRVE66uR1FFNe7XpxtxzffD9sKVrKhdATMg2pt4Lnr8P%2BC3lr2p0%2BidX95JjtYQ2H7J43vL/NnIJFp2EyxdkphJ4cHSfnPy0e6P4hwS3mdtMks1ur2/3FRGkzfi5h7zolIsHYiUyv1F2o/sA/Z6Y3MbwZjVBWyRbrAOZHYRh74kfT91FHoe7fQjuWQoWgVGeDmhPY7AElOq36iHMAMl4qTaWY4aEWQ3kcspvgZO9Ztc%2BTB70aPNgKsK7igtbB8IM1XzsZ1FJk0wIQkZ/ImguoDQzS0ehujk84QO62HbSH8P8iEwU1IuXeVOF23VFUVTGERf3S/Fbn/XW69atIJfExrWG8VvxyVxkM8fO7aZ%2B5cEqD5Xq3GdsWQHkwwL//NdgdiX1JcuOvW5lURlK8IyeDZzrI1h1s0w3nW8YqLL0BzPvVk5vKai5tAMZjPwfYPVbS0WmwM6QKpNkEphfJVUKMyAS7kfPEyK2e/1bdLohz6xRf1zLM/Z0eA7LzbABt%2BVyzNTY4FKJ0TFSnVjuQnMp68DGLe4CfZEsOlgB8iSYm6m6CmU%2B4blcM1zF4BU0RCXMAcMfEXUKRBkN13ZMentQvtnetdIYysKS6L71GnobNKfqx2Zguonnom37CcBE1ojwkgJRrO8cA%3D%3D';
+
+    //   MIDU_SIGN
       drawVal = 'EncStr=eyJmdWxsVmVyc2lvbiI6IjEuNTMuMC4wOTI4LjEwNDAiLCJhcHAiOiJtZHd6IiwiZHR1IjoiaU9TIiwidmVyc2lvbiI6IjEwNTMwMCIsInZlcnNpb25OYW1lIjoiMS41My4wLjA5MjguMTA0MCIsIm5vbmNlIjoiNDAyMiIsInRpbWUiOiIxNjM0NDU4OTM0IiwidGsiOiJBQ0x2VDRLRnlFaE5BNF9mMnBTejlzTHkxSERDLWNJbjJfVnRaSGQ2IiwibHVpZCI6IjcwLUNoY2hJVFFPUDM5cVVzX2JDOGciLCJ0dWlkIjoiNzAtQ2hjaElUUU9QMzlxVXNfYkM4ZyIsInRva2VuIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmhjSEFpT2lKTlpIZDZJaXdpWkdWMmFXTmxJam9pSWl3aVoyVnVWR2x0WlNJNk1UWXpORFExTXpjeU1pd2libTl1WTJVaU9pSmpOV3h6YUcxdWRtaG1aV1p4WkRSeE0ySnpaeUlzSW5WcFpDSTZJakUxTkRnMk5EWXhNRGNpZlEuLXFnRWlyQmhpWEZyUk8wWDgzQ1ZJSG53LUNkMGVBUHVMSE9vZWtjaGNLSSIsImRldmljZSI6IjMyQkQxNUVDLTUyOTktNDNCOS04OUY0LTgyRTAxMDhGMzRCNCIsIm9zLXZlcnNpb24iOiIxNC4wLjEiLCJtb2JpbGUtYnJhbmQiOiJpUGhvbmUiLCJtb2JpbGUtbW9kZWwiOiJpUGhvbmUgNyIsImhlYWRlclF1ZXJ5VGltZSI6IjE2MzQ0NTg5MzQiLCJzaWduIjoiMzUzNjMzNjMzNDY2M2MzMTM1MzIzMTNkMzIzMzYxMzAzYzMxMzMzMTMxMzI2MTY2NjE2NDYxMzA2MzNkM2Q2NiJ9';
     //   $.index = i + 1;
     //   //console.log(tokenArr)
