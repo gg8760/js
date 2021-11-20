@@ -7,7 +7,7 @@ MIDU_SIGN 为 "https://apiwz.midukanshu.com/wz/task/" 完整请求体，格式�
 由于运行时间较长，则只在Actions运行
 
 [Script]
-cron "2 */1 * * *"  script-path=midu_account_2.js,tag=米读阅读2-峰2
+cron "2 * * * *"  script-path=midu_account_2.js,tag=米读阅读2-峰2
 
 */
 const cookieName = '米读阅读2-峰2'
