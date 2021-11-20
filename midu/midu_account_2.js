@@ -80,7 +80,7 @@ let tokenArr = [], TimeArr = [],SignArr= [];
     //   console.log(`-------------------------\n\n开始【米读账号${$.index}】`)
      // tkVal = drawVal.match(/tk=(\w+)/)[1]
       await userInfo();
-    for (j=0;j<100;j++){
+    for (j=0;j<110;j++){
       await readTime()
      }; 
       await prizeInfo();
