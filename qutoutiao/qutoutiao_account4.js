@@ -86,9 +86,9 @@ const signinfo = {
     await sleepStatus()
     await sleepReward()
     await sleep()
-    if (signinfo.sleepStatus.data.fortune_bag_can_reward) {
+//     if (signinfo.sleepStatus.data.fortune_bag_can_reward) {
       await sleepBag()
-    }
+//     }
   }
   if (new Date().getHours() >= 20) {
     await sleepinit()
