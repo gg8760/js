@@ -79,7 +79,7 @@ const bind = true;
     // tkVal = drawVal.match(/tk=(\w+)/)[1]
     await userInfo();
 
-    for (j = 0; j < 100; j++) {
+    for (j = 0; j < 110; j++) {
         await readTime()
     };
 
