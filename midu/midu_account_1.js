@@ -9,54 +9,53 @@ MIDU_SIGN 为 "https://apiwz.midukanshu.com/wz/task/" 完整请求体，格式�
 [Script]
 cron "2 * * * *"  script-path=midu_account_1.js,tag=米读阅读1-峰
 
-
 */
-const cookieName = '米读阅读1-峰'
-const $ = new Env('米读阅读1-峰')
+const cookieName = '米读阅读时长'
+const $ = new Env(cookieName)
 let tokenArr = [], TimeArr = [], SignArr = [];
 const bind = true;
-if ($.isNode()) {
-    if (process.env.MIDU_TOKEN && process.env.MIDU_TOKEN.indexOf('#') > -1) {
-        miduToken = process.env.MIDU_TOKEN.split('#');
-    } else {
-        miduToken = process.env.MIDU_TOKEN.split()
-    };
-    if (process.env.MIDU_TIME && process.env.MIDU_TIME.indexOf('#') > -1) {
-        ReadBodys = process.env.MIDU_TIME.split('#');
-    } else {
-        ReadBodys = process.env.MIDU_TIME.split()
-    };
-    if (process.env.MIDU_SIGN && process.env.MIDU_SIGN.split('#') && process.env.MIDU_SIGN.indexOf('#') > -1) {
-        SignBodys = process.env.MIDU_SIGN.split('#');
-    } else {
-        SignBodys = process.env.MIDU_SIGN.split()
-    };
-    Object.keys(miduToken).forEach((item) => {
-        if (miduToken[item]) {
-            tokenArr.push(miduToken[item])
-        }
-    });
-    Object.keys(ReadBodys).forEach((item) => {
-        if (ReadBodys[item]) {
-            TimeArr.push(ReadBodys[item])
-        }
-    });
-    Object.keys(SignBodys).forEach((item) => {
-        if (SignBodys[item]) {
-            SignArr.push(SignBodys[item])
-        }
-    });
-} else {
-    tokenArr.push($.getdata('tokenMidu_read'));
-    TimeArr.push($.getdata('senku_readTimebody_midu'));
-    SignArr.push($.getdata('senku_signbody_midu'))
-}
+// if ($.isNode()) {
+//     if (process.env.MIDU_TOKEN && process.env.MIDU_TOKEN.indexOf('#') > -1) {
+//         miduToken = process.env.MIDU_TOKEN.split('#');
+//     } else {
+//         miduToken = process.env.MIDU_TOKEN.split()
+//     };
+//     if (process.env.MIDU_TIME && process.env.MIDU_TIME.indexOf('#') > -1) {
+//         ReadBodys = process.env.MIDU_TIME.split('#');
+//     } else {
+//         ReadBodys = process.env.MIDU_TIME.split()
+//     };
+//     if (process.env.MIDU_SIGN && process.env.MIDU_SIGN.split('#') && process.env.MIDU_SIGN.indexOf('#') > -1) {
+//         SignBodys = process.env.MIDU_SIGN.split('#');
+//     } else {
+//         SignBodys = process.env.MIDU_SIGN.split()
+//     };
+//     Object.keys(miduToken).forEach((item) => {
+//         if (miduToken[item]) {
+//             tokenArr.push(miduToken[item])
+//         }
+//     });
+//     Object.keys(ReadBodys).forEach((item) => {
+//         if (ReadBodys[item]) {
+//             TimeArr.push(ReadBodys[item])
+//         }
+//     });
+//     Object.keys(SignBodys).forEach((item) => {
+//         if (SignBodys[item]) {
+//             SignArr.push(SignBodys[item])
+//         }
+//     });
+// } else {
+//     tokenArr.push($.getdata('tokenMidu_read'));
+//     TimeArr.push($.getdata('senku_readTimebody_midu'));
+//     SignArr.push($.getdata('senku_signbody_midu'))
+// }
 
 !(async () => {
 
 
-      for (let i = 0; i < tokenArr.length; i++) {
-        if (tokenArr[i]) {
+    //   for (let i = 0; i < tokenArr.length; i++) {
+        // if (tokenArr[i]) {
     headerVal = JSON.stringify({
         "tk": "ACLn7s9XleyKSzSYwUcFdMrgBUoOtTdhqGxtZHd6",
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY3Rpb24iOiJyZWdpc3RlciIsImFwcCI6Ik1kd3oiLCJkZXZpY2UiOiI5MkVFMEYwRi1DRUIyLTRDRTgtOTY1My01NzFCM0JDMUQyRTgiLCJnZW5UaW1lIjoxNjI5MzUzNDU2LCJub25jZSI6ImM0ZXZiczQzNHIwc29iMnVqY3YwIiwib2F1dGhfdHlwZSI6Im1vYmlsZSIsInVpZCI6IjQ1ODUxNzAwNiJ9.nkLFosle_2hRCQxD3pFmxGFd4hq67iy8ROAm5oiVZLw",
@@ -72,9 +71,9 @@ if ($.isNode()) {
     })
 
 
-    bodyVal = TimeArr[i];
-    drawVal = SignArr[i];
-    $.index = i + 1;
+    bodyVal = 'dataEncStr=NDIyOEZEOUQyRjM3RUI2MEMyQjUwRTRCNDg0RjcxMTUuY0dGeVlXMGZiV1IzZW54RU9UZzFSREEwTnkxRVEwTXpMVFJGUXpFdFFqTTNSUzB4TmpreVJEUkdSa05GTUVRZWRtVnljMmx2Ymg4eUhuQnNZWFJtYjNKdEgybHZjeDVsWXg4eC7qaPirc8q7QON5CyW98ynExsIEa%2BxyUDbIqaUYP8OGHVs6uyQkft7vGlcO7%2BNzqk5YL0qXkz3/p6xVwMS0wPm7w0OgM6RWLGkq8XR6jYLKdyocOaDK/SdzccqGIcQPE91m9BXyr7HggUZUyWJanA1bAjBfWr4UgG709KsL7ObsHz5h5rxmzWwN1ZvM3O6I9RAa8H3fjcJJCIkbsP7E0OHE0BvPZYiZNUvmXKSvZNrYCzLg24xwGTnk7xKMqvGSUj9lZP1k9ahLAjab95DKUhKmCbMx1WCGCywQF4%2BWJ%2BNYErMjty7V1wWz6ZtSHol1z%2Bmd9Wq32xP5uYBNrdTh/788ocqaJKo9aE7C0EQfBAZUXI6swNJeFkZnD6nSIaGQQV177m55ua7TX9wqaBxces9QZkJTKfZACOjZ3EWTlw7zT7eqri1miHvTpo/NqFeHlcHZmcVhm29b1AHV5%2BqdqD%2B0xl1t/WHE25OjI8C8ZzIBL7AlTypcIYQQjAbqTyjKFlzRFpHJIupKiGA7CkIVnjw0plrUhRgNgTwx49JIATOXX1AuL0sBfqUwraj7n4nf22g90X4vNOLLIYCE8uHX9PnEK9lqkrG1IxegUrKbe7eJqUA2u5TJk%2BhperYG2xhWjFDdUKixuZlzl1KEubU8x4TDOF94VlZgHbB9Mv9spnK/y7LD/qnnyiigKtKeqdCvHMio%2B3iQkHcKsc9pBC/zRx7UZZZWbVgVNrIJEPGnjGsTVEGeLagMpWd%2BUK57M7DGnh%2B3ia5oozRYTRYkoX8maq5HvlrV'
+    drawVal = 'EncStr=eyJmdWxsVmVyc2lvbiI6IjEuNDguMC4wODEwLjE2MzIiLCJhcHAiOiJtZHd6IiwiZHR1IjoiaU9TIiwidmVyc2lvbiI6IjEwNDgwMCIsInZlcnNpb25OYW1lIjoiMS40OC4wLjA4MTAuMTYzMiIsIm5vbmNlIjoiMjkxMSIsInRpbWUiOiIxNjMxOTQwOTU5IiwidGsiOiJBQ0xuN3M5WGxleUtTelNZd1VjRmRNcmdCVW9PdFRkaHFHeHRaSGQ2IiwibHVpZCI6IjUtN1BWNVhzaWtzMG1NRkhCWFRLNEEiLCJ0dWlkIjoiNS03UFY1WHNpa3MwbU1GSEJYVEs0QSIsInRva2VuIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmhZM1JwYjI0aU9pSnlaV2RwYzNSbGNpSXNJbUZ3Y0NJNklrMWtkM29pTENKa1pYWnBZMlVpT2lJNU1rVkZNRVl3UmkxRFJVSXlMVFJEUlRndE9UWTFNeTAxTnpGQ00wSkRNVVF5UlRnaUxDSm5aVzVVYVcxbElqb3hOakk1TXpVek5EVTJMQ0p1YjI1alpTSTZJbU0wWlhaaWN6UXpOSEl3YzI5aU1uVnFZM1l3SWl3aWIyRjFkR2hmZEhsd1pTSTZJbTF2WW1sc1pTSXNJblZwWkNJNklqUTFPRFV4TnpBd05pSjkubmtMRm9zbGVfMmhSQ1F4RDNwRm14R0ZkNGhxNjdpeThST0FtNW9pVlpMdyIsImRldmljZSI6IjkyRUUwRjBGLUNFQjItNENFOC05NjUzLTU3MUIzQkMxRDJFOCIsIm9zLXZlcnNpb24iOiIxNC44IiwibW9iaWxlLWJyYW5kIjoiaVBob25lIiwibW9iaWxlLW1vZGVsIjoiaVBob25lIDEyIiwiaGVhZGVyUXVlcnlUaW1lIjoiMTYzMTk0MDk1OSIsInNpZ24iOiIzNzM2Njc2NDNkMzAzMjYzMzczMzMyMzUzNTYxM2QzMTY2MzAzMjM1NjEzMjM1MzE2MTM1MzMzZDMzNjMzZDM3In0%3D'
+    // $.index = i + 1;
     //console.log(tokenArr)
     //   console.log(`-------------------------\n\n开始【米读账号${$.index}】`)
     // tkVal = drawVal.match(/tk=(\w+)/)[1]
@@ -100,8 +99,8 @@ if ($.isNode()) {
     }
     await signDay();
     await signVideo()
-        }
-      }
+        // }
+      
 })()
     .catch((e) => $.logErr(e))
     .finally(() => $.done())
