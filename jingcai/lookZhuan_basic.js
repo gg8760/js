@@ -4,6 +4,7 @@
 cron "2 10,16 * * *"  script-path=lookZhuan_basic.js,tag=晶彩看点基础任务
 
 */
+
 const $ = new Env("晶彩看点基础任务")
 
 const notify = require('./sendNotify') || '';
@@ -13,6 +14,7 @@ let awaitTime = (30 + Math.floor(Math.random() * 5)) * 1000;
 var breakReadArticle = false;
 let breakCountArticle = 0;
 let breakCountVideo = 0;
+let zhuanPanNumber = 0;
 
 let look = require('./lookZhuan_parameter');
 
@@ -26,7 +28,6 @@ console.log(`\n === 脚本执行 ${bjTime} ===\n`);
 
 !(async () => {
 
-    
     let signbodyArray = look.LOOK_SIGN.split('\n');
     let cookieArray = look.LOOK_HEADER.split('\n');
 
@@ -50,16 +51,17 @@ console.log(`\n === 脚本执行 ${bjTime} ===\n`);
             }
         }
 
-
         let jc_cookie1= cookie + '&request_time=' + time1 + '&time=' + time1
-        for(let k = 0 ; k < 100 ; k++){
+
+        await RotaryNumber(jc_cookie1,cookie,time1)
+
+        console.log(`--------第${index + 1}个账号,剩余抽奖次数${zhuanPanNumber}--------\n`)
+        for(let k = 0 ; k < zhuanPanNumber ; k++){
             console.log(`--------第${index + 1}个账号,第${k + 1}次抽奖--------\n`)
             await Rotary(jc_cookie1,cookie,time1)
             console.log("等待6秒-----")
             await $.wait(6000);
         }
-
-
 
         let bodyRewardArray = look.LOOK_GET_REWARD
         for (let index = 0; index < bodyRewardArray.length; index++) {
@@ -73,14 +75,7 @@ console.log(`\n === 脚本执行 ${bjTime} ===\n`);
                 }
             }
         }
-        
-
-
     }
-
-
-
-
 
 })()
     .catch((e) => $.logErr(e))
@@ -163,12 +158,11 @@ function Rotary(jc_cookie1,cookie_id,time) {
             try {
                 const result = JSON.parse(data)
 
-//                 console.log(result);
+                // console.log(result);
 
                 if(result.status === 1 ){
                     if(result.data.score !== 0){
                         console.log('好家伙！你抽中了'+result.data.score + '金币')
-
                         //console.log('剩'+remain+'次')
                     }else {
                         console.log('你抽了个寂寞')
@@ -185,6 +179,37 @@ function Rotary(jc_cookie1,cookie_id,time) {
             })
     })
 }
+
+// https://ant.xunsl.com/WebApi/RotaryTable/getData?_=1637719332454
+
+function RotaryNumber(jc_cookie1,cookie_id,time) {
+    return new Promise((resolve, reject) => {
+        let url = {
+            url : 'https://ant.xunsl.com/WebApi/RotaryTable/getData?_='+time,
+            headers : {
+                'Host': 'ant.xunsl.com',
+                'Referer':'https://ant.xunsl.com/html/rotaryTable/index.html?keyword_wyq=woyaoq.com&access=WIFI&app-version=8.1.2&app_version=8.1.2&carrier=%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8&channel=c1005&'+jc_cookie1
+            },
+            body:cookie_id,
+        }
+        $.post(url, async (err, resp, data) => {
+            try {
+                const result = JSON.parse(data)
+                // console.log(result);
+                zhuanPanNumber = result.data.remainTurn
+                // console.log("zhuanPanNumber=", zhuanPanNumber);
+
+            } catch (e) {
+                $.logErr(e+resp);
+            } finally {
+                resolve()
+            }
+            })
+    })
+}
+
+
+
 
 
 // https://ant.xunsl.com/v5/nameless/adlickstart.json
