@@ -10,6 +10,13 @@
 // https://api.1sapp.com/app/ioscoin/getInfo?dtu=100&xhi=200&version=31055000&os=ios&tk=ACLvT4KFyEhNA4_f2pSz9sLyKEygOR4JSEs0NzUxNDk1MDg5NTIyNQ&distinct_id=&token=d440nt8ay4-USSLY7vPqk9rXgSIsjMa2WVjq3TxrNiWgggp6eO_DHAKmu9RxgxClYUdWN45JVQz56uk0jw&deviceCode=EF4F8285-C848-4D03-8FDF-DA94B3F6C2F2&tuid=70-ChchITQOP39qUs_bC8g&oaid=
 // URL https://api.1sapp.com/sign/info?GUID=6326402b27141618927e5e88758.86748220&OSVersion=14.0.1&active_method=icon&deviceCode=900D0E28-C2A3-4CEE-973E-8112353B91ED&dtu=100&lat=36.70034444288662&lon=117.1419080851279&network=WIFI&os=ios&referer=https%253A%252F%252Fh5ssl.1sapp.com%252Fqukanweb%252Finapp%252Ftask_active%252Fqd.html%253Fv%253D31061000%2526dc%253D900D0E28-C2A3-4CEE-973E-8112353B91ED%2526uuid%253DDBF805F4-64E2-4FA6-AD63-043FC0948E9B%2526network%253DWIFI%2526dtu%253D100%2526lat%253D36.70034444288662%2526lon%253D117.1419080851279%2526vn%253D3.10.61.000.1101.1602%252344ffDlPm-H8EbGs8A4gPAuVr6SwkKguekhaC4TYWyK6D_DAO7Ox80-5UHF9E64Qhk3mx51gyPugxnUpz3_I&sign=e6978fca0fb35356a70ff94e5c306f5d&sys=2&time=1636379379000&tk=ACKtwxIusRVBHVGbcqV3y09TYYFgcL37u3w0NzUxNDk1MDg5NTIyNQ&token=44ffDlPm-H8EbGs8A4gPAuVr6SwkKguekhaC4TYWyK6D_DAO7Ox80-5UHF9E64Qhk3mx51gyPugxnUpz3_I&tuid=rcMSLrEVQR1Rm3Kld8tPUw&ua=mozilla%252F5.0%2520%28iphone%253B%2520cpu%2520iphone%2520os%252014_0_1%2520like%2520mac%2520os%2520x%29%2520applewebkit%252F605.1.15%2520%28khtml%252C%2520like%2520gecko%29%2520mobile%252F15e148ua%2520qapp%2520qukan_ios%2520qukan_version_31061000%2520ios_dh_cpc_oiclk%2520qapp%2520ios_dh_cpc_oiclk%2520qapp&uuid=DBF805F4-64E2-4FA6-AD63-043FC0948E9B&version=31061000&versionName=3.10.61.000.1101.1602&xhi=200
 
+/* 
+
+[Script]
+cron "20 12 * * *"  script-path=qutoutiao_account4.js,tag=趣头条4-vx峰0306
+
+*/
+
 const senku = new Env('趣头条4-vx峰0306')
 
 const cookieName = '趣头条'
