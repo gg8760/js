@@ -1,5 +1,6 @@
 // 赞赏:趣头条邀请码`A1040276307`,农妇山泉 -> 有点咸
 
+
 // const { da } = require("date-fns/locale")
 
 
@@ -9,6 +10,14 @@
 
 // https://api.1sapp.com/app/ioscoin/getInfo?dtu=100&xhi=200&version=31055000&os=ios&tk=ACLvT4KFyEhNA4_f2pSz9sLyKEygOR4JSEs0NzUxNDk1MDg5NTIyNQ&distinct_id=&token=d440nt8ay4-USSLY7vPqk9rXgSIsjMa2WVjq3TxrNiWgggp6eO_DHAKmu9RxgxClYUdWN45JVQz56uk0jw&deviceCode=EF4F8285-C848-4D03-8FDF-DA94B3F6C2F2&tuid=70-ChchITQOP39qUs_bC8g&oaid=
 
+
+
+/* 
+
+[Script]
+cron "20 * * * *"  script-path=qutoutiao_account1.js,tag=趣头条1-峰
+
+*/
 
 const senku = new Env('趣头条1-峰')
 
