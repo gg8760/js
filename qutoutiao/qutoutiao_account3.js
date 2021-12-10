@@ -11,6 +11,13 @@
 
 // https://api.1sapp.com/sign/sign?GUID=1d662d6f134246618905b6a4ef28.39444519&OSVersion=14.0.1&active_method=icon&deviceCode=D3F08671-678E-48C1-B2FA-4CF5F7F5DCAF&dtu=100&lat=36.69993173407039&lon=117.1422131197983&network=WIFI&sign=c26cc006582fa818d30747f5e1e74163&sys=2&time=1636379045000&tk=ACKIPAhvvTi-8C0wEatifMvp9zfDslrpeuU0NzUxNDk1MDg5NTIyNQ&token=387cBQuPa3ZWhcp4GX_7I1PKFb5Cnk2QPeUCvJYlzP4Y24sv5hNsRhPB7e9SjaftEHjpOkXarwrgsLoacCI&tuid=iDwIb704vvAtMBGrYnzL6Q&uuid=FB3D5942-808F-4BF4-AEA2-07C779A01E72&version=31061000&versionName=3.10.61.000.1101.1602
 
+/* 
+
+[Script]
+cron "20 * * * *"  script-path=qutoutiao_account3.js,tag=趣头条3-vx峰0410
+
+*/
+
 
 const senku = new Env('趣头条3-vx峰0410')
 
