@@ -12,7 +12,7 @@
 /* 
 
 [Script]
-cron "20 * * * *"  script-path=qutoutiao_account2.js,tag=趣头条2-峰2
+cron "37 6-23 * * *"  script-path=qutoutiao_account2.js,tag=趣头条2-峰2
 
 */
 
