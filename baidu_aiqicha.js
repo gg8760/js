@@ -1,7 +1,14 @@
 /*
 邀请链接：https://aiqicha.baidu.com/m/usercenter/inviteCode?uid=xlTM-TogKuTwF6g4ihCXLTt55PoEI2gS8Amd
 批量查询任务需手动抓包查询之后的exportkey 并替换 见118行
+
+
+[Script]
+cron "20 12 * * *"  script-path=baidu_aiqicha.js,tag=爱企查
+
 */
+
+
 const axios = require("axios")
 var sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const headers = {
