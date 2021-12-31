@@ -73,7 +73,7 @@ function getAccountInfo() {
 
   function getWithdrawInfo() {
     return new Promise((resolve, reject) => {
-      $.get(apiHost(`v1/cash/page-list?token=${cookie}&page=1&limit=100`), async (error, resp, data) => {
+      $.get(apiHost(`v1/cash/page-list?token=${cookie}&page=1&limit=500`), async (error, resp, data) => {
         try {
           let obj = JSON.parse(data)
         
