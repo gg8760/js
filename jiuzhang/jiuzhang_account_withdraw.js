@@ -11,7 +11,7 @@ let jiuzhang = require('./raw_main_jiuzhang_account_parameter');
 let cookie = "";
 let ad_readTime = 25 //看广告用时
 let withdrawMoney = '0.3'
-
+let canwithdraw = true
 !(async () => {
 
   timeZone = new Date().getTimezoneOffset() / 60;
@@ -61,8 +61,10 @@ function withdrawQualify() {
         let finish = array.every(item => item.is_finish === 1)  
 
         if (finish) {
+          if (canwithdraw) {
+            await withdraw()
+          }
           
-          await withdraw()
         } else {
           console.log(`\n账号--${accountInfo}不满足提现${withdrawMoney}元条件`)
         }
