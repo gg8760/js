@@ -10,7 +10,7 @@ const $ = new Env('九章头条3-峰0410');//声明必须
 let jiuzhang = require('./raw_main_jiuzhang_account_parameter');
 let cookie = "";
 let readTime = 30
-let ad_readTime = 35 //看广告用时
+let ad_readTime = 30 //看广告用时
 
 !(async () => {
 
