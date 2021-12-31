@@ -14,6 +14,12 @@ cron "30 1,8,12,17 * * *" script-path=https://raw.githubusercontent.com/passerby
 CK环境变量:KS_COOKIE,多个用换行 & ,分割都可以
 内置助力码环境变量:KS_SHARECODE,复制日志最后助力码
 
+1.iphone 12
+2.iphone 7 白
+3.格
+4.iPhone 7 黑
+5.iphone 5
+
 */
 
 let cookies = [
