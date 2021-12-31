@@ -28,6 +28,8 @@ let canwithdraw = true
     let itemDic = jiuzhang[index];
     accountInfo = itemDic["accountInfo"]
     cookie = itemDic["token"]
+    
+    await articleList("0") 
 
     console.log(`\n🍀🍀🍀🍀 账号${accountInfo}刷新提现条件🍀🍀🍀🍀\n`);
 
@@ -47,6 +49,53 @@ let canwithdraw = true
 
 })()
 
+function articleList(type) {
+  let ctype = type == 0 ? "文章" : "视频";
+  console.log(`\n------------🍒 开始阅读${ctype}任务 🍒-------------\n`)
+  return new Promise((resolve, reject) => {
+    $.get(apiHost(`v1/article/list?cid=0&page=1&limit=20&type=${type}&terminal=Apple&version=1.2.4&token=${cookie}`), async (error, resp, data) => {
+      try {
+        let obj = JSON.parse(data)
+        let array = obj.data.list
+        // console.log(array)
+        console.log(`\n获取到${ctype}数量为: ${array.length}`)
+        if (array.length >=10) {
+          console.log(`\n🍀🍀🍀🍀 账号--${accountInfo}看文章分享5次开始🍀🍀🍀🍀\n`);
+          for (let index = 0; index < 5; index++) {
+            console.log(`\n开始第${index + 1}次文章分享--------`);
+            let timeRandom = Math.floor(Math.random() * 10) // 取 1 到 10 中的一个整数
+            let dicItem = array[timeRandom];
+            let articleID = dicItem["id"]
+            await shareArticleToWeChat(articleID)
+          }
+        }
+      } catch (error) {
+        
+      } finally {
+        resolve()
+      }
+    })
+  })
+}
+
+function shareArticleToWeChat(articleid) {
+  console.log(`\n🍒 账号${accountInfo} 分享article = ${articleid}🍒\n`)
+  return new Promise((resolve, reject) => {
+    $.post(apiHost(`v1/article/share`, `device=iPhone&token=${cookie}&source=article&os=14.0.1&id=${articleid}`), async (error, resp, data) => {
+      try {
+        let obj = JSON.parse(data)
+        console.log(obj)
+
+        await $.wait(5 * 1000);
+
+      } catch (e) {
+
+      } finally {
+        resolve();
+      }
+    })
+  })
+}
 
 // https://api.st615.com/v1/cash/qualify?token=38RH-bvbFxsLHRq7GefCeP0-87i2yNK5&money=0.3
 function withdrawQualify() {
