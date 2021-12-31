@@ -9,7 +9,7 @@ const $ = new Env('九章头条4-格');//声明必须
 let jiuzhang = require('./raw_main_jiuzhang_account_parameter');
 let cookie = "";
 let readTime = 30
-let ad_readTime = 28 //看广告用时
+let ad_readTime = 35 //看广告用时
 
 !(async () => {
 
@@ -28,20 +28,21 @@ let ad_readTime = 28 //看广告用时
 
   console.log(`\n🍀🍀🍀🍀 账号--${accountInfo}开始任务🍀🍀🍀🍀\n`);
 
-  await clockin()
-
-  await daysign()
-
   await getBenefit() 
 
-  console.log(`\n账号--${accountInfo}任务开始去收一波视频广告奖励`)
   await adVideoInfo()
 
-  //文章
-  await articleList(0)
+  if (new Date().getHours() <= 12) {
+    await clockin()
 
-  //视频
-  await articleList(2)
+    await daysign()
+
+      //文章
+    await articleList(0)
+
+    //视频
+    await articleList(2)
+  }
   console.log(`\n🍀🍀🍀🍀🍀 账号--${accountInfo}结束任务🍀🍀🍀🍀\n`);
   
 
@@ -146,10 +147,10 @@ function readFinish(id,type,currenIndex) {
       try {
         let obj = JSON.parse(data)
         console.log(`本次阅读${ctype}获得金币: ${obj.data.coin}`)
-        if (currenIndex == 10 || currenIndex == 20) {
-          console.log(`\n***已经看了${currenIndex}篇${ctype},去刷一波 视频广告奖励***\n`)
-          await adVideoInfo()
-        }
+//         if (currenIndex == 10 || currenIndex == 20) {
+//           console.log(`\n***已经看了${currenIndex}篇${ctype},去刷一波 视频广告奖励***\n`)
+//           await adVideoInfo()
+//         }
         console.log(`\n等待2秒，开始下一篇`)
         await $.wait(2 * 1000);
       } catch (e) {
