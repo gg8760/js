@@ -11,7 +11,8 @@ let jiuzhang = require('./raw_main_jiuzhang_account_parameter');
 let cookie = "";
 let ad_readTime = 25 //看广告用时
 let withdrawMoney = '0.3'
-let canwithdraw = true
+let canwithdraw = false
+let isiPhone;
 !(async () => {
 
   timeZone = new Date().getTimezoneOffset() / 60;
@@ -22,29 +23,50 @@ let canwithdraw = true
   });
   console.log(`\n ======脚本执行 ${bjTime}======\n`);
 
-
   for (let index = 0; index < jiuzhang.length; index++) {
 
     let itemDic = jiuzhang[index];
     accountInfo = itemDic["accountInfo"]
     cookie = itemDic["token"]
+    isiPhone = itemDic['isiPhone']
     
-    await articleList("0") 
+    if (isiPhone) {
 
-    console.log(`\n🍀🍀🍀🍀 账号${accountInfo}刷新提现条件🍀🍀🍀🍀\n`);
+      await articleList("0") 
 
-    for (let index = 0; index < 3; index++) {
-      console.log(`\n开始第${index + 1}次分享--------`);
-      await shareWechat()
-      await shareWechat2()
-      await $.wait(2 * 1000);
+      console.log(`\n🍀🍀🍀🍀 账号${accountInfo}刷新提现条件🍀🍀🍀🍀\n`);
+
+      for (let index = 0; index < 3; index++) {
+        console.log(`\n开始第${index + 1}次分享--------`);
+        await shareWechat()
+        await shareWechat2()
+        await $.wait(2 * 1000);
+      }
+    
+      console.log(`\n开始看广告${ad_readTime}秒--------`);
+      await $.wait(ad_readTime * 1000);
+      await watch_ad()
+      await withdrawQualify()
+
+    } else {
+      await articleList_android('0')
+
+      console.log(`\n🍀🍀🍀🍀 账号${accountInfo}刷新提现条件🍀🍀🍀🍀\n`);
+
+      for (let index = 0; index < 3; index++) {
+        console.log(`\n开始第${index + 1}次分享--------`);
+        await shareWechat()
+        await shareWechat2_android()
+        await $.wait(2 * 1000);
+      }
+    
+      console.log(`\n开始看广告${ad_readTime}秒--------`);
+      await $.wait(ad_readTime * 1000);
+      await watch_ad()
+      await withdrawQualify()
+
     }
-  
-    console.log(`\n开始看广告${ad_readTime}秒--------`);
-    await $.wait(ad_readTime * 1000);
-    await watch_ad()
-    await withdrawQualify()
-
+    
   }
 
 })()
@@ -78,7 +100,56 @@ function articleList(type) {
   })
 }
 
+function articleList_android(type) {
+  let ctype = type == 0 ? "文章" : "视频";
+  console.log(`\n------------🍒 开始阅读${ctype}任务 🍒-------------\n`)
+  return new Promise((resolve, reject) => {
+    
+    $.get(apiHost(`v1/article/list?token=${cookie}&page=1&limit=20&title=&cid=0&type=${type}&terminal=vivo&version=1.8.12`), async (error, resp, data) => {
+      try {
+        let obj = JSON.parse(data)
+        let array = obj.data.list
+        // console.log(array)
+        console.log(`\n获取到${ctype}数量为: ${array.length}`)
+        if (array.length >=10) {
+          console.log(`\n🍀🍀🍀🍀 账号--${accountInfo}看文章分享5次开始🍀🍀🍀🍀\n`);
+          for (let index = 0; index < 5; index++) {
+            console.log(`\n开始第${index + 1}次文章分享--------`);
+            let timeRandom = Math.floor(Math.random() * 10) // 取 1 到 10 中的一个整数
+            let dicItem = array[timeRandom];
+            let articleID = dicItem["id"]
+            await shareArticleToWeChat_android(articleID)
+          }
+        }
+      } catch (error) {
+        
+      } finally {
+        resolve()
+      }
+    })
+  })
+}
+
 function shareArticleToWeChat(articleid) {
+  console.log(`\n🍒 账号${accountInfo} 分享article = ${articleid}🍒\n`)
+  return new Promise((resolve, reject) => {
+    $.post(apiHost(`v1/article/share`, `device=iPhone&token=${cookie}&source=article&os=14.0.1&id=${articleid}`), async (error, resp, data) => {
+      try {
+        let obj = JSON.parse(data)
+        console.log(obj)
+
+        await $.wait(5 * 1000);
+
+      } catch (e) {
+
+      } finally {
+        resolve();
+      }
+    })
+  })
+}
+
+function shareArticleToWeChat_android(articleid) {
   console.log(`\n🍒 账号${accountInfo} 分享article = ${articleid}🍒\n`)
   return new Promise((resolve, reject) => {
     $.post(apiHost(`v1/article/share`, `device=iPhone&token=${cookie}&source=article&os=14.0.1&id=${articleid}`), async (error, resp, data) => {
@@ -162,6 +233,29 @@ function shareWechat2() {
   console.log(`\n🍒 账号${accountInfo} 分享微信 2🍒\n`)
   return new Promise((resolve, reject) => {
     $.post(apiHost(`v1/article/share`, `device=iPhone&token=${cookie}&source=cash&os=14.0.1&id=`), async (error, resp, data) => {
+      try {
+        let obj = JSON.parse(data)
+        console.log(obj)
+        await $.wait(5 * 1000);
+
+      } catch (e) {
+
+      } finally {
+        resolve();
+      }
+    })
+  })
+}
+
+// token	rQRObhPj97wi_Y-k-KBWKmcKIMrr1-JQ
+// id	2375570
+// os	Android 6.0.1
+// device	vivo Y55A
+
+function shareWechat2_android() {
+  console.log(`\n🍒 账号${accountInfo} 分享微信 2🍒\n`)
+  return new Promise((resolve, reject) => {
+    $.post(apiHost(`v1/article/share`, `device=vivo Y55A&token=${cookie}&source=cash&os=Android 6.0.1&id=`), async (error, resp, data) => {
       try {
         let obj = JSON.parse(data)
         console.log(obj)
