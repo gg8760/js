@@ -12,11 +12,11 @@
 /* 
 
 [Script]
-cron "37 6-23 * * *"  script-path=qutoutiao_account2.js,tag=趣头条2-峰2
+cron "37 6-23 * * *"  script-path=qutoutiao_account2.js,tag=趣头条2-vxArduino
 
 */
 
-const senku = new Env('趣头条2-峰2')
+const senku = new Env('趣头条2-vxArduino')
 
 const cookieName = '趣头条'
 const signKey = 'senku_signKey_qtt'
