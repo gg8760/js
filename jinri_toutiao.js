@@ -40,7 +40,7 @@ let host = 'i.snssdk.com'
 let hostname = 'https://' + host
 
 let userAgent = ($.isNode() ? process.env.jrttjsbUA : $.getdata('jrttjsbUA')) || 'Dalvik/2.1.0 (Linux; U; Android 8.1.0; vivo X9s L Build/OPM1.171019.019)';
-let userAgentArr = []
+
 let userHeader = ($.isNode() ? process.env.jrttjsbHeader : $.getdata('jrttjsbHeader')) || '';
 
 /*
@@ -50,6 +50,12 @@ let userHeader = ($.isNode() ? process.env.jrttjsbHeader : $.getdata('jrttjsbHea
 4. 15069131632
 */
 
+let userAgentArr = [
+  'Dalvik/2.1.0 (Linux; U; Android 8.1.0; vivo X9s L Build/OPM1.171019.019)',
+  'NewsLite 8.5.8 rv:8.5.8.20 (iPhone; iOS 14.8; zh_CN) Cronet',
+  'NewsLite 8.5.8 rv:8.5.8.20 (iPhone; iOS 14.0.1; zh_CN) Cronet',
+  'NewsLite/8.5.8.20 CFNetwork/1197 Darwin/20.0.0',
+]
 
 let userHeaderArr = [
   `install_id=2911976369705485; ttreq=1$58a0874b7936464aa728e7b4f399d93be1d708f5; passport_csrf_token_default=8d667f7db555b5fd6efb3283620239a6; d_ticket=b464ac28b73cc31ff61499e3d283a81f726b8; odin_tt=ce397d8cee1492ad9b5b426e063918275c973b65401fad0fe48ea635f9837ca769cec7b81f3af2f3cee963f642084f7d81c738ed741ea0a4c20fb300a3f94d95; n_mh=79PMiSMkryIOyDyOzTQyGUjUSh_1YVByR_h7WUPqx-w; sid_guard=8b742203747ec48397cb4aa98796812f%7C1641371165%7C5184000%7CSun%2C+06-Mar-2022+08%3A26%3A05+GMT; uid_tt=7f294c9e2697ff3e43250ac3d3b26956; sid_tt=8b742203747ec48397cb4aa98796812f; sessionid=8b742203747ec48397cb4aa98796812f`,
@@ -112,23 +118,23 @@ function showUpdateMsg() {
 //     }
 // }
 
-async function GetRewrite() {
-  if ($request.url.indexOf('luckycat/lite/v1/task/page_data') > -1) {
-    let userCK = $request.headers.Cookie
+// async function GetRewrite() {
+//   if ($request.url.indexOf('luckycat/lite/v1/task/page_data') > -1) {
+//     let userCK = $request.headers.Cookie
 
-    if (userHeader) {
-      if (userHeader.indexOf(userCK) == -1) {
-        userHeader = userHeader + '@' + userCK
-        $.setdata(userHeader, 'jrttjsbHeader');
-        ckList = userHeader.split('@')
-        $.msg(jsname + ` 获取第${ckList.length}个jrttjsbHeader成功: ${userCK}`)
-      }
-    } else {
-      $.setdata(userCK, 'jrttjsbHeader');
-      $.msg(jsname + ` 获取第1个jrttjsbHeader成功: ${userCK}`)
-    }
-  }
-}
+//     if (userHeader) {
+//       if (userHeader.indexOf(userCK) == -1) {
+//         userHeader = userHeader + '@' + userCK
+//         $.setdata(userHeader, 'jrttjsbHeader');
+//         ckList = userHeader.split('@')
+//         $.msg(jsname + ` 获取第${ckList.length}个jrttjsbHeader成功: ${userCK}`)
+//       }
+//     } else {
+//       $.setdata(userCK, 'jrttjsbHeader');
+//       $.msg(jsname + ` 获取第1个jrttjsbHeader成功: ${userCK}`)
+//     }
+//   }
+// }
 
 async function checkEnv() {
   // if(userHeader) {
@@ -142,12 +148,12 @@ async function checkEnv() {
   //     return false
   // }
 
-  if (userAgent) {
-    userAgentArr = userAgent.split('@')
-  } else {
-    console.log('未找到userAgent')
-    return false
-  }
+  // if (userAgent) {
+  //   userAgentArr = userAgent.split('@')
+  // } else {
+  //   console.log('未找到userAgent')
+  //   return false
+  // }
   UAcount = userAgentArr.length
 
   console.log(`共找到${userHeaderArr.length}个用户，${UAcount}个UA`)
