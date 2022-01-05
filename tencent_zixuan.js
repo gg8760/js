@@ -1480,7 +1480,7 @@ async function orderQuery(getName,getCoinNum,isWithdraw,logCoin) {
                         if(result.retcode == 0){
                             if(getName == 1) {
                                 $.log(`获取用户${numUser+1}昵称成功：${result.shop_asset.nickname}\n`);
-                                nickname.push(result.shop_asset.nickname)
+                                nickname.push( `用户${numUser+1}--` + result.shop_asset.nickname)
                             }
                             if(getCoinNum == 1) {
                                 coinInfo = result.shop_asset.amount
