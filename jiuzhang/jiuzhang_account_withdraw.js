@@ -11,7 +11,7 @@ let jiuzhang = require('./raw_main_jiuzhang_account_parameter');
 let cookie = "";
 let ad_readTime = 25 //看广告用时
 let withdrawMoney = '0.3'
-let canwithdraw = false
+let canwithdraw = true
 let isiPhone;
 !(async () => {
 
