@@ -91,7 +91,7 @@ let COIN_TYPE = 14
         
         let yue = require('./yue_duoduo_parameter');
 
-        console.log("开始 阅多多 提现------------------\n");
+        console.log("\n开始 阅多多 提现-------\n");
         
         yddCookie = yue.yueduoduo
         if (yddCookie) {
@@ -100,13 +100,13 @@ let COIN_TYPE = 14
                 console.log('您选择的是用"@"隔开账号\n');
                 let yddCookies = yddCookie.split('@')
                 for (let i = 0; i < yddCookies.length; i++) {
-                    yddCookieArr.push(yddCookies[i])
+                    yddCookieArr.push(yddCookies[i].trim())
                 }
             } else if (yddCookie.indexOf('\n') > -1) {
                 console.log(`您选择的是用"\\n"隔开账号\n`)
                 let yddCookies = yddCookie.split('\n')
                 for (let i = 0; i < yddCookies.length; i++) {
-                    yddCookieArr.push(yddCookies[i])
+                    yddCookieArr.push(yddCookies[i].trim())
                 }
             } else {
                 yddCookieArr.push(yddCookie)
@@ -130,26 +130,31 @@ let COIN_TYPE = 14
                 skipWithdraw.push(yddSkipWithdraw)
             }
         }
-        console.log(`共找到${yddCookieArr.length}个用户`)
+        console.log(`共找到${yddCookieArr.length}个阅多多用户`)
         await initAccountInfo()
         await RunMultiUser()
 
-
-        console.log("开始 悦看点 提现------------------\n");
+    
+        console.log("\n开始 悦看点 提现-------\n");
         yddCookie = yue.yuekandian
+        yddCookieArr = []
+        userToken = []
+        userDevice = []
+        userAgent = []
+
         if (yddCookie) {
             yddCookie = yddCookie.replace(/Bearer/g, '')
             if (yddCookie.indexOf('@') > -1) {
                 console.log('您选择的是用"@"隔开账号\n');
                 let yddCookies = yddCookie.split('@')
                 for (let i = 0; i < yddCookies.length; i++) {
-                    yddCookieArr.push(yddCookies[i])
+                    yddCookieArr.push(yddCookies[i].trim())
                 }
             } else if (yddCookie.indexOf('\n') > -1) {
                 console.log(`您选择的是用"\\n"隔开账号\n`)
                 let yddCookies = yddCookie.split('\n')
                 for (let i = 0; i < yddCookies.length; i++) {
-                    yddCookieArr.push(yddCookies[i])
+                    yddCookieArr.push(yddCookies[i].trim())
                 }
             } else {
                 yddCookieArr.push(yddCookie)
@@ -173,7 +178,7 @@ let COIN_TYPE = 14
                 skipWithdraw.push(yddSkipWithdraw)
             }
         }
-        console.log(`共找到${yddCookieArr.length}个用户`)
+        console.log(`共找到${yddCookieArr.length}个悦看点用户`)
         await initAccountInfo()
         await RunMultiUser()
 
@@ -243,7 +248,7 @@ async function RunMultiUser() {
         await QueryUserInfo()
     }
 
-    //============= 提现 =============
+    // ============= 提现 =============
     console.log('\n查询提现信息...')
     for (userIdx = 0; userIdx < yddCookieArr.length; userIdx++) {
         await QueryWithdrawList()
@@ -284,11 +289,11 @@ async function QueryWithdrawList() {
     let result = httpResult;
     if (!result) return
 
-    console.log(`======${JSON.stringify(result)}`);
+    // console.log(`======${JSON.stringify(result)}`);
     if (result.code == 0) {
         let sortList = result.result.items.sort(function (a, b) { return b["jine"] - a["jine"] });
 
-        console.log('sortList===', sortList);
+        // console.log('sortList===', sortList);
         for (let item of sortList) {
             let skipFlag = 0
             if (skipWithdraw.length > 0) {
@@ -307,6 +312,8 @@ async function QueryWithdrawList() {
                 console.log(`用户${userIdx + 1}准备提现${item.jine}元`)
                 await Withdraw(item.jine)
                 if (withdrawFlag[userIdx] == 1) break;
+            } else {
+                console.log(`用户${userIdx + 1} 不满足 ${item.jine} 元 提现条件`);
             }
         }
     } else {
@@ -388,6 +395,8 @@ function populateGetUrl(url) {
         urlObject.headers['version'] = '1'
         urlObject.headers['app'] = '5'
     }
+
+    // console.log(urlObject);
     return urlObject;
 }
 
