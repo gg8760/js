@@ -44,10 +44,11 @@ let userAgent = ($.isNode() ? process.env.jrttjsbUA : $.getdata('jrttjsbUA')) ||
 let userHeader = ($.isNode() ? process.env.jrttjsbHeader : $.getdata('jrttjsbHeader')) || '';
 
 /*
-1. 17862926330
-2. 18253169060
-3. 17853151690
-4. 15069131632
+1. 17862926330 vivox9
+2. 18253169060 iphone12
+3. 17853151690 iphone7白
+4. 15069131632 iPhone XS Max
+5. 15964395867 vivo 
 */
 
 let userAgentArr = [
@@ -55,6 +56,7 @@ let userAgentArr = [
   'NewsLite 8.5.8 rv:8.5.8.20 (iPhone; iOS 14.8; zh_CN) Cronet',
   'NewsLite 8.5.8 rv:8.5.8.20 (iPhone; iOS 14.0.1; zh_CN) Cronet',
   'NewsLite/8.5.8.20 CFNetwork/1197 Darwin/20.0.0',
+  'Dalvik/2.1.0 (Linux; U; Android 6.0.1; vivo Y55A Build/MMB29M) NewsArticle/8.6.0 tt-ok/3.10.0.2',
 ]
 
 let userHeaderArr = [
@@ -62,6 +64,7 @@ let userHeaderArr = [
   `install_id=519439065557502; ttreq=1$8662ed3d84db376e437c6a3ea6c3e8c607766ba7; passport_csrf_token_default=a097bc6c249880f80f0589edd12d9b16; d_ticket=9e804f9b84aa904797265a36ea5dcddc85444; odin_tt=fc40d188fb9c032cad4e4005ef6fa7b487cd0afdd044db87d55edb7a0a521c65ae494e87e96ee83a730290646ce34a20d50459f4b13a0344428349f61b23f8cb; n_mh=g-qfS4HUlCsnMt31YoEmNUPnHIfI23vDTTOqG_5IOeM; sid_guard=ea3a5ffb63db299fa2c4df8274e45ff3%7C1641374154%7C5184000%7CSun%2C+06-Mar-2022+09%3A15%3A54+GMT; uid_tt=9bcd370794b5a99816bc664dbbf306d6; sid_tt=ea3a5ffb63db299fa2c4df8274e45ff3; sessionid=ea3a5ffb63db299fa2c4df8274e45ff3; passport_csrf_token=a097bc6c249880f80f0589edd12d9b16; MONITOR_WEB_ID=e82361aa-aa7a-43ac-8eae-98e2b14a5c9e; sessionid_ss=ea3a5ffb63db299fa2c4df8274e45ff3; uid_tt_ss=9bcd370794b5a99816bc664dbbf306d6`,
   `passport_csrf_token=a10218d4ad9acbb4f09b16b16ff7566a; passport_csrf_token_default=a10218d4ad9acbb4f09b16b16ff7566a; d_ticket=c7923aef5ee993bd89be6844251bfb8fdc79d; n_mh=ArZGdZsjZDFr19zKd1NtebaaBLhG-aqWLHnMadkV_dM; odin_tt=2e2447546c8047632c77dcd91b57fd7bfa0bec2e0e50bfd773b12ac4bc1b43a96dd2fab71a4de9a2b5a7cbe56d3e9a6f72e785e53bd9e2b3eced55458e63b105; sessionid=785ff0148e8fbee6cc5af723967ff4d6; sessionid_ss=785ff0148e8fbee6cc5af723967ff4d6; sid_guard=785ff0148e8fbee6cc5af723967ff4d6%7C1641379510%7C5184000%7CSun%2C+06-Mar-2022+10%3A45%3A10+GMT; sid_tt=785ff0148e8fbee6cc5af723967ff4d6; uid_tt=9ddf99b356e5a32c5c7112d2c6b8099c; uid_tt_ss=9ddf99b356e5a32c5c7112d2c6b8099c; install_id=994428128077664; ttreq=1$f418f2b59014e09e6f19423f432bae3eac6e2ec7`,
   `d_ticket=b4083cf6f069f5610d086a423c2e8a89f1afb; n_mh=M-Mgf0QexxYAdeNaPDfo6wSFr3eta6z3DTfSfXDIbEM; odin_tt=2b6282d7da8b1fe7afa148771491ebac97d8be356b685af03693ac05e0b0f5a3b14a03341a613a9e088f78bd41e4b39130f69a2c8475e5def8953c2a7a1a84b7; sessionid=13ea7e5b48acbd68e75c3a2f18c1e710; sessionid_ss=13ea7e5b48acbd68e75c3a2f18c1e710; sid_guard=13ea7e5b48acbd68e75c3a2f18c1e710%7C1641383093%7C5184000%7CSun%2C+06-Mar-2022+11%3A44%3A53+GMT; sid_tt=13ea7e5b48acbd68e75c3a2f18c1e710; uid_tt=f80d8261bcc2728baa5ab33242f1e3e6; uid_tt_ss=f80d8261bcc2728baa5ab33242f1e3e6; passport_csrf_token=5e4ed9f0bbe3fe0c4d572d2a32313e91; passport_csrf_token_default=5e4ed9f0bbe3fe0c4d572d2a32313e91; install_id=3422149816624972; ttreq=1$0b6deca83fd9ec0e4be08904826ba7fc55d980f0`,
+  `install_id=413886627984110; ttreq=1$2f3b43ccfc93e07201b6b7b1e1687df4d727506e; passport_csrf_token_default=145323455e80238a6991c8ee3b44b800; d_ticket=ef5f807a91fcda444485db9b80e25abbc6961; odin_tt=ea2eb5078bae538d7b36acc71370003c529b02f488a1ef79785c3e81cc67fedfc4d0bf108d29632e93bead97dd42401f6c4d4cfee4005ca4056effd78c1f1af0; n_mh=-Da3cDkc2NEoND6dO0Y2qKNjZtluEUutDAB5PgzDUw8; sid_guard=dbadf9a260aacf38ec06265c4415d8e7%7C1641535893%7C5184000%7CTue%2C+08-Mar-2022+06%3A11%3A33+GMT; uid_tt=2e9adf63da91cbbe1da2d5cefe212de2; sid_tt=dbadf9a260aacf38ec06265c4415d8e7; sessionid=dbadf9a260aacf38ec06265c4415d8e7`,
 ]
 
 let jrttjsbFarm = ($.isNode() ? process.env.jrttjsbFarm : $.getdata('jrttjsbFarm')) || 1;
