@@ -46,7 +46,10 @@ let isiPhone;
       console.log(`\n开始看广告${ad_readTime}秒--------`);
       await $.wait(ad_readTime * 1000);
       await watch_ad()
-      await withdrawQualify()
+      if (canwithdraw) {
+          await withdrawQualify()
+      }
+
 
     } else {
       await articleList_android('0')
@@ -63,7 +66,10 @@ let isiPhone;
       console.log(`\n开始看广告${ad_readTime}秒--------`);
       await $.wait(ad_readTime * 1000);
       await watch_ad()
-      await withdrawQualify()
+      if (canwithdraw) {
+          await withdrawQualify()
+      }
+
 
     }
     
@@ -181,9 +187,9 @@ function withdrawQualify() {
         let finish = array.every(item => item.is_finish === 1)  
 
         if (finish) {
-          if (canwithdraw) {
-            await withdraw()
-          }
+          
+          await withdraw()
+          
           
         } else {
           console.log(`\n账号--${accountInfo}不满足提现${withdrawMoney}元条件`)
