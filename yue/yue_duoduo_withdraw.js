@@ -319,6 +319,7 @@ async function QueryWithdrawList() {
     } else {
         console.log(`用户${userIdx + 1}查询提现列表失败：${result.message}`)
     }
+    console.log('------------------------------');
 }
 
 //提现
