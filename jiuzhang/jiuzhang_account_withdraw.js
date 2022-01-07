@@ -31,9 +31,7 @@ let isiPhone;
     isiPhone = itemDic['isiPhone']
     
     if (isiPhone) {
-
       await articleList("0") 
-
       console.log(`\n🍀🍀🍀🍀 账号${accountInfo}刷新提现条件🍀🍀🍀🍀\n`);
 
       for (let index = 0; index < 3; index++) {
@@ -49,8 +47,6 @@ let isiPhone;
       if (canwithdraw) {
           await withdrawQualify()
       }
-
-
     } else {
       await articleList_android('0')
 
@@ -69,10 +65,7 @@ let isiPhone;
       if (canwithdraw) {
           await withdrawQualify()
       }
-
-
     }
-    
   }
 
 })()
@@ -298,8 +291,6 @@ function watch_ad() {
     })
   })
 }
-
-
 
 
 // 提现
