@@ -25,7 +25,7 @@ let breakvarticle = false
     });
     console.log(`\n ======脚本执行 ${bjTime}======\n`);
 
-    let itemDic = jiuzhang[0];
+    let itemDic = jiuzhang[2];
     let accountInfo = itemDic["accountInfo"]
     cookie = itemDic["token"]
     header.token = cookie
