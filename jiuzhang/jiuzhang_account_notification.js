@@ -7,7 +7,9 @@ cron "20 12 * * *"  script-path=jiuzhang_account_notification.js,tag=九章头�
 */
 const $ = new Env('九章头条-通知推送');//声明必须
 
-let jiuzhang = require('./raw_main_jiuzhang_account_parameter');
+let jiuzhang = require('./raw_main_jiuzhang_account_parameter')['account'];
+let header = require('./raw_main_jiuzhang_account_parameter')["header"];
+
 let cookie = "";
 let readTime = 30
 let ad_readTime = 28 //看广告用时
@@ -32,6 +34,8 @@ let totalMoney = 0.0;
     accountInfo = itemDic["accountInfo"]
     cookie = itemDic["token"]
     accountWithdraw = itemDic["withdrawAccount"]
+    header.token = cookie
+    
     await getAccountInfo()
     await getWithdrawInfo()
 
@@ -46,7 +50,7 @@ let totalMoney = 0.0;
 
 function getAccountInfo() {
     return new Promise((resolve, reject) => {
-      $.get(apiHost(`v1/user/info?token=${cookie}`), async (error, resp, data) => {
+      $.get(apiHost(`v2/user/info?token=${cookie}`), async (error, resp, data) => {
         try {
           let obj = JSON.parse(data)
         //   console.log(obj)
@@ -73,7 +77,7 @@ function getAccountInfo() {
 
   function getWithdrawInfo() {
     return new Promise((resolve, reject) => {
-      $.get(apiHost(`v1/cash/page-list?token=${cookie}&page=1&limit=500`), async (error, resp, data) => {
+      $.get(apiHost(`v2/cash/page-list?token=${cookie}&page=1&limit=500`), async (error, resp, data) => {
         try {
           let obj = JSON.parse(data)
         
@@ -139,14 +143,10 @@ function getAccountInfo() {
 
 function apiHost(api, body) {
   return {
-      url: 'https://api.st615.com/' + api,
-      headers: {
-          'User-Agent': 'ChapterNine/1.2.4 (com.ass.jiuzhang; build:1121; iOS 14.0.1) Alamofire/5.4.2',
-          'Host': 'api.st615.com',
-          'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
-      },
-      body: body
-  }
+        url: 'https://api.st615.com/' + api,
+        headers: header,
+        body: body
+    }
 }
 
 
