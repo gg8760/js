@@ -218,8 +218,9 @@ function adVideoInfo() {
                     } else {
                         // console.log('mei');
                         console.log(`\n开始观看视频广告id=${dicItem["id"]}`)
-                        console.log(`观看视频广告${ad_readTime}秒`)
-                        await $.wait(ad_readTime * 1000);
+                        let adTime = ad_readTime + Math.floor(Math.random() * 10)
+                        console.log(`观看视频广告${adTime}秒`)
+                        await $.wait(adTime * 1000);
                         await getVideoBenefit(dicItem["id"])
                     }
 
