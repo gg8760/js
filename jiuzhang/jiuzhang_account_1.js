@@ -15,7 +15,7 @@ let header = require('./raw_main_jiuzhang_account_parameter')["header"];
 
 let cookie = "";
 let readTime = 30
-let ad_readTime = 20 + Math.floor(Math.random() * 10) //看广告用时
+let ad_readTime = 20  //看广告用时
 
 let breakvarticle = false
 !(async () => {
@@ -222,8 +222,9 @@ function adVideoInfo() {
                     } else {
                         // console.log('mei');
                         console.log(`\n开始观看视频广告id=${dicItem["id"]}`)
-                        console.log(`观看视频广告${ad_readTime}秒`)
-                        await $.wait(ad_readTime * 1000);
+                        let adTime = ad_readTime + Math.floor(Math.random() * 10)
+                        console.log(`观看视频广告${adTime}秒`)
+                        await $.wait(adTime * 1000);
                         await getVideoBenefit(dicItem["id"])
                     }
 
