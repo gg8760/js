@@ -11,7 +11,7 @@ let header = require('./raw_main_jiuzhang_account_parameter')["header"];
 
 let cookie = "";
 let readTime = 30
-let ad_readTime = 20 + Math.floor(Math.random() * 10) //看广告用时
+let ad_readTime = 18 //看广告用时
 
 let breakvarticle = false
 !(async () => {
@@ -25,7 +25,7 @@ let breakvarticle = false
     console.log(`\n ======脚本执行 ${bjTime}======\n`);
 
     let itemDic = jiuzhang[4];
-    let accountInfo = itemDic["accountInfo"]
+    accountInfo = itemDic["accountInfo"]
     cookie = itemDic["token"]
     header.token = cookie
 
@@ -184,9 +184,9 @@ function readFinish(id, type, currenIndex) {
             try {
                 let obj = JSON.parse(data)
                 console.log(`本次阅读${ctype}获得金币: ${obj.data.coin}`)
-                if (obj.data.coin < 5) {
-                    breakvarticle = true
-                }
+//                 if (obj.data.coin < 5) {
+//                     breakvarticle = true
+//                 }
 
                 console.log(`\n等待2秒，开始下一篇`)
                 await $.wait(2 * 1000);
