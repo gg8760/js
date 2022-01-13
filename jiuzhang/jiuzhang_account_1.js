@@ -15,7 +15,7 @@ let header = require('./raw_main_jiuzhang_account_parameter')["header"];
 
 let cookie = "";
 let readTime = 30
-let ad_readTime = 20  //看广告用时
+let ad_readTime = 18  //看广告用时
 
 let breakvarticle = false
 !(async () => {
