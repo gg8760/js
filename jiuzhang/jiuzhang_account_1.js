@@ -29,7 +29,7 @@ let breakvarticle = false
     console.log(`\n ======脚本执行 ${bjTime}======\n`);
 
     let itemDic = jiuzhang[0];
-    let accountInfo = itemDic["accountInfo"]
+    accountInfo = itemDic["accountInfo"]
     cookie = itemDic["token"]
     header.token = cookie
 
@@ -188,9 +188,9 @@ function readFinish(id, type, currenIndex) {
             try {
                 let obj = JSON.parse(data)
                 console.log(`本次阅读${ctype}获得金币: ${obj.data.coin}`)
-                if (obj.data.coin < 5) {
-                    breakvarticle = true
-                }
+//                 if (obj.data.coin < 5) {
+//                     breakvarticle = true
+//                 }
 
                 console.log(`\n等待2秒，开始下一篇`)
                 await $.wait(2 * 1000);
