@@ -39,6 +39,9 @@ let breakvarticle = false
 
     await daysign()
     await $.wait(2 * 1000);
+    
+    await checkReceive()
+    await $.wait(2 * 1000);
 
     await articleList2("0")
 
@@ -53,6 +56,47 @@ let breakvarticle = false
 
 
 })()
+
+function checkReceive() {
+  console.log(`\n🍒 账号${accountInfo} 检查限时福利🍒\n`)
+  return new Promise((resolve, reject) => {
+    $.post(apiHost(`v2/task/check-receive`, `token=${cookie}`), async (error, resp, data) => {
+      try {
+        let obj = JSON.parse(data)
+        console.log(obj)
+
+        if(obj.data.wait) {
+          console.log(obj.msg);
+        } else {
+          await getReceiveReward()
+        }
+
+      } catch (e) {
+
+      } finally {
+        resolve();
+      }
+    })
+  })
+}
+
+// https://api.st615.com/v2/task/receive
+function getReceiveReward() {
+  console.log(`\n🍒 账号${accountInfo} 领取限时福利🍒\n`)
+  return new Promise((resolve, reject) => {
+    $.post(apiHost(`v2/task/receive`, `token=${cookie}`), async (error, resp, data) => {
+      try {
+        let obj = JSON.parse(data)
+        console.log(obj)
+
+      } catch (e) {
+
+      } finally {
+        resolve();
+      }
+    })
+  })
+}
 
 function shareWechat() {
     return new Promise((resolve, reject) => {
