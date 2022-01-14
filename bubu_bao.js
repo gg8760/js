@@ -24,7 +24,6 @@ surge
 
 hostname = bububao.duoshoutuan.com,
 
-
 */
 
 const $ = new Env('步步寶')
@@ -34,6 +33,8 @@ let CookieVal;
 /*
 1.峰
 2.格
+3. vxba 17862926330
+
 */
 
 let tokenArray = [
@@ -48,7 +49,6 @@ let tokenArray = [
         'store': 'appstore',
         'cookie': 'PHPSESSID=padj83k5p8nlfj5lfob5sop6k5',
     },
-
     {
         'tokenstr': 'B301898BFCC7F46C558797DCF540299G1642160208',
         'idfa': '900D0E28-C2A3-4CEE-973E-8112353B91ED',
@@ -60,7 +60,17 @@ let tokenArray = [
         'store': 'appstore',
         'cookie': 'PHPSESSID=ltfjiaiav08rspekhgvhjv92j1',
     },
-
+    {
+        'tokenstr': 'AB2BF89EC9E3B2F4AC6F2DA64540304G1642166426',
+        'idfa': 'EF4F8285-C848-4D03-8FDF-DA94B3F6C2F2',
+        'accept-language': 'zh-cn',
+        'platform': 2,
+        'version': 12,
+        'imei': 'D3BF79E2-6247-47FF-BE77-41B4811BF397',
+        'user-agent': 'BBB/136 CFNetwork/1197 Darwin/20.0.0',
+        'store': 'appstore',
+        'cookie': 'PHPSESSID=0i7ok782t5jek8v0tof3oqvaj5',
+    },
 ]
 
 
@@ -112,6 +122,7 @@ if (typeof $request !== 'undefined') {
         .catch((e) => $.logErr(e))
         .finally(() => $.done())
 }
+
 
 
 function showmsg() {
@@ -1360,7 +1371,7 @@ function cashCheck() {
                     await withDraw()
                 } else if (cash.day_jinbi > 5000) {
                     tip = 0.3
-//                     await withDraw()
+                    // await withDraw()
                 }
             }
             resolve()
