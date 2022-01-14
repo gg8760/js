@@ -25,32 +25,49 @@ surge
 hostname = bububao.duoshoutuan.com,
 
 
-
-
 */
-
 
 const $ = new Env('步步寶')
 let notice = ''
-//let CookieVal = $.getdata('bbb_ck')
+let CookieVal;
 
-let CookieVal = JSON.stringify({
-    'tokenstr': 'D36EABE34B59B6908DDC86F93540227G1641805175',
-    'idfa': '8E7BA893-6378-4E24-BC15-680B2857B30D',
-    'accept-language': 'zh-cn',
-    'platform': 2,
-    'version': 12,
-    'imei': '983D1CD9-47C1-4D82-9981-A84F05D80819',
-    'user-agent': 'BBB/136 CFNetwork/1240.0.4 Darwin/20.6.0',
-    'store': 'appstore',
-    'cookie': 'PHPSESSID=padj83k5p8nlfj5lfob5sop6k5',
-})
+/*
+1.峰
+2.格
+*/
+
+let tokenArray = [
+    {
+        'tokenstr': 'D36EABE34B59B6908DDC86F93540227G1641805175',
+        'idfa': '8E7BA893-6378-4E24-BC15-680B2857B30D',
+        'accept-language': 'zh-cn',
+        'platform': 2,
+        'version': 12,
+        'imei': '983D1CD9-47C1-4D82-9981-A84F05D80819',
+        'user-agent': 'BBB/136 CFNetwork/1240.0.4 Darwin/20.6.0',
+        'store': 'appstore',
+        'cookie': 'PHPSESSID=padj83k5p8nlfj5lfob5sop6k5',
+    },
+
+    {
+        'tokenstr': 'B301898BFCC7F46C558797DCF540299G1642160208',
+        'idfa': '900D0E28-C2A3-4CEE-973E-8112353B91ED',
+        'accept-language': 'zh-cn',
+        'platform': 2,
+        'version': 12,
+        'imei': '504FCCBF-838D-47B3-81FC-05A081C1C3D0',
+        'user-agent': 'BBB/136 CFNetwork/1197 Darwin/20.0.0',
+        'store': 'appstore',
+        'cookie': 'PHPSESSID=ltfjiaiav08rspekhgvhjv92j1',
+    },
+
+]
+
 
 if ($.isNode()) {
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
 }
-
 
 
 now = new Date(new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000);
@@ -66,30 +83,35 @@ if (typeof $request !== 'undefined') {
 } else {
     !(async () => {
 
-        $.msg($.name, "開始🎉🎉🎉")
 
-        await cashCheck()
-        await signIn()
-        await checkWaterNum()
-        await zaoWanDkInfo()
-        await sleepStatus()
-        await clickTaskStatus()
-        await watchTaskStatus()
-        //await helpStatus()
-        await getNewsId()
-        await checkWaterNum()
-        await getQuestionId()
-        await guaList()
-        await checkWaterNum()
-        await checkHomeJin()
-        await userInfo()
-        await showmsg()
+        for (let index = 0; index < tokenArray.length; index++) {
+
+            CookieVal = JSON.stringify(tokenArray[index])
+            console.log(`开始第${index + 1}个账号任务----------`);
+            // $.msg($.name, "開始🎉🎉🎉")
+
+            await cashCheck()
+            await signIn()
+            await checkWaterNum()
+            await zaoWanDkInfo()
+            await sleepStatus()
+            await clickTaskStatus()
+            await watchTaskStatus()
+            //await helpStatus()
+            await getNewsId()
+            await checkWaterNum()
+            await getQuestionId()
+            await guaList()
+            await checkWaterNum()
+            await checkHomeJin()
+            await userInfo()
+            await showmsg()
+        }
 
     })()
         .catch((e) => $.logErr(e))
         .finally(() => $.done())
 }
-
 
 
 function showmsg() {
