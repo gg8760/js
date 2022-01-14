@@ -22,6 +22,13 @@ let tokenArr = [],
     DrawalArr = [],
     drawalCode = "";
 
+let notifyString = '';
+let awaitT = 1
+/*
+1.峰
+2.格
+
+*/
 
 let headerArray = [
     {
@@ -54,7 +61,40 @@ let headerArray = [
     "Content-Type":	"application/x-www-form-urlencoded",
     "user_level_score": 3,
     'erid':	68361,
-    },]
+    },
+    {
+        "userid" : "6cf23087296bc44d081a712d4873bae2",
+        "Authorization": "WlRabFpHUXpaR0ZpWXpGaU1ETTNZamcyWkRKbVpUazVZalJsWVdNeU1XTT18MTY0MjE2Mjc3ODM3NDM1NjIxOXw4ZjYzNjA4OGY5OTk4MjMxYWYwYzYzNDFhNWU3ZDk1YzNhZWNjZjFh",
+        "appId": "19227f89ea1a166451593601eb8a1b4f",
+        "language": "zh_CN",
+        "cityCode" : 370100,
+        "MarketChannelName": "Iphone",
+        "Cookie" : "",
+        "ssid" : "829ea9c7-814b-445c-b2b4-5b3f5ba2abd0",
+        "Accept-Encoding": "gzip, deflate",
+        "cuuid": "afc45a65b409b8b80b3d2f272ebba71f",
+        "uuid": "900d0e28c2a34cee973e8112353b91ed",
+        "gpsCityCode": 370100,
+        "hwModel": "iPhone11,6",
+        "Accept-Language": "zh-Hans;q=1",
+        "countryCode": "CN",
+        "AppVerName" : "2.0.2",
+        "AppVerCode": 257,
+        "areaCode": 370000,
+        "routerMac": '44fb5a1c64e4',
+        "user_level": 1,
+        'User-Agent': 'Dsj/Client1.2',
+        'Generation': 'com.dianshijia.mobile.ios',
+        'GpsLontitude':	'117.1422',
+        'Cache-Control': 'no-cache',
+        'GpsLatitude': '36.70021',
+        'hwBrand': 'iPhone',
+        "Content-Type":	"application/x-www-form-urlencoded",
+        "user_level_score": 2,
+        'erid':	65034,
+        },
+    ]
+    
 if ($.isNode()) {
 
 } else {
@@ -91,17 +131,26 @@ if ($.isNode()) {
             signheaderVal = JSON.stringify(headerArray[i])
 
             $.index = i + 1;
-            console.log(`\n\n开始【电视家${$.index}】`)
+            console.log(`\n\n开始【电视家：账号${$.index} 任务】`)
             await signin(); // 签到
+            await $.wait(awaitT * 1000);
             await signinfo(); // 签到信息
+            await $.wait(awaitT * 1000);
             await Addsign(); // 额外奖励，默认额度
+            await $.wait(awaitT * 1000);
             await run();
+            await $.wait(awaitT * 1000);
             await tasks(); // 任务状态
+            await $.wait(awaitT * 1000);
             await getGametime(); // 游戏时长
+            await $.wait(awaitT * 1000);
             await total(); // 总计
+            await $.wait(awaitT * 1000);
             await cash(); // 现金
             // await cashlist(); // 现金列表 ❌ 
+            await totalcoinInfo()
             await coinlist(); // 金币列表
+            
             // if (drawalVal != undefined) {
             //     await Withdrawal()
             // } else {
@@ -113,6 +162,9 @@ if ($.isNode()) {
             // }
     //     }
     }
+
+    $.msg(notifyString)
+
 })()
 .catch((e) => $.logErr(e))
     .finally(() => $.done())
@@ -143,8 +195,6 @@ async function run() {
             await wakeup()
         }
     } else {
- 
-
         if ($.time('HH') > 17) {           
             await sleep();
             await CarveUp();
@@ -155,10 +205,7 @@ async function run() {
             
         } else if ($.time('HH') > 6 && $.time('HH') < 9) {
             await wakeup()
-            
         }
-
-        
     }
 }
 
@@ -219,33 +266,60 @@ function signinfo() {
 }
 
 
-function getBoxReward() {
-    console.log('🍉 宝箱奖励-----');
+// function getBoxReward() {
+//     return new Promise((resolve, reject) => {
+//         const toQQreadboxurl = {
+//             url: 'https://eventv3.reader.qq.com/activity/pkg11955/openBox',
+//             headers: JSON.parse(QQreadvideoheaderVal),
+//             timeout: 60000
+//         };
+//         $.get(toQQreadboxurl, async (error, response, data) => {
+//             try {
+//                 if (logs) $.log(`${jsname}, 宝箱奖励: ${data}`)
+//                 box = JSON.parse(data)
+//                 if (box.code == 0) {
+//                     console.log(`【宝箱剩余${box.data.openNum} 】:获得 ${box.data.coin} 金币\n`);
+//                 }
+//             } catch (error) {
+
+//             } finally {
+//                 resolve()
+//             }
+//         })
+//     })
+// }
+
+
+function total() {
+    console.log(`\n获取需要收取的气泡金币-----`);
     return new Promise((resolve, reject) => {
-        const toQQreadboxurl = {
-            url: 'https://eventv3.reader.qq.com/activity/pkg11955/openBox',
-            headers: JSON.parse(QQreadvideoheaderVal),
-            timeout: 60000
-        };
-        $.get(toQQreadboxurl, async (error, response, data) => {
+        $.get({
+            url: `${dianshijia_API}/coin/info`,
+            headers: JSON.parse(signheaderVal)
+        }, async (error, response, data) => {
             try {
-                if (logs) $.log(`${jsname}, 宝箱奖励: ${data}`)
-                box = JSON.parse(data)
-                if (box.code == 0) {
-                    console.log(`【宝箱剩余${box.data.openNum} 】:获得 ${box.data.coin} 金币\n`);
+                if (logs) $.log(`${$.name}, 总计: ${data}\n`)
+                let result = JSON.parse(data)
+                console.log(result.data.tempCoin)                
+                if (result.data.tempCoin) {
+                    for (i = 0; i < result.data.tempCoin.length; i++) {
+                        let coinid = result.data.tempCoin[i].id
+                        await getQiPao(coinid)
+                        console.log(`等待5s-----`);
+                        await $.wait(5 * 1000);
+                    }
                 }
             } catch (error) {
-
-            } finally {
+                
+            } finally{
                 resolve()
             }
-
         })
     })
 }
 
 
-function total() {
+function totalcoinInfo() {
     console.log(`\ntotal-----`);
     return new Promise((resolve, reject) => {
         $.get({
@@ -255,47 +329,18 @@ function total() {
             try {
                 if (logs) $.log(`${$.name}, 总计: ${data}\n`)
                 let result = JSON.parse(data)
-                // console.log(result.data);
-                console.log(result.data.tempCoin)
                 subTitle = `待兑换金币: ${result.data.coin} `
-
-                if (result.data.tempCoin) {
-                    for (i = 0; i < result.data.tempCoin.length; i++) {
-                        let coinid = result.data.tempCoin[i].id
-                        await getQiPao(coinid)
-                        console.log(`等待5s-----`);
-                        await $.wait(5 * 1000);
-                    }
-                }
 
             } catch (error) {
                 
             } finally{
                 resolve()
             }
-            
-            // subTitle = `待兑换金币: ${result.data.coin} `
-            // try {
-            //     if (result.data.tempCoin) {
-            //         for (i = 0; i < result.data.tempCoin.length; i++) {
-            //             coinid = result.data.tempCoin[i].id
-            //             $.get({
-            //                 url: `http://api.gaoqingdianshi.com/api/coin/temp/exchange?id=` + coinid,
-            //                 headers: JSON.parse(signheaderVal)
-            //             }, (error, response, data))
-            //         }
-            //     }
-            //     resolve()
-            // } catch (e) {
-            //     console.log(e)
-            //     resolve()
-            // }
         })
     })
 }
 
 function getQiPao(coinid) {
-
     console.log(`\n领取气泡金币id=${coinid}-----`);
     return new Promise((resolve, reject) => {
         const toQQreadboxurl = {
@@ -304,10 +349,8 @@ function getQiPao(coinid) {
         };
         $.get(toQQreadboxurl, async (error, response, data) => {
             try {
-                
                 let result = JSON.parse(data)
                 console.log(result);
-                
             } catch (error) {
 
             } finally {
@@ -424,6 +467,7 @@ function tasks(tkcode) {
         let taskcode = ['1M005', '1M002', 'playTask', 'SpWatchVideo', 'Mobilewatchvideo', 'MutilPlatformActive']
         for (code of taskcode) {
             await dotask(code)
+            await $.wait(5 * 1000);
         }
         resolve()
     })
@@ -589,7 +633,8 @@ function coinlist() {
                     if (i > 0) {
                         detail += `【任务统计】共完成${i+1}次任务🌷`
                     }
-                    $.msg($.name + `  ` + sleeping, subTitle, detail)
+                    // $.msg($.name + `  ` + sleeping, subTitle, detail)
+                    notifyString = notifyString + `${$.name}---账号${$.index}`+ '\n' +subTitle + '\n' +detail + `\n\n`
                 } catch (e) {
                     console.log(`获取任务金币列表失败，错误代码${e}+ \n响应数据:${data}`)
                     $.msg($.name + ` 获取金币详情失败 `, subTitle, detail)
