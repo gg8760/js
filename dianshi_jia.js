@@ -162,12 +162,11 @@ if ($.isNode()) {
     console.log(`--------------------------`);
     console.log(`-------共提供${headerArray.length}个账号------`);
     console.log(`--------------------------`);
+    
     for (let i = 0; i < headerArray.length; i++) {
-
         signheaderVal = JSON.stringify(headerArray[i])
-
         $.index = i + 1;
-        console.log(`\n\n开始【电视家：账号${$.index} 任务】`)
+        console.log(`\n\n🍎🍎🍎开始【电视家：账号${$.index} 任务】`)
         await signin(); // 签到
         await $.wait(awaitT * 1000);
         await signinfo(); // 签到信息
