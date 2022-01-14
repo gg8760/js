@@ -94,6 +94,10 @@ if (typeof $request !== 'undefined') {
     !(async () => {
 
 
+        console.log(`--------------------------`);
+        console.log(`-------共提供${tokenArray.length}个账号------`);
+        console.log(`--------------------------`);
+        
         for (let index = 0; index < tokenArray.length; index++) {
 
             CookieVal = JSON.stringify(tokenArray[index])
