@@ -87,7 +87,7 @@ if (typeof $request !== 'undefined') {
         for (let index = 0; index < tokenArray.length; index++) {
 
             CookieVal = JSON.stringify(tokenArray[index])
-            console.log(`开始第${index + 1}个账号任务----------`);
+            console.log(`🍓🍓🍓开始第${index + 1}个账号任务----------`);
             // $.msg($.name, "開始🎉🎉🎉")
 
             await cashCheck()
