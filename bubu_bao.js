@@ -1338,7 +1338,7 @@ function cashCheck() {
                     await withDraw()
                 } else if (cash.day_jinbi > 5000) {
                     tip = 0.3
-                    await withDraw()
+//                     await withDraw()
                 }
             }
             resolve()
