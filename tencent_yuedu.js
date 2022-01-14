@@ -125,26 +125,28 @@ let QQreadvideoHD = [
     for (let index = 0; index < QQreadvideoHD.length; index++) {
         QQreadvideoheaderVal = QQreadvideoHD[index]
 
-        breakadVideo = false
-        console.log('🍉开始20次视频奖励-----');
-        for (let index = 0; index < 20; index++) {
-            if (breakadVideo == false) {
-                let adtime = ad_readTime + Math.floor(Math.random() * 10)
-                console.log(`看广告${adtime}秒------`);
-                await $.wait(adtime * 1000);
-                await QQreadvideo()
-            } else {
-                console.log(`20次视频奖励 全部完成\n`);
-                break;
-            }
-        }
+        // breakadVideo = false
+        // console.log('🍉开始20次视频奖励-----');
+        // for (let index = 0; index < 20; index++) {
+        //     if (breakadVideo == false) {
+        //         let adtime = ad_readTime + Math.floor(Math.random() * 10)
+        //         console.log(`看广告${adtime}秒------`);
+        //         await $.wait(adtime * 1000);
+        //         await QQreadvideo()
+        //     } else {
+        //         console.log(`20次视频奖励 全部完成\n`);
+        //         break;
+        //     }
+        // }
 
-        await QQreadsign()
+        // await QQreadsign()
 
-        await QQreadboxinfo()
+        // await QQreadboxinfo()
 
-        await $.wait(10 * 1000);
-        await  getBoxVideoReward()
+        let adtime = 15 + Math.floor(Math.random() * 10)
+        console.log(`等待 ${adtime} s`);
+        await $.wait(adtime * 1000);
+        await getBoxVideoReward()
 
     }
 
@@ -229,7 +231,7 @@ function QQreadboxinfo() {
                     await getBoxReward()
                 }
             } catch (error) {
-                
+
             } finally {
                 resolve()
             }
@@ -247,11 +249,18 @@ function getBoxReward() {
             timeout: 60000
         };
         $.get(toQQreadboxurl, async (error, response, data) => {
-            if (logs) $.log(`${jsname}, 宝箱奖励: ${data}`)
-            box = JSON.parse(data)
-            if (box.code == 0) {
-                console.log(`【宝箱剩余${box.data.openNum} 】:获得 ${box.data.coin} 金币\n`);
+            try {
+                if (logs) $.log(`${jsname}, 宝箱奖励: ${data}`)
+                box = JSON.parse(data)
+                if (box.code == 0) {
+                    console.log(`【宝箱剩余${box.data.openNum} 】:获得 ${box.data.coin} 金币\n`);
+                }
+            } catch (error) {
+
+            } finally {
+                resolve()
             }
+
         })
     })
 }
@@ -274,7 +283,7 @@ function getBoxVideoReward() {
                     console.log(` 获得 ${boxinfo.data.count} 金币\n`);
                 }
             } catch (error) {
-                
+
             } finally {
                 resolve()
             }
