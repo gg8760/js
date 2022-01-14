@@ -158,6 +158,10 @@ if ($.isNode()) {
     } else {
         time = new Date(new Date(new Date().toLocaleDateString()).getTime()) / 1000
     }
+    
+    console.log(`--------------------------`);
+    console.log(`-------共提供${headerArray.length}个账号------`);
+    console.log(`--------------------------`);
     for (let i = 0; i < headerArray.length; i++) {
 
         signheaderVal = JSON.stringify(headerArray[i])
