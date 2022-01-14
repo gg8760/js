@@ -125,23 +125,23 @@ let QQreadvideoHD = [
     for (let index = 0; index < QQreadvideoHD.length; index++) {
         QQreadvideoheaderVal = QQreadvideoHD[index]
 
-        // breakadVideo = false
-        // console.log('🍉开始20次视频奖励-----');
-        // for (let index = 0; index < 20; index++) {
-        //     if (breakadVideo == false) {
-        //         let adtime = ad_readTime + Math.floor(Math.random() * 10)
-        //         console.log(`看广告${adtime}秒------`);
-        //         await $.wait(adtime * 1000);
-        //         await QQreadvideo()
-        //     } else {
-        //         console.log(`20次视频奖励 全部完成\n`);
-        //         break;
-        //     }
-        // }
+        breakadVideo = false
+        console.log('🍉开始20次视频奖励-----');
+        for (let index = 0; index < 20; index++) {
+            if (breakadVideo == false) {
+                let adtime = ad_readTime + Math.floor(Math.random() * 10)
+                console.log(`看广告${adtime}秒------`);
+                await $.wait(adtime * 1000);
+                await QQreadvideo()
+            } else {
+                console.log(`20次视频奖励 全部完成\n`);
+                break;
+            }
+        }
 
-        // await QQreadsign()
+        await QQreadsign()
 
-        // await QQreadboxinfo()
+        await QQreadboxinfo()
 
         let adtime = 15 + Math.floor(Math.random() * 10)
         console.log(`等待 ${adtime} s`);
