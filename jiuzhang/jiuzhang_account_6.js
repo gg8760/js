@@ -81,7 +81,6 @@ function checkReceive() {
   })
 }
 
-// https://api.st615.com/v2/task/receive
 function getReceiveReward() {
   console.log(`\n🍒 账号${accountInfo} 领取限时福利🍒\n`)
   return new Promise((resolve, reject) => {
@@ -89,6 +88,11 @@ function getReceiveReward() {
       try {
         let obj = JSON.parse(data)
         console.log(obj)
+
+        let adTime = ad_readTime + Math.floor(Math.random() * 10)
+        console.log(`观看视频广告${adTime}秒,领取翻倍`)
+        await $.wait(adTime * 1000);
+        await getVideoBenefit(98)
 
       } catch (e) {
 
@@ -98,6 +102,7 @@ function getReceiveReward() {
     })
   })
 }
+
 
 function shareWechat() {
     return new Promise((resolve, reject) => {
