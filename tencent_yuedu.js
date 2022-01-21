@@ -4,9 +4,6 @@
 本人github地址     https://github.com/ziye12/JavaScript 
 转载请备注个名字，谢谢
 
-11.28 ⚠️无时长功能，只有签到，视频，宝箱
-1.18 调整显示错误
-
 日均0.18收益
 
 
@@ -49,11 +46,25 @@ let QQreadvideohdArr = [];
 let QQreadvideoheaderVal = '';
 let QQreadHD = [];
 let breakadVideo = false
+
+/*
+1. 162194
+2. 870606
+3. 
+
+*/
+
 let QQreadvideoHD = [
     JSON.stringify({
         'origin': 'https://yuedu.reader.qq.com',
         'cookie': 'IDFA=8E7BA893-6378-4E24-BC15-680B2857B30D; QVisible=0; appid=1450000540; areaid=1; auditStatus=0; c_version=qqreader_7.7.10.0395_iphone; client=2; gselect=2; jailbreak=0; loginType=50; net_type=1; nosid=1; platform=ioswp; qimei=dc599bc37cd3d9a468f1d538000010f15616; qrem=0; qrsn=dc599bc37cd3d9a468f1d538000010f15616; qrsn_new=dc599bc37cd3d9a468f1d538000010f15616; qrsy=515d0088d8d05c1d96824326fd1c84a8; qrtm=1642059222; rcmd=1; safkey=d2075009f00c480b279779d66c1eff54; server_sex=0; sex=2; sid=16420582244234882; text_type=1; themeid=2000; trustedid=00ac1ff66265f1a9d52a60a7a50d33711; ua=iPhone13,2-iOS14.8; uid=854041561735; usid=ywLNVrOlIttv; version=qqreader_7.7.10.0395_iphone; youngerMode=0; ywguid=854041561735; ywkey=ywLNVrOlIttv',
         'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148QQReader',
+        'accept-language': 'zh-cn',
+    }),
+    JSON.stringify({
+        'origin': 'https://yuedu.reader.qq.com',
+        'cookie': 'IDFA=EF4F8285-C848-4D03-8FDF-DA94B3F6C2F2; QVisible=1; appid=1450000540; areaid=1; auditStatus=0; c_version=qqreader_7.7.10.0395_iphone; client=2; gselect=2; jailbreak=0; loginType=1; net_type=1; nosid=1; platform=ioswp; qimei=e61d1fa0-3844-49fb-a4d6-500c94aec53a; qqopenid=1EDD1C62DB04E0C2C504598D99FB7115; qqopenkey=80D2F5047C45090B04E6AA3976DEA261; qrem=0; qrsn=e61d1fa0-3844-49fb-a4d6-500c94aec53a; qrsn_new=292bda0142667fa49129c545000016414717; qrsy=9db5f0bdf9fe7eea05a54845846e8f53; qrtm=1642746665; rcmd=1; safkey=994f04c7c0b05110bc2450319a923470; server_sex=0; sex=2; sid=1642745410422314; text_type=1; themeid=2000; trustedid=2080780aeec3d7c3516efac7be44ce851; ua=iPhone7-iOS14.0.1; version=qqreader_7.7.10.0395_iphone; youngerMode=0; ywguid=870606099; ywkey=yw5rwtvUz6WC',
+        'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148QQReader',
         'accept-language': 'zh-cn',
     }),];
 
@@ -72,6 +83,7 @@ let QQreadvideoHD = [
     console.log(`--------------------------`);
 
     for (let index = 0; index < QQreadvideoHD.length; index++) {
+        console.log(`\n开始第${index + 1}个账号任务-----`);
         QQreadvideoheaderVal = QQreadvideoHD[index]
 
         breakadVideo = false
@@ -381,9 +393,9 @@ function getBoxVideoReward() {
             try {
                 let boxinfo = JSON.parse(data)
                 console.log(boxinfo);
-                if (boxinfo.code == 0) {
-                    console.log(` 获得 ${boxinfo.data.count} 金币\n`);
-                }
+                // if (boxinfo.code == 0) {
+                //     console.log(` 获得 ${boxinfo.data.count} 金币\n`);
+                // }
             } catch (error) {
 
             } finally {
