@@ -66,6 +66,12 @@ let QQreadvideoHD = [
         'cookie': 'IDFA=EF4F8285-C848-4D03-8FDF-DA94B3F6C2F2; QVisible=1; appid=1450000540; areaid=1; auditStatus=0; c_version=qqreader_7.7.10.0395_iphone; client=2; gselect=2; jailbreak=0; loginType=1; net_type=1; nosid=1; platform=ioswp; qimei=e61d1fa0-3844-49fb-a4d6-500c94aec53a; qqopenid=1EDD1C62DB04E0C2C504598D99FB7115; qqopenkey=80D2F5047C45090B04E6AA3976DEA261; qrem=0; qrsn=e61d1fa0-3844-49fb-a4d6-500c94aec53a; qrsn_new=292bda0142667fa49129c545000016414717; qrsy=9db5f0bdf9fe7eea05a54845846e8f53; qrtm=1642746665; rcmd=1; safkey=994f04c7c0b05110bc2450319a923470; server_sex=0; sex=2; sid=1642745410422314; text_type=1; themeid=2000; trustedid=2080780aeec3d7c3516efac7be44ce851; ua=iPhone7-iOS14.0.1; version=qqreader_7.7.10.0395_iphone; youngerMode=0; ywguid=870606099; ywkey=yw5rwtvUz6WC',
         'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148QQReader',
         'accept-language': 'zh-cn',
+    }),
+    JSON.stringify({
+        'origin': 'https://yuedu.reader.qq.com',
+        'cookie': `IDFA=900D0E28-C2A3-4CEE-973E-8112353B91ED; QVisible=0; appid=1450000540; areaid=1; auditStatus=0; c_version=qqreader_7.7.10.0395_iphone; client=2; gselect=-1; jailbreak=0; loginType=1; net_type=1; nosid=1; platform=ioswp; qimei=d2517c3b-fc57-4d08-aaad-01381d11aebb; qqopenid=F09A46D8CD195996E238CD308087CC0A; qqopenkey=F5A16506772A5A923E02E7532AE05CE2; qrem=0; qrsn=d2517c3b-fc57-4d08-aaad-01381d11aebb; qrsn_new=a3a999c3bf9b1c65cbde119d00001fd1471b; qrsy=6defa47b8d394241c6edf8dc402616a5; qrtm=1642952066; rcmd=1; safkey=4951d805d516ab7387758f042ef67819; server_sex=0; sex=-1; sid=16429520201355587; text_type=1; themeid=2000; trustedid=5fd7c1f56395b5eec5c28009f5eb4c331; ua=iPhoneXSMax-iOS14.0.1; version=qqreader_7.7.10.0395_iphone; youngerMode=0; ywguid=787473237; ywkey=ywIOj9rETaGw; _qz_referrer=qzs.qq.com`,
+        'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148QQReader',
+        'accept-language': 'zh-cn',
     }),];
 
 !(async () => {
