@@ -76,17 +76,17 @@ let messageNotify = '';
 
         console.log(`开始第${index + 1}个账号的任务-----`);
 
-        // for (let index = 0; index < taskArray.length; index++) {
-        //     const element = taskArray[index];
-        //     await shareWechat(element)
-        //     await $.wait(10 * 1000);
-        // }
-        // await getArticleList()
+        for (let index = 0; index < taskArray.length; index++) {
+            const element = taskArray[index];
+            await shareWechat(element)
+            await $.wait(10 * 1000);
+        }
+        await getArticleList()
 
-        // let timeWait = Math.floor(Math.random() * 10) + 20
-        // console.log(`随机等待${timeWait}秒-----`)
-        // await $.wait(timeWait * 1000);
-        // await addNews()
+        let timeWait = Math.floor(Math.random() * 10) + 20
+        console.log(`随机等待${timeWait}秒-----`)
+        await $.wait(timeWait * 1000);
+        await addNews()
         await accountInfo(index + 1)
     }
     console.log(messageNotify);
