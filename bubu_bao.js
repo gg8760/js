@@ -34,7 +34,7 @@ let CookieVal;
 1.峰
 2.格
 3. vxba 17862926330
-
+4. vx 星云
 */
 
 let tokenArray = [
@@ -70,6 +70,17 @@ let tokenArray = [
         'user-agent': 'BBB/136 CFNetwork/1197 Darwin/20.0.0',
         'store': 'appstore',
         'cookie': 'PHPSESSID=0i7ok782t5jek8v0tof3oqvaj5',
+    },
+    {
+        'tokenstr': '4C728F02F1A7D39F789681AE9540553G1643381878',
+        'idfa': '37FD7AC7-BD57-4F53-A336-757F98178D0D',
+        'accept-language': 'zh-cn',
+        'platform': 2,
+        'version': 12,
+        'imei': '67C4C092-134B-4765-9BD9-EE0BD7362D30',
+        'user-agent': 'BBB/136 CFNetwork/1107.1 Darwin/19.0.0',
+        'store': 'appstore',
+        'cookie': 'PHPSESSID=aaa54ikq215p2uifa5mtme94j5',
     },
 ]
 
