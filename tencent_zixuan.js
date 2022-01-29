@@ -45,15 +45,11 @@ https://wzq.tenpay.com/cgi-bin/activity_task_daily.fcgi? url script-request-head
 [MITM]
 hostname = wzq.tenpay.com
 
-
-[Script]
-cron "35 11,16 * * *"  script-path=tencent_zixuan.js,tag=腾讯自选股
-
 */
 
 const jsname = '腾讯自选股'
 const $ = Env(jsname)
-const notifyFlag = 0; //0为关闭通知，1为打开通知,默认为1
+const notifyFlag = 1; //0为关闭通知，1为打开通知,默认为1
 
 const notify = $.isNode() ? require('./sendNotify') : '';
 
@@ -61,9 +57,9 @@ let sessionTime = Math.round(new Date().getTime())
 let rndtime = "" //毫秒
 let todayDate = formatDateTime(new Date());
 
-var cash = ($.isNode() ? (process.env.TxStockCash) : ($.getval('TxStockCash'))) || 1; //0为不自动提现,1为自动提现1元,5为自动提现5元
+var cash = ($.isNode() ? (process.env.TxStockCash) : ($.getval('TxStockCash'))) || 5; //0为不自动提现,1为自动提现1元,5为自动提现5元
 var help = ($.isNode() ? (process.env.TxStockHelp) : ($.getval('TxStockHelp'))) || 1; //0为不做分享助力任务，1为多用户互相分享助力
-var newbie = ($.isNode() ? (process.env.TxStockNewbie) : ($.getval('TxStockNewbie'))) || 1; //0为不做新手任务，1为自动做新手任务
+var newbie = ($.isNode() ? (process.env.TxStockNewbie) : ($.getval('TxStockNewbie'))) || 0; //0为不做新手任务，1为自动做新手任务
 var helpOrder = ($.isNode() ? (process.env.TxStockHelpOrder) : ($.getval('TxStockHelpOrder'))) || "";
 
 const appUrlArr = [];
@@ -107,51 +103,6 @@ let helpOrderArr = []
 
 let logDebug = 0
 let TEST_PRINT = 0
-
-/*
-1. vx 峰
-2. vx 格工作
-
-*/
-
-// https://wzq.tenpay.com/cgi-bin/activity_task_daily.fcgi?action=home&type=routine&actid=1110&invite_code=&_=1641390892250
-var TxStockAppUrl = 
-`https://wzq.tenpay.com/cgi-bin/activity_task_daily.fcgi?action=home&type=routine&actid=1111&invite_code=&_=1641386413774&openid=oA0GbjjhRIJ6EKbJ0apBuHIO0sWA&fskey=v0ba82b272061d58f6552a05f51dfb40&channel=1&access_token=52_QQaFXbvoEUkX-kH68BsILxv7iFdPkgxlhYe-_koXqDC5E7w94kWVwumOspfFtEOAy0xXgTMAGL2kbbqgOxDbzoyEVNc3YOidXunCEaT6Qn8&_appName=ios&_appver=9.6.0&_osVer=14.8&_devId=e36eebb138bb9c8c20cf383695281286b5bc8223
-https://wzq.tenpay.com/cgi-bin/activity_task_daily.fcgi?action=home&type=routine&actid=1111&invite_code=&_=1641390537684&openid=oA0GbjoWBlorMQ2flB1U5UugN4po&fskey=v0ba829662361d59c104b138e9b9f719&channel=1&access_token=52_AZ-t2qACoMCSSmtRaITDGgx7TquHPFJJpIcM7hB5bfI6PsNywTOagD9M7sig9qPnXcpQUm76yCzrOTg09abdsvMXgr7oAfXWGMST0ixsJK8&_appName=ios&_appver=9.6.0&_osVer=14.0.1&_devId=12bc41552bbb1a843d212fc0ee5db281b83f12ac`
-
-// app header
-var TxStockAppHeader = 
-`${JSON.stringify({     
-  "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 qqstock/9.6.0 deviceType/iphone",
-  'accept':	`*/*`,
-  'accept-encoding': 'gzip, deflate, br',
-  'cookie': `pgv_pvid=3764864248; ts_last=/activity/page/welwareCenter/; ts_refer=zqact.tenpay.com/activity/page/activityForward/; ts_sid=2618147205; ts_uid=2928035985`,
-})}
-${JSON.stringify({     
-  "User-Agent": 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 qqstock/9.6.0 deviceType/iphone',
-  'accept':	`*/*`,
-  'accept-encoding': 'gzip, deflate, br',
-  'cookie': `pgv_info=ssid=s1119147840; pgv_pvid=2045168656; ts_last=/activity/page/welwareCenter/; ts_refer=zqact.tenpay.com/activity/page/activityForward/; ts_sid=5143086036; ts_uid=8215653392`,
-})}`
-
-
-// 微信的header
-var TxStockWxHeader =
-`${JSON.stringify({
-  "User-Agent": `Mozilla/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.9(0x18000931) NetType/WIFI Language/zh_CN`,
-  'accept':	`*/*`,
-  'accept-encoding': 'gzip, deflate, br',
-  'cookie': `pgv_info=ssid=s7029090920; pgv_pvid=9147272274; ts_last=/activity/page/welwareCenter/; ts_refer=zqact.tenpay.com/activity/page/activityForward/; ts_sid=4113487656; ts_uid=8378417280; wzq_channel=..Ohu37p00gf001; qlappid=wx9cf8c670ebd68ce4; qlskey=v0ba829822361d598f54ae926908a46c; qluin=085e9858eea8b851a5391eb78@wx.tenpay.com; qq_logtype=16; wx_session_time=1641388277000; wzq_qlappid=wx9cf8c670ebd68ce4; wzq_qlskey=v0ba829822361d598f54ae926908a46c; wzq_qluin=os-ppuOchk8VPg3Oxr7xPswd3csk; zxg_openid=oA0GbjjhRIJ6EKbJ0apBuHIO0sWA`,
-  'accept-language': 'zh-cn',
-})}
-${JSON.stringify({
-  "User-Agent": `Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.16(0x1800103f) NetType/WIFI Language/zh_CN`,
-  'accept':	`*/*`,
-  'accept-encoding': 'gzip, deflate, br',
-  'cookie': `pgv_info=ssid=s8802588534; pgv_pvid=2184563820; ts_last=/activity/page/welwareCenter/; ts_refer=zqact.tenpay.com/activity/page/activityForward/; ts_sid=1447908875; ts_uid=7601612855; wzq_channel=..orv53p00gf001; qlappid=wx9cf8c670ebd68ce4; qlskey=v0ba82b082361d5a3124e55d48e228ed; qluin=085e9858eb64261c5bc8a1c07@wx.tenpay.com; qq_logtype=16; wx_session_time=1641390866000; wzq_qlappid=wx9cf8c670ebd68ce4; wzq_qlskey=v0ba82b082361d5a3124e55d48e228ed; wzq_qluin=os-ppuDyMEsAxaGIlIMUVX0GQ_X0; zxg_openid=oA0GbjoWBlorMQ2flB1U5UugN4po`,
-  'accept-language': 'zh-cn',
-})}`
-
 
 let userAppShareTaskList = {
     "daily": ["news_share", "task_50_1111", "task_51_1111"/*, "task_72_1113", "task_74_1113"*/, ],
@@ -207,9 +158,49 @@ let bullTaskArray = {
     "feed":{"taskName":"喂长牛", "action":"feed", "actid":1105},
 }
 
+/*
+1. vx 峰
+2. vx 格工作
+3.vx 星云
+*/
 
- 
+// https://wzq.tenpay.com/cgi-bin/activity_task_daily.fcgi?action=home&type=routine&actid=1110&invite_code=&_=1641390892250
+var TxStockAppUrl = 
+`https://wzq.tenpay.com/cgi-bin/activity_task_daily.fcgi?action=home&type=routine&actid=1111&invite_code=&_=1641386413774&openid=oA0GbjjhRIJ6EKbJ0apBuHIO0sWA&fskey=v0ba82b272061d58f6552a05f51dfb40&channel=1&access_token=52_QQaFXbvoEUkX-kH68BsILxv7iFdPkgxlhYe-_koXqDC5E7w94kWVwumOspfFtEOAy0xXgTMAGL2kbbqgOxDbzoyEVNc3YOidXunCEaT6Qn8&_appName=ios&_appver=9.6.0&_osVer=14.8&_devId=e36eebb138bb9c8c20cf383695281286b5bc8223
+https://wzq.tenpay.com/cgi-bin/activity_task_daily.fcgi?action=home&type=routine&actid=1111&invite_code=&_=1641390537684&openid=oA0GbjoWBlorMQ2flB1U5UugN4po&fskey=v0ba829662361d59c104b138e9b9f719&channel=1&access_token=52_AZ-t2qACoMCSSmtRaITDGgx7TquHPFJJpIcM7hB5bfI6PsNywTOagD9M7sig9qPnXcpQUm76yCzrOTg09abdsvMXgr7oAfXWGMST0ixsJK8&_appName=ios&_appver=9.6.0&_osVer=14.0.1&_devId=12bc41552bbb1a843d212fc0ee5db281b83f12ac`
 
+// app header
+var TxStockAppHeader = 
+`${JSON.stringify({     
+  "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 qqstock/9.6.0 deviceType/iphone",
+  'accept': `*/*`,
+  'accept-encoding': 'gzip, deflate, br',
+  'cookie': `pgv_pvid=3764864248; ts_last=/activity/page/welwareCenter/; ts_refer=zqact.tenpay.com/activity/page/activityForward/; ts_sid=2618147205; ts_uid=2928035985`,
+})}
+${JSON.stringify({     
+  "User-Agent": 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 qqstock/9.6.0 deviceType/iphone',
+  'accept': `*/*`,
+  'accept-encoding': 'gzip, deflate, br',
+  'cookie': `pgv_info=ssid=s1119147840; pgv_pvid=2045168656; ts_last=/activity/page/welwareCenter/; ts_refer=zqact.tenpay.com/activity/page/activityForward/; ts_sid=5143086036; ts_uid=8215653392`,
+})}`
+
+
+// 微信的header
+var TxStockWxHeader =
+`${JSON.stringify({
+  "User-Agent": `Mozilla/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.9(0x18000931) NetType/WIFI Language/zh_CN`,
+  'accept': `*/*`,
+  'accept-encoding': 'gzip, deflate, br',
+  'cookie': `pgv_info=ssid=s7029090920; pgv_pvid=9147272274; ts_last=/activity/page/welwareCenter/; ts_refer=zqact.tenpay.com/activity/page/activityForward/; ts_sid=4113487656; ts_uid=8378417280; wzq_channel=..Ohu37p00gf001; qlappid=wx9cf8c670ebd68ce4; qlskey=v0ba829822361d598f54ae926908a46c; qluin=085e9858eea8b851a5391eb78@wx.tenpay.com; qq_logtype=16; wx_session_time=1641388277000; wzq_qlappid=wx9cf8c670ebd68ce4; wzq_qlskey=v0ba829822361d598f54ae926908a46c; wzq_qluin=os-ppuOchk8VPg3Oxr7xPswd3csk; zxg_openid=oA0GbjjhRIJ6EKbJ0apBuHIO0sWA`,
+  'accept-language': 'zh-cn',
+})}
+${JSON.stringify({
+  "User-Agent": `Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.16(0x1800103f) NetType/WIFI Language/zh_CN`,
+  'accept': `*/*`,
+  'accept-encoding': 'gzip, deflate, br',
+  'cookie': `pgv_info=ssid=s8802588534; pgv_pvid=2184563820; ts_last=/activity/page/welwareCenter/; ts_refer=zqact.tenpay.com/activity/page/activityForward/; ts_sid=1447908875; ts_uid=7601612855; wzq_channel=..orv53p00gf001; qlappid=wx9cf8c670ebd68ce4; qlskey=v0ba82b082361d5a3124e55d48e228ed; qluin=085e9858eb64261c5bc8a1c07@wx.tenpay.com; qq_logtype=16; wx_session_time=1641390866000; wzq_qlappid=wx9cf8c670ebd68ce4; wzq_qlskey=v0ba82b082361d5a3124e55d48e228ed; wzq_qluin=os-ppuDyMEsAxaGIlIMUVX0GQ_X0; zxg_openid=oA0GbjoWBlorMQ2flB1U5UugN4po`,
+  'accept-language': 'zh-cn',
+})}`
 
 ///////////////////////////////////////////////////////////////////
 
@@ -217,7 +208,7 @@ let bullTaskArray = {
 
     if(typeof $request !== "undefined")
     {
-        // await getRewrite()
+        await getRewrite()
     }
     else
     {
@@ -232,6 +223,12 @@ let bullTaskArray = {
         //获取用户信息
         await initAccountInfo()
         
+        //测试用，勿打开
+        if(0) {
+            await getEnvParam(0)
+            await testFunction()
+        }
+        
         //新手任务
         await newbieTask()
         
@@ -240,8 +237,6 @@ let bullTaskArray = {
             await getEnvParam(numUser)
             
             $.log(`\n======= 开始腾讯自选股用户${numUser+1} ${nickname[numUser]} 日常任务 =======\n`)
-            
-            //await testFunction() //测试用，勿打开
             
             await signStatus(2002,0); //签到
             await $.wait(1000)
@@ -276,7 +271,7 @@ let bullTaskArray = {
 //测试用
 async function testFunction() {
     //扫描可查询的任务列表,
-    await scanAppTaskList(1000,2000,"task_daily","routine")
+    await scanAppTaskList(0,3000,"task_daily","routine")
     //await scanWxTaskList(1000,1400,"task_daily","routine") //每个大概花费86ms
 }
 
@@ -324,18 +319,18 @@ async function getRewrite()
 
 async function checkEnv()
 {
-    // if($.isNode())
-    // {
-    //     TxStockAppUrl = process.env.TxStockAppUrl
-    //     TxStockAppHeader = process.env.TxStockAppHeader
-    //     TxStockWxHeader = process.env.TxStockWxHeader
-    // }
-    // else
-    // {
-    //     TxStockAppUrl = $.getdata('TxStockAppUrl')
-    //     TxStockAppHeader = $.getdata('TxStockAppHeader')
-    //     TxStockWxHeader = $.getdata('TxStockWxHeader')
-    // }
+    if($.isNode())
+    {
+        TxStockAppUrl = process.env.TxStockAppUrl
+        TxStockAppHeader = process.env.TxStockAppHeader
+        TxStockWxHeader = process.env.TxStockWxHeader
+    }
+    else
+    {
+        TxStockAppUrl = $.getdata('TxStockAppUrl')
+        TxStockAppHeader = $.getdata('TxStockAppHeader')
+        TxStockWxHeader = $.getdata('TxStockWxHeader')
+    }
     
     if(!TxStockAppUrl || !TxStockAppHeader || !TxStockWxHeader)
     {
@@ -417,16 +412,14 @@ async function checkEnv()
 
 async function getEnvParam(userNum)
 {
-
-  
     appUrlArrVal = appUrlArr[userNum];
     appHeaderArrVal = JSON.parse(appHeaderArr[userNum]);
     wxHeaderArrVal = JSON.parse(wxHeaderArr[userNum]);
     
-    
     app_openid = appUrlArrVal.match(/&openid=([\w-]+)/)[1]
     app_fskey = appUrlArrVal.match(/&fskey=([\w-]+)/)[1]
-    app_token = appUrlArrVal.match(/&access_token=([\w-]+)/)[1]
+    //app_token = appUrlArrVal.match(/&access_token=([\w-]+)/)[1]
+    app_token = ""
     app_appName = appUrlArrVal.match(/&_appName=([\w\.,-]+)/)[1]
     app_appver = appUrlArrVal.match(/&_appver=([\w\.,-]+)/)[1]
     app_osVer = appUrlArrVal.match(/&_osVer=([\w\.,-]+)/)[1]
@@ -1475,12 +1468,11 @@ async function orderQuery(getName,getCoinNum,isWithdraw,logCoin) {
                 } else {
                     if (safeGet(data)) {
                         let result = JSON.parse(data)
-                        // console.log('result===',result);
                         if(logDebug) console.log(result)
                         if(result.retcode == 0){
                             if(getName == 1) {
                                 $.log(`获取用户${numUser+1}昵称成功：${result.shop_asset.nickname}\n`);
-                                nickname.push( `用户${numUser+1}--` + result.shop_asset.nickname)
+                                nickname.push(result.shop_asset.nickname)
                             }
                             if(getCoinNum == 1) {
                                 coinInfo = result.shop_asset.amount
@@ -2332,7 +2324,6 @@ async function appGuessRiseFall(answer,guessDate) {
                         let result = JSON.parse(data);
                         if(logDebug) console.log(result)
                         guessStr = (answer==1) ? "猜涨" : "猜跌"
-                        //guessOption = (raise < 0) ? 2 : 1
                         if(result.retcode == 0) {
                             $.log(`上证指数 猜涨跌成功：${guessStr}\n`);
                         } else {
