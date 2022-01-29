@@ -43,6 +43,7 @@ let userAgent = ($.isNode() ? process.env.jrttjsbUA : $.getdata('jrttjsbUA')) ||
 
 let userHeader = ($.isNode() ? process.env.jrttjsbHeader : $.getdata('jrttjsbHeader')) || '';
 
+
 /*
 1. 17862926330 vivox9
 2. 18253169060 iphone12
@@ -50,6 +51,7 @@ let userHeader = ($.isNode() ? process.env.jrttjsbHeader : $.getdata('jrttjsbHea
 4. 15069131632 iPhone XS Max
 5. 15964395867 vivo 
 6. 18203397585 iphone 7黑
+7. 15131784564 vivo 
 */
 
 let userAgentArr = [
@@ -59,10 +61,11 @@ let userAgentArr = [
   'NewsLite/8.5.8.20 CFNetwork/1197 Darwin/20.0.0',
   'Dalvik/2.1.0 (Linux; U; Android 6.0.1; vivo Y55A Build/MMB29M) NewsArticle/8.6.0 tt-ok/3.10.0.2',
   'NewsLite 8.6.0 rv:8.6.0.20 (iPhone; iOS 14.0.1; zh-Hans_US) Cronet',
+  'Dalvik/2.1.0 (Linux; U; Android 9; V1934A Build/PPR1.180610.011) NewsArticle/8.6.6 cronet/TTNetVersion:f2a033a5 2021-11-02 QuicVersion:705d0b81 2021-08-12'
 ]
 
 
- 
+// userHeaderArr 里面放的是 cookie
 
 let userHeaderArr = [
   `install_id=2911976369705485; ttreq=1$58a0874b7936464aa728e7b4f399d93be1d708f5; passport_csrf_token_default=8d667f7db555b5fd6efb3283620239a6; d_ticket=b464ac28b73cc31ff61499e3d283a81f726b8; odin_tt=ce397d8cee1492ad9b5b426e063918275c973b65401fad0fe48ea635f9837ca769cec7b81f3af2f3cee963f642084f7d81c738ed741ea0a4c20fb300a3f94d95; n_mh=79PMiSMkryIOyDyOzTQyGUjUSh_1YVByR_h7WUPqx-w; sid_guard=8b742203747ec48397cb4aa98796812f%7C1641371165%7C5184000%7CSun%2C+06-Mar-2022+08%3A26%3A05+GMT; uid_tt=7f294c9e2697ff3e43250ac3d3b26956; sid_tt=8b742203747ec48397cb4aa98796812f; sessionid=8b742203747ec48397cb4aa98796812f`,
@@ -71,6 +74,7 @@ let userHeaderArr = [
   `d_ticket=b4083cf6f069f5610d086a423c2e8a89f1afb; n_mh=M-Mgf0QexxYAdeNaPDfo6wSFr3eta6z3DTfSfXDIbEM; odin_tt=2b6282d7da8b1fe7afa148771491ebac97d8be356b685af03693ac05e0b0f5a3b14a03341a613a9e088f78bd41e4b39130f69a2c8475e5def8953c2a7a1a84b7; sessionid=13ea7e5b48acbd68e75c3a2f18c1e710; sessionid_ss=13ea7e5b48acbd68e75c3a2f18c1e710; sid_guard=13ea7e5b48acbd68e75c3a2f18c1e710%7C1641383093%7C5184000%7CSun%2C+06-Mar-2022+11%3A44%3A53+GMT; sid_tt=13ea7e5b48acbd68e75c3a2f18c1e710; uid_tt=f80d8261bcc2728baa5ab33242f1e3e6; uid_tt_ss=f80d8261bcc2728baa5ab33242f1e3e6; passport_csrf_token=5e4ed9f0bbe3fe0c4d572d2a32313e91; passport_csrf_token_default=5e4ed9f0bbe3fe0c4d572d2a32313e91; install_id=3422149816624972; ttreq=1$0b6deca83fd9ec0e4be08904826ba7fc55d980f0`,
   `install_id=413886627984110; ttreq=1$2f3b43ccfc93e07201b6b7b1e1687df4d727506e; passport_csrf_token_default=145323455e80238a6991c8ee3b44b800; d_ticket=ef5f807a91fcda444485db9b80e25abbc6961; odin_tt=ea2eb5078bae538d7b36acc71370003c529b02f488a1ef79785c3e81cc67fedfc4d0bf108d29632e93bead97dd42401f6c4d4cfee4005ca4056effd78c1f1af0; n_mh=-Da3cDkc2NEoND6dO0Y2qKNjZtluEUutDAB5PgzDUw8; sid_guard=dbadf9a260aacf38ec06265c4415d8e7%7C1641535893%7C5184000%7CTue%2C+08-Mar-2022+06%3A11%3A33+GMT; uid_tt=2e9adf63da91cbbe1da2d5cefe212de2; sid_tt=dbadf9a260aacf38ec06265c4415d8e7; sessionid=dbadf9a260aacf38ec06265c4415d8e7`,
   `gftoken=MTA5NjMxNzY1N3wxNjQxNjIxNDMzMzN8fDAGBgYGBgY; passport_csrf_token_default=8470d1148655cd22c6936885c10bb54e; passport_csrf_token=8470d1148655cd22c6936885c10bb54e; odin_tt=0b8ebdc7bb0ce803fdda7e7064923335166f32e03451294956ab7d643bad6f77ccdb581af3e3301c6357b84740721d04c276942fb061b41ebf5698dfeba625b2ebeec2855bf4728b0746e8bce6f4de26; n_mh=l53FFopRWFPGdUVWHPCzG-mt7zJbDQjMdhkmYkx7b1c; sid_guard=d2de7004309460a180e4733d60d661c0%7C1641621817%7C5183999%7CWed%2C+09-Mar-2022+06%3A03%3A36+GMT; uid_tt=9ed0eb077d7f9e1846d15ecfe7de4c40; uid_tt_ss=9ed0eb077d7f9e1846d15ecfe7de4c40; sid_tt=d2de7004309460a180e4733d60d661c0; sessionid=d2de7004309460a180e4733d60d661c0; sessionid_ss=d2de7004309460a180e4733d60d661c0; d_ticket=f6fc35140ea0204e0f92d0ee058de8c862d84`,
+  `n_mh=S20TTDhox8H-9JFymNuaw-xJRSzy0Nb4yKItlyJbti0; d_ticket=c66506839634ec8205d9aa632a500acd508d1; uid_tt=6e1cbd5a01162242ef5a895a5382e820; uid_tt_ss=6e1cbd5a01162242ef5a895a5382e820; sid_tt=971e7bd8a581b4b1acd102bab6e414e9; sessionid=971e7bd8a581b4b1acd102bab6e414e9; sessionid_ss=971e7bd8a581b4b1acd102bab6e414e9; odin_tt=64055cc6d237a4f6833a6e48449b0da5a153acfd49f0186e214867fe166f9e72005618e5642804e29f1caa4e231ed37f70ec55f20fa9c9b1d96c74a478d26d29cf6fcaaffd10b219682e2d5feac9e5bb; PIXIEL_RATIO=3; FRM=new; seed.js%3Asession=%7B%22id%22%3A%221779436a4fb3c-00fcc415e1fcfb-4e6d3e67-448e0-1779436a4fc11%22%2C%22page%22%3A%22177b0050447210-0ab610aa2ecd27-4e6d3e67-448e0-177b00504481bf%22%2C%22created%22%3A1613565854793%2C%22lastPage%22%3A%22177af6faabee9-0eae68c1a164b7-4e6d3e67-448e0-177af6faabf94%22%7D; WIN_WH=360_738; sid_guard=971e7bd8a581b4b1acd102bab6e414e9%7C1641461749%7C5184000%7CMon%2C+07-Mar-2022+09%3A35%3A49+GMT; passport_csrf_token_default=ea7625ab21cf1c6ae55dd8c0888e1b83; passport_csrf_token=ea7625ab21cf1c6ae55dd8c0888e1b83; install_id=3193458133054894; ttreq=1$f7ec7956827fe645f2f7bda59545727712a56e40`
 ]
 
 let jrttjsbFarm = ($.isNode() ? process.env.jrttjsbFarm : $.getdata('jrttjsbFarm')) || 1;
