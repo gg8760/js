@@ -167,7 +167,8 @@ let bullTaskArray = {
 // https://wzq.tenpay.com/cgi-bin/activity_task_daily.fcgi?action=home&type=routine&actid=1110&invite_code=&_=1641390892250
 var TxStockAppUrl = 
 `https://wzq.tenpay.com/cgi-bin/activity_task_daily.fcgi?action=home&type=routine&actid=1111&invite_code=&_=1641386413774&openid=oA0GbjjhRIJ6EKbJ0apBuHIO0sWA&fskey=v0ba82b272061d58f6552a05f51dfb40&channel=1&access_token=52_QQaFXbvoEUkX-kH68BsILxv7iFdPkgxlhYe-_koXqDC5E7w94kWVwumOspfFtEOAy0xXgTMAGL2kbbqgOxDbzoyEVNc3YOidXunCEaT6Qn8&_appName=ios&_appver=9.6.0&_osVer=14.8&_devId=e36eebb138bb9c8c20cf383695281286b5bc8223
-https://wzq.tenpay.com/cgi-bin/activity_task_daily.fcgi?action=home&type=routine&actid=1111&invite_code=&_=1641390537684&openid=oA0GbjoWBlorMQ2flB1U5UugN4po&fskey=v0ba829662361d59c104b138e9b9f719&channel=1&access_token=52_AZ-t2qACoMCSSmtRaITDGgx7TquHPFJJpIcM7hB5bfI6PsNywTOagD9M7sig9qPnXcpQUm76yCzrOTg09abdsvMXgr7oAfXWGMST0ixsJK8&_appName=ios&_appver=9.6.0&_osVer=14.0.1&_devId=12bc41552bbb1a843d212fc0ee5db281b83f12ac`
+https://wzq.tenpay.com/cgi-bin/activity_task_daily.fcgi?action=home&type=routine&actid=1111&invite_code=&_=1641390537684&openid=oA0GbjoWBlorMQ2flB1U5UugN4po&fskey=v0ba829662361d59c104b138e9b9f719&channel=1&access_token=52_AZ-t2qACoMCSSmtRaITDGgx7TquHPFJJpIcM7hB5bfI6PsNywTOagD9M7sig9qPnXcpQUm76yCzrOTg09abdsvMXgr7oAfXWGMST0ixsJK8&_appName=ios&_appver=9.6.0&_osVer=14.0.1&_devId=12bc41552bbb1a843d212fc0ee5db281b83f12ac
+https://wzq.tenpay.com/cgi-bin/activity_task_daily.fcgi?action=home&type=routine&actid=1111&invite_code=&_=1643449658974&openid=oA0GbjiqCu9okpZXv-68bgES-QtY&fskey=v0ba82b272361f50b1c73f49135daee7&channel=1&access_token=&_appName=ios&_appver=9.7.0&_osVer=13.1.2&_devId=828f26f8f17a25fbf48bb93e9719a1dbfbf39aa5`
 
 // app header
 var TxStockAppHeader = 
@@ -182,7 +183,13 @@ ${JSON.stringify({
   'accept': `*/*`,
   'accept-encoding': 'gzip, deflate, br',
   'cookie': `pgv_info=ssid=s1119147840; pgv_pvid=2045168656; ts_last=/activity/page/welwareCenter/; ts_refer=zqact.tenpay.com/activity/page/activityForward/; ts_sid=5143086036; ts_uid=8215653392`,
-})}`
+})}
+${JSON.stringify({     
+    "User-Agent": `Mozilla/5.0 (iPhone; CPU iPhone OS 13_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 qqstock/9.7.0 deviceType/iphone`,
+    'accept': `*/*`,
+    'accept-encoding': 'gzip, deflate, br',
+    'cookie': `pgv_info=ssid=s8817368254; pgv_pvid=7001463536; ts_last=/activity/page/welwareCenter/; ts_refer=zqact.tenpay.com/activity/page/activityForward/; ts_sid=730900850; ts_uid=8086058310`,
+  })}`
 
 
 // 微信的header
@@ -200,7 +207,14 @@ ${JSON.stringify({
   'accept-encoding': 'gzip, deflate, br',
   'cookie': `pgv_info=ssid=s8802588534; pgv_pvid=2184563820; ts_last=/activity/page/welwareCenter/; ts_refer=zqact.tenpay.com/activity/page/activityForward/; ts_sid=1447908875; ts_uid=7601612855; wzq_channel=..orv53p00gf001; qlappid=wx9cf8c670ebd68ce4; qlskey=v0ba82b082361d5a3124e55d48e228ed; qluin=085e9858eb64261c5bc8a1c07@wx.tenpay.com; qq_logtype=16; wx_session_time=1641390866000; wzq_qlappid=wx9cf8c670ebd68ce4; wzq_qlskey=v0ba82b082361d5a3124e55d48e228ed; wzq_qluin=os-ppuDyMEsAxaGIlIMUVX0GQ_X0; zxg_openid=oA0GbjoWBlorMQ2flB1U5UugN4po`,
   'accept-language': 'zh-cn',
-})}`
+})}
+${JSON.stringify({
+    "User-Agent": `Mozilla/5.0 (iPhone; CPU iPhone OS 13_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.18(0x18001226) NetType/WIFI Language/zh_CN`,
+    'accept': `*/*`,
+    'accept-encoding': 'gzip, deflate, br',
+    'cookie': `pgv_info=ssid=s5500891464; pgv_pvid=3023451355; ts_last=/activity/page/welwareCenter/; ts_refer=zqact.tenpay.com/activity/page/activityForward/; ts_sid=3553738400; ts_uid=3480340557; wzq_channel=..owi37p00gf001; qlappid=wx9cf8c670ebd68ce4; qlskey=v0ba82b0e2161f50ca078b4638ac80a7; qluin=085e9858e161039b98afba169@wx.tenpay.com; qq_logtype=16; wx_session_time=1643449504000; wzq_qlappid=wx9cf8c670ebd68ce4; wzq_qlskey=v0ba82b0e2161f50ca078b4638ac80a7; wzq_qluin=os-ppuFsKNdLM1bzNk4ZZv2ZXe4U; zxg_openid=oA0GbjiqCu9okpZXv-68bgES-QtY`,
+    'accept-language': 'zh-cn',
+  })}`
 
 ///////////////////////////////////////////////////////////////////
 
@@ -208,7 +222,7 @@ ${JSON.stringify({
 
     if(typeof $request !== "undefined")
     {
-        await getRewrite()
+        // await getRewrite()
     }
     else
     {
@@ -319,27 +333,27 @@ async function getRewrite()
 
 async function checkEnv()
 {
-    if($.isNode())
-    {
-        TxStockAppUrl = process.env.TxStockAppUrl
-        TxStockAppHeader = process.env.TxStockAppHeader
-        TxStockWxHeader = process.env.TxStockWxHeader
-    }
-    else
-    {
-        TxStockAppUrl = $.getdata('TxStockAppUrl')
-        TxStockAppHeader = $.getdata('TxStockAppHeader')
-        TxStockWxHeader = $.getdata('TxStockWxHeader')
-    }
+    // if($.isNode())
+    // {
+    //     TxStockAppUrl = process.env.TxStockAppUrl
+    //     TxStockAppHeader = process.env.TxStockAppHeader
+    //     TxStockWxHeader = process.env.TxStockWxHeader
+    // }
+    // else
+    // {
+    //     TxStockAppUrl = $.getdata('TxStockAppUrl')
+    //     TxStockAppHeader = $.getdata('TxStockAppHeader')
+    //     TxStockWxHeader = $.getdata('TxStockWxHeader')
+    // }
     
-    if(!TxStockAppUrl || !TxStockAppHeader || !TxStockWxHeader)
-    {
-        str1 = TxStockAppUrl ? "" : "TxStockAppUrl"
-        str2 = TxStockAppHeader ? "" : "TxStockAppHeader"
-        str3 = TxStockWxHeader ? "" : "TxStockWxHeader"
-        $.log(`未找到环境变量: ${str1} ${str2} ${str3}\n`)
-        return false
-    }
+    // if(!TxStockAppUrl || !TxStockAppHeader || !TxStockWxHeader)
+    // {
+    //     str1 = TxStockAppUrl ? "" : "TxStockAppUrl"
+    //     str2 = TxStockAppHeader ? "" : "TxStockAppHeader"
+    //     str3 = TxStockWxHeader ? "" : "TxStockWxHeader"
+    //     $.log(`未找到环境变量: ${str1} ${str2} ${str3}\n`)
+    //     return false
+    // }
     
     if (TxStockAppUrl.indexOf('#') > -1) {
         appUrlArrs = TxStockAppUrl.split('#');
