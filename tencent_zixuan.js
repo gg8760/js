@@ -49,7 +49,7 @@ hostname = wzq.tenpay.com
 
 const jsname = '腾讯自选股'
 const $ = Env(jsname)
-const notifyFlag = 1; //0为关闭通知，1为打开通知,默认为1
+const notifyFlag = 0; //0为关闭通知，1为打开通知,默认为1
 
 const notify = $.isNode() ? require('./sendNotify') : '';
 
