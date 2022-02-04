@@ -16,7 +16,7 @@
 
 [Script]
 cron "37 6-23 * * *"  script-path=qutoutiao_account1.js,tag=趣头条1-峰
-
+18253169060
 */
 
 const senku = new Env('趣头条1-峰')
