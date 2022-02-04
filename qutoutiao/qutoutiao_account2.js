@@ -28,11 +28,11 @@ let breakFor = false;
 
                  
 
-const signVal = "GUID=a73b5cd8470471613f54c51c9231.42488985&OSVersion=14.0.1&active_method=icon&deviceCode=EF4F8285-C848-4D03-8FDF-DA94B3F6C2F2&dtu=100&lat=36.68905164149093&lon=117.1435963979393&network=WIFI&sign=45d3c361553e4f0c85e33128b7fa1713&sys=2&time=1635489403000&tk=ACLvT4KFyEhNA4_f2pSz9sLyKEygOR4JSEs0NzUxNDk1MDg5NTIyNQ&token=d039eaVaaNjd1r_bOmNOywz4c-nWbuCWMsZXfJm-yx50HOv1Ig4Fj0YLuqFqXAP66y48umu6BForYu2_h5k&tuid=70-ChchITQOP39qUs_bC8g&uuid=EE7415FF-9253-4338-AB80-ECF8563804EA&version=31055000&versionName=3.10.55.000.906.1140"
+const signVal = 'GUID=a73b5cd8470471613f54c51c9231.42488985&OSVersion=14.0.1&active_method=icon&deviceCode=EF4F8285-C848-4D03-8FDF-DA94B3F6C2F2&dtu=100&lat=38.58959370328074&lon=116.8987227415182&network=WIFI&sign=17e1e3762156343367ac949e30cc2922&sys=2&time=1643970520000&tk=ACLvT4KFyEhNA4_f2pSz9sLyKEygOR4JSEs0NzUxNDk1MDg5NTIyNQ&token=195cAKfoOH2tsVH50oIfjozL7W3rp2TCZ3JP9k8gnnxVXN4YEbrjbX4AHjGn6jrH20bHNLC8XHKK45EHxWg&tuid=70-ChchITQOP39qUs_bC8g&uuid=EE7415FF-9253-4338-AB80-ECF8563804EA&version=31055000&versionName=3.10.55.000.906.1140'
 // const signXTKVal = '&token=17ecAt5UYjfG_JbKu2hzQG-oBujGyBPpcjtGvUgA_3LTk7r6ioMjV9LJoJigvtZ4TWGR4MIZdum0kqRZhw'
 const readVal = ''
 const navCoinVal = senku.getdata(navCoinKey)
-const vsign = "GUID=a73b5cd8470471613f54c51c9231.42488985&OSVersion=14.0.1&active_method=icon&deviceCode=EF4F8285-C848-4D03-8FDF-DA94B3F6C2F2&dtu=100&lat=36.68905164149093&lon=117.1435963979393&network=WIFI&sign=45d3c361553e4f0c85e33128b7fa1713&sys=2&time=1635489403000&tk=ACLvT4KFyEhNA4_f2pSz9sLyKEygOR4JSEs0NzUxNDk1MDg5NTIyNQ&token=d039eaVaaNjd1r_bOmNOywz4c-nWbuCWMsZXfJm-yx50HOv1Ig4Fj0YLuqFqXAP66y48umu6BForYu2_h5k&tuid=70-ChchITQOP39qUs_bC8g&uuid=EE7415FF-9253-4338-AB80-ECF8563804EA&version=31055000&versionName=3.10.55.000.906.1140"
+const vsign = 'GUID=a73b5cd8470471613f54c51c9231.42488985&OSVersion=14.0.1&active_method=icon&deviceCode=EF4F8285-C848-4D03-8FDF-DA94B3F6C2F2&dtu=100&lat=38.58959370328074&lon=116.8987227415182&network=WIFI&sign=17e1e3762156343367ac949e30cc2922&sys=2&time=1643970520000&tk=ACLvT4KFyEhNA4_f2pSz9sLyKEygOR4JSEs0NzUxNDk1MDg5NTIyNQ&token=195cAKfoOH2tsVH50oIfjozL7W3rp2TCZ3JP9k8gnnxVXN4YEbrjbX4AHjGn6jrH20bHNLC8XHKK45EHxWg&tuid=70-ChchITQOP39qUs_bC8g&uuid=EE7415FF-9253-4338-AB80-ECF8563804EA&version=31055000&versionName=3.10.55.000.906.1140'
 const signurlVal = 'https://api.1sapp.com/sign/sign?' + vsign
 const adUrl = 'https://api.1sapp.com/sign/adDone?' + vsign
 const getinfoUrlVal = 'https://api.1sapp.com/sign/info?' + vsign
