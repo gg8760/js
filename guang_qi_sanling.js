@@ -76,6 +76,8 @@ let messageNotify = '';
 
         console.log(`开始第${index + 1}个账号的任务-----`);
 
+        await signin()
+        
         for (let index = 0; index < taskArray.length; index++) {
             const element = taskArray[index];
             await shareWechat(element)
@@ -191,6 +193,51 @@ function accountInfo(index) {
 // post 
 // body {"taskTypeCode":"TASK-INTEGRAL-SIGN-IN"}
 // https://mspace.gmmc.com.cn/customer-app/task-mapi/sign-count?noLoad=true
+
+// https://mspace.gmmc.com.cn/customer-app/task-mapi/sign-in?noLoad=true
+
+// {
+// 	"taskTypeCode": "TASK-INTEGRAL-SIGN-IN",
+// 	"step": 1,
+// 	"sign": "ee26126dce2b4fc2be2ce53a13ec345b",
+// 	"timestamp": "1643943373910",
+// 	"appVersion": "2.2.4",
+// 	"operateSystem": "iOS"
+// }
+function signin() {
+    console.log(`\n签到-----\n`)
+    return new Promise((resolve, reject) => {
+        let url = {
+            url: `https://mspace.gmmc.com.cn/customer-app/task-mapi/sign-in?noLoad=true`,
+            headers: {
+                'User-Agent': agent,
+                'origin': 'https://mspace.gmmc.com.cn',
+                'accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json;charset=utf-8',
+                'cookie': token,
+                'authorization': authorization,
+                'referer': 'https://mspace.gmmc.com.cn/info/detail?id=854&goindex=1',
+            },
+            body: JSON.stringify({
+                "taskTypeCode": "TASK-INTEGRAL-SIGN-IN",
+                "step": 1,
+                "sign": "ee26126dce2b4fc2be2ce53a13ec345b",
+                "timestamp": Math.floor((new Date()).valueOf()),
+                "appVersion": "2.2.4",
+                "operateSystem": "iOS"
+            })
+        }
+        $.post(url, async (error, resp, data) => {
+            try {
+                let obj = JSON.parse(data)
+                console.log(data)
+            } catch (e) {
+            } finally {
+                resolve();
+            }
+        })
+    })
+}
 
 // https://mspace.gmmc.com.cn/life-main-app/common/pageRecommend/goodRecommend?pageNo=1&pageSize=20
 function getArticleList() {
