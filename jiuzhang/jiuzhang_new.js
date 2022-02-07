@@ -27,7 +27,7 @@ cron "20 6-20 * * *"  script-path=jiuzhang_new.js,tag=九章头条
 
 */
 
-process.env.jzttToken = 'UM4GDuSJj6r8YvrjNhi5-F07kiD_GUop@55nLV5tA48s-Qjr5uvlSw3o9p1W-BW0_@LuS8Uqpf6_I_qZrrpktEGUXuHSfHl7sV@_z-uNg5iO6TIsDl3f76jYxOGotiuh-tZ@38RH-bvbFxsLHRq7GefCeP0-87i2yNK5@GHo8Cr5U0TLg8C9VItTfAac0hZ3zykEU@hxg59dJ5Kvv2G507rW9iJk6KRYs8eECB@463wOcAQdgxqm7UoeCVmslMsKflnHNaN@wuWNeTd1k7f6byyq5ZvyPQyrpaLIipWL@1Td938QjYLbRsHQnTewVJYCo8HYvXAj-'
+process.env.jzttToken = 'UM4GDuSJj6r8YvrjNhi5-F07kiD_GUop@55nLV5tA48s-Qjr5uvlSw3o9p1W-BW0_@LuS8Uqpf6_I_qZrrpktEGUXuHSfHl7sV@_z-uNg5iO6TIsDl3f76jYxOGotiuh-tZ@38RH-bvbFxsLHRq7GefCeP0-87i2yNK5@GHo8Cr5U0TLg8C9VItTfAac0hZ3zykEU@hxg59dJ5Kvv2G507rW9iJk6KRYs8eECB@463wOcAQdgxqm7UoeCVmslMsKflnHNaN@wuWNeTd1k7f6byyq5ZvyPQyrpaLIipWL@1Td938QjYLbRsHQnTewVJYCo8HYvXAj-@A_ta0b2aVMrZo1C8VsMw3AC0v3TyIDDC'
 // process.env.jzttToken = '1Td938QjYLbRsHQnTewVJYCo8HYvXAj-'
 process.env.jzttReadNum = '10'
 
