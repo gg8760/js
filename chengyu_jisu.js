@@ -50,7 +50,7 @@ cron "5,20,35,50 7-22 * * *"  script-path=chengyu_jisu.js
 
  let chyubody = $.getdata('chyubody')
  let chyutoken = $.getdata('chyutoken')
- let videoCount = 10
+ let videoCount = 8
  
  !(async () => {
      if (typeof $request !== "undefined") {
