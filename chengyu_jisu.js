@@ -40,12 +40,13 @@ cron "5,20,35,50 7-22 * * *"  script-path=chengyu_jisu.js
  let chyucount = ''
 
 
-
  let chyubodyArr = ['/luwEgS/qiBUj+O/Md6BHn8lO9yhXRr+6Pxy7xbAximFB91Wi4NM6vVKgjFjMvOWxcQDvvhFgc447Ujlzi00hm5XrA5oNBMcR0wkcAp83toM3M/bHQtUJZdoia50N0EWyauKp/GiQSrMA+v4/zQsVrpy7rundUOQcZ0KIOB128s=',
-'JLwK4SJfTXotRQOAz++Hkl6U8LOoujN1BRTOvKcl40k5gaZKskbX4gMeg4IRz1y289fg6uT8dMCgkAxkIep3/DnfI9fmtcSme3Ab3/Qe1F+x9VIg50XyBYapJo5Fu67QHXWwGJaK+8OO+rXt5aASft768R6f/O8wIeVmwV9ZNUs='] 
- let chyutokenArr = ['F0E76898-62D0-4F97-A3A2-7CAFB2129174_cyjsb',
- 'F26DA09E-18C5-4124-8B6A-498EE8CE53D7_cyjsb'];
+'JLwK4SJfTXotRQOAz++Hkl6U8LOoujN1BRTOvKcl40k5gaZKskbX4gMeg4IRz1y289fg6uT8dMCgkAxkIep3/DnfI9fmtcSme3Ab3/Qe1F+x9VIg50XyBYapJo5Fu67QHXWwGJaK+8OO+rXt5aASft768R6f/O8wIeVmwV9ZNUs=',
+'BGbFpXLwppdpGkAisxWAJ0ACL0mUncNimy8mv24kts6j4XFfbU8XOJZ+X8gXl2kwZ+7vidRxXI9JuSZKHGGMxR3VykIfX2gm+sssPXnHzeW2c0uBltCEf3NYek2P1zB3g1nBasBBQwmFjliRUwYrbso2T+G/3j0vXczeL/WVJF4='] 
 
+ let chyutokenArr = ['F0E76898-62D0-4F97-A3A2-7CAFB2129174_cyjsb',
+ 'F26DA09E-18C5-4124-8B6A-498EE8CE53D7_cyjsb',
+ '4AB64659-4AB7-4ECD-838E-5577E8D9434B_cyjsb'];
 
  let chyubody = $.getdata('chyubody')
  let chyutoken = $.getdata('chyutoken')
