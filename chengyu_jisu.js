@@ -71,6 +71,7 @@ cron "5,20,35,50 7-22 * * *"  script-path=chengyu_jisu.js
  
         //  }
  
+         console.log("start");
          console.log(
              `\n\n============ 脚本执行 - 北京时间(UTC+8)：${new Date(
                  new Date().getTime() +
