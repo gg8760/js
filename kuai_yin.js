@@ -30,6 +30,14 @@ cron 0-59/10 * * * *
 注意:脚本只适配青龙面板,往后也是
 注意:脚本只适配青龙面板,往后也是
 注意:脚本只适配青龙面板,往后也是
+
+app_tk	eyJleHAiOjE2NDcxNTI4MTMsImtpZCI6NiwiYWxnIjoiSFMyNTYifQ.eyJkZXZpY2VfaWQiOiJFRjRGODI4NS1DODQ4LTREMDMtOEZERi1EQTk0QjNGNkMyRjIiLCJzbV9kZXZpY2VfaWQiOiIiLCJleHAiOjE2NDcxNTI4MTN9.D8qoj6cLeu0iWlXi8xS4cP9vX6c5i0uPv27TmwffrEc
+sensorsdata2015jssdkcross	%7B%22distinct_id%22%3A%22EF4F8285-C848-4D03-8FDF-DA94B3F6C2F2%22%2C%22%24device_id%22%3A%2217ee1aa67b51ef-04e5eaec66f7c1-3b176d50-250125-17ee1aa67bcc0%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_referrer%22%3A%22%22%2C%22%24latest_referrer_host%22%3A%22%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC(%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80)%22%7D%2C%22first_id%22%3A%2217ee1aa67b51ef-04e5eaec66f7c1-3b176d50-250125-17ee1aa67bcc0%22%7D
+access_token	eyJleHAiOjE2NDQ1NjI2MDcsImtpZCI6NSwiYWxnIjoiSFMyNTYifQ.eyJ1aWQiOiI4ODYyNDk2NyIsIm9wZW5pZCI6IiIsImV4cCI6MTY0NDU2MjYwN30.WEeHaW1czvYio9JeBxajXa0BHIeTQXy1BFk1aUs_aT8
+refresh_token	eyJleHAiOjE2NTIzMzY4MDcsImFsZyI6IkhTMjU2In0.eyJ1aWQiOiI4ODYyNDk2NyIsIm9wZW5pZCI6IiIsImV4cCI6MTY1MjMzNjgwN30.uW2abuvN7KSbzjPGvNlkb-mvjL818W5DCifhJyWOo7g
+sb_session_id	62048d7a732e53436
+device_id	EF4F8285-C848-4D03-8FDF-DA94B3F6C2F2
+
 */
 
 
