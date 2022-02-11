@@ -4,24 +4,40 @@
 cron "20 8 * * *"  script-path=guang_qi_sanling.js,tag=广汽三菱
 */
 
+// host :  https://mspace.gmmc.com.cn
 
+/*
+1.18253169060
+2.17862926330
+3.15069131632
+*/
 const $ = new Env('广汽三菱');//声明必须
-
 let taskArray = [4, 5, 6]
 
+// token抓这里的 https://mspace.gmmc.com.cn/customer-app/task-mapi/sign-count?noLoad=true
 let tokenArray = 
-[`JSESSIONID=c9a1e290-c9c0-4b82-91dc-745bd9d516b8; SERVERID=127fe9b0e348ead063cb2ed79076ff4e|${Math.floor((new Date()).valueOf() / 1000)}|1643179396; Hm_lpvt_d79e324d263704c4dac81376058ddf10=1643179421; Hm_lvt_d79e324d263704c4dac81376058ddf10=1642862691,1642862782,1643037952,1643179399; acw_tc=7b81f49e16431793966312491e26b31cd61909f8b6327c48d6846b6572`,
-`JSESSIONID=9e5155c8-a84f-4da6-bcd6-e34ab6d06553; SERVERID=127fe9b0e348ead063cb2ed79076ff4e|${Math.floor((new Date()).valueOf() / 1000)}|1643259143; Hm_lpvt_d79e324d263704c4dac81376058ddf10=1643259710; Hm_lvt_d79e324d263704c4dac81376058ddf10=1643259117,1643259144; acw_tc=7b81f49e16432590355955157e650d94b1bed9c70821318f262b69a0f8`,]
+[
+`SERVERID=127fe9b0e348ead063cb2ed79076ff4e|${Math.floor((new Date()).valueOf() / 1000)}|1644561782; Hm_lpvt_d79e324d263704c4dac81376058ddf10=1644561788; Hm_lvt_d79e324d263704c4dac81376058ddf10=1644393653,1644450129,1644544669,1644561788; acw_tc=78c052a116445616651597564ea9510291fdbefd94ff9017b9b03e5ac9`,
+`SERVERID=127fe9b0e348ead063cb2ed79076ff4e|${Math.floor((new Date()).valueOf() / 1000)}|1644563017; Hm_lpvt_d79e324d263704c4dac81376058ddf10=1644563020; Hm_lvt_d79e324d263704c4dac81376058ddf10=1644202957,1644502567,1644561602,1644563020; acw_tc=791d26a916445615651582532e01462825092a84089e8a26e316b4938f`,
+`SERVERID=127fe9b0e348ead063cb2ed79076ff4e|${Math.floor((new Date()).valueOf() / 1000)}|1644563537; Hm_lpvt_d79e324d263704c4dac81376058ddf10=1644563540; Hm_lvt_d79e324d263704c4dac81376058ddf10=1644563347,1644563540; acw_tc=7b81f49d16445632602457824e6aa521ff322526204c59764429319843`,
+]
 
 let authorizationArray = 
-['9216ffb9b91dfbf3da831a1407b4584c',
-'7d3f9c98e6b9bd59644d1500a995fae9',]
+[
+'befc596591c6b4956bbcbb4c18f0da96',
+'557661d6d5dbbac4d778af406d216e7a',
+'ce9ece7febeef4db536a8d39c07f3cf4',
+]
 
 let agentArray = 
-['Mozilla/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 DSApp/2.2.4 StatusBarHeight/47 BottomBarHeight/34',
-'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 DSApp/2.2.4 StatusBarHeight/20 BottomBarHeight/0',]
+[
+'Mozilla/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 DSApp/2.2.4 StatusBarHeight/47 BottomBarHeight/34',
+'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 DSApp/2.2.4 StatusBarHeight/20 BottomBarHeight/0',
+'guang qi san ling/2.2.4 (iPhone; iOS 14.0.1; Scale/2.00)'
+]
 
-let newArray = [{
+let newArray = [
+{
     "content": "又是美好的一天呀",
     "dynamicFileList": [{
         "fileType": 2,
@@ -46,7 +62,15 @@ let newArray = [{
 	"topicList": [],
 	"btype": 0,
 	"backgroundContent": "美好的一天"
-}]
+},
+{
+	"content": "心情愉悦的一天",
+	"dynamicFileList": [],
+	"topicList": [],
+	"btype": 0,
+	"backgroundContent": "心情愉悦的一天"
+}
+]
 
 let token = '';
 let agent = '';
@@ -85,17 +109,21 @@ let messageNotify = '';
         }
         await getArticleList()
 
-        let timeWait = Math.floor(Math.random() * 10) + 20
+        let timeWait = getRandomInt(20,40)
         console.log(`随机等待${timeWait}秒-----`)
         await $.wait(timeWait * 1000);
         await addNews()
         await accountInfo(index + 1)
     }
     console.log(messageNotify);
-
+    
 })()
 
-
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
 // {
 // 	"code": "0000",
@@ -152,7 +180,7 @@ let messageNotify = '';
 // 	"success": true
 // }
 function accountInfo(index) {
-    console.log(`\n用户信息-----\n`)
+    console.log(`\n获取用户信息-----\n`)
     return new Promise((resolve, reject) => {
         let url = {
             url: `https://mspace.gmmc.com.cn/customer-app/customer/user/info`,
@@ -178,6 +206,7 @@ function accountInfo(index) {
                 let mobile = `[手机]${obj.data.mobile}\n`
                 let score = `[积分]${obj.data.integral}\n\n`
                 messageNotify = messageNotify + account + name + mobile + score
+                console.log(account);
 
             } catch (e) {
             } finally {
@@ -261,15 +290,24 @@ function getArticleList() {
             try {
                 let obj = JSON.parse(data)
                 let ary = obj.data.list
-                //   console.log(ary)
+                  console.log(ary)
+                  let arraySource = [];
+                  for (let index = 0; index < ary.length; index++) {
+                      const element = ary[index];
+                      if(element.objectInfo.articleId.length > 0) {
+                        arraySource.push(element)
+                      }
+                  }
+
                 //   for (let index = 0; index < ary.length; index++) {
                 //       const element = ary[index];
                 //       let articleId = element.objectInfo.articleId
                 //       console.log(articleId);
                 //   }
-                if (ary.length > 9) {
+                
+                if (arraySource.length > 9) {
                     let index = Math.floor(Math.random() * 10)
-                    const element = ary[index];
+                    const element = arraySource[index];
                     let articleId = element.objectInfo.articleId
                     await addCommet(articleId)
                 }
