@@ -289,7 +289,7 @@ function QQreadvideo() {
                 let obj = JSON.parse(data)
                 console.log(obj);
                 if (obj.code == 0) {
-                    console.log(`【视频任务第 + ${obj.data.videoCount} 次】:获得${obj.data.watchVideoCoin}金币\n`);
+                    console.log(`【视频任务第 ${obj.data.videoCount} 次】:获得${obj.data.watchVideoCoin}金币\n`);
                 } else {
                     if (obj.msg.indexOf("已经领") > -1) {
                         breakadVideo = true
