@@ -46,7 +46,7 @@ let yml_ksf_draw='true'
         if (process.env.yml_ksf_data && process.env.yml_ksf_data.indexOf('@') > -1) {
             wx_yml_ksf_data = process.env.yml_ksf_data.split('@');
         } else if (process.env.yml_ksf_data && process.env.yml_ksf_data.indexOf('\n') > -1) {
-            wx_yml_ksf_data = process.env.env.yml_ksf_data.split('\n');
+            wx_yml_ksf_data = process.env.yml_ksf_data.split('\n');
         } else if (process.env.yml_ksf_data && process.env.yml_ksf_data.indexOf('#') > -1) {
             wx_yml_ksf_data = process.env.yml_ksf_data.split('#');
         } else {
