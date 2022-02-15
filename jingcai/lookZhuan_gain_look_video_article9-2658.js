@@ -14,7 +14,7 @@ var breakReadArticle = false;
 let breakCountArticle = 0;
 let breakCountVideo = 0;
 
-let look = require('./lookZhuan_parameter2');
+let look = require('./lookZhuan_parameter');
 
 timeZone = new Date().getTimezoneOffset() / 60;
 timestamp = Date.now() + (8 + timeZone) * 60 * 60 * 1000;
