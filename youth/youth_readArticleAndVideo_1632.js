@@ -88,18 +88,18 @@ console.log(`\n === 脚本执行 ${bjTime} ===\n`);
         console.log(`===============🤡结束看看赚的任务🤡===============\n\n`);
     }
 
-    if (lookArrayAndroid.length !== 0) {
-        console.log(`===============🤡开始android看看赚的任务🤡===============\n`);
-        for (let k = 0; k < lookArrayAndroid.length; k++) {
-            if (lookArrayAndroid[k]) {
-                lookbody = lookArrayAndroid[k].trim();
-                $.index = k + 1;
-                $.log(`-------------------------\n\n开始中青看点看看赚第${$.index}次任务`)
-            }
-            await lookStart_android();
-        }
-        console.log(`===============🤡结束android看看赚的任务🤡===============\n\n`);
-    }
+//     if (lookArrayAndroid.length !== 0) {
+//         console.log(`===============🤡开始android看看赚的任务🤡===============\n`);
+//         for (let k = 0; k < lookArrayAndroid.length; k++) {
+//             if (lookArrayAndroid[k]) {
+//                 lookbody = lookArrayAndroid[k].trim();
+//                 $.index = k + 1;
+//                 $.log(`-------------------------\n\n开始中青看点看看赚第${$.index}次任务`)
+//             }
+//             await lookStart_android();
+//         }
+//         console.log(`===============🤡结束android看看赚的任务🤡===============\n\n`);
+//     }
 
     if (gainArray.length !== 0) {
         console.log(`===============🤡开始浏览赚的任务🤡===============\n`);
@@ -154,8 +154,8 @@ console.log(`\n === 脚本执行 ${bjTime} ===\n`);
     }
 
     
-    console.log("看看赚要删除的body--------------\n",kankanDeleteArray);
-    console.log("浏览赚要删除的body--------------\n",liulanDeleteArray);
+//     console.log("看看赚要删除的body--------------\n",kankanDeleteArray);
+//     console.log("浏览赚要删除的body--------------\n",liulanDeleteArray);
     
 
 
