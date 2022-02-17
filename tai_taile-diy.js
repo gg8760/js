@@ -21,7 +21,13 @@ var request = require("request");
 let status;
 status = (status = ($.getval("ttlstatus") || "1")) > 1 ? `${status}` : ""; // 账号扩展字符
 let ttlcount = ''
-let ttlhdArr = ['0cb8c019-6766-47b3-bb83-83c1ba4f2426'];
+/*
+1. feng
+2. 云淡
+3. 格
+4. 慕言 15964395867
+*/
+let ttlhdArr = ['0cb8c019-6766-47b3-bb83-83c1ba4f2426','fdff0cbf-78f1-459e-8ab5-754409411b0e','d5527127-9518-4a92-9e75-f4013c2c1984','cf42ebbd-0e7d-4747-b707-269775b27859'];
 let ttlhd = $.isNode() ? (process.env.ttlhd ? process.env.ttlhd : "") : ($.getdata('ttlhd') ? $.getdata('ttlhd') : "")
 
 let ttlhds = ""
