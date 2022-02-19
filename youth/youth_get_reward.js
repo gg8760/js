@@ -1,7 +1,11 @@
 /*
+中青看点浏览赚&看看赚
 
-[Script]
-cron "15 23 * * *"  script-path=youth_get_reward.js,tag=中青看点100抽奖励，小视频奖励
+作者:Sunert
+
+更新时间: 2021-02-26 11:32
+
+多个请求体时用'&'号或者换行隔开，本脚本可自动删除失效请求，请须知 ‼️
 
 */
 
@@ -31,202 +35,208 @@ console.log(`\n === 脚本执行 ${bjTime} ===\n`);
 
     let youth = require('./raw_youth_read_article_parameter');
 
-    console.log(`===========🐱🤡开始小视频和100抽奖，收青豆🤡🐱==========\n\n`);
-    if (youth.YOUTH_VIDEO_REWARD && youth.YOUTH_LOTTERY_REWARD) {
-        console.log(`===============🤡账号1收青豆开始🤡===============\n\n`);
+    // console.log(`===========🐱🤡开始小视频和100抽奖，收青豆🤡🐱==========\n\n`);
+    // if (youth.YOUTH_VIDEO_REWARD && youth.YOUTH_LOTTERY_REWARD) {
+    //     console.log(`===============🤡账号1收青豆开始🤡===============\n\n`);
 
-        console.log(`-------------------------\n开始小视频收青豆\n`);
-        await getVideoScore(youth.YOUTH_VIDEO_REWARD);
+    //     console.log(`-------------------------\n开始小视频收青豆\n`);
+    //     await getVideoScore(youth.YOUTH_VIDEO_REWARD);
 
-        console.log(`-------------------------\n开始100抽奖收青豆\n`);
-        await getLotteryScore(youth.YOUTH_LOTTERY_REWARD);
+    //     console.log(`-------------------------\n开始100抽奖收青豆\n`);
+    //     await getLotteryScore(youth.YOUTH_LOTTERY_REWARD);
 
-        console.log(`===============🤡账号1收青豆结束🤡===============\n\n`);
+    //     console.log(`===============🤡账号1收青豆结束🤡===============\n\n`);
+    // }
+
+    // if (youth.YOUTH_VIDEO_REWARD2 && youth.YOUTH_LOTTERY_REWARD2) {
+    //     console.log(`===============🤡账号2收青豆开始🤡===============\n\n`);
+
+    //     console.log(`-------------------------\n开始小视频收青豆\n`);
+    //     await getVideoScore(youth.YOUTH_VIDEO_REWARD2);
+
+    //     console.log(`-------------------------\n开始100抽奖收青豆\n`);
+    //     await getLotteryScore(youth.YOUTH_LOTTERY_REWARD2);
+
+    //     console.log(`===============🤡账号2收青豆结束🤡===============\n\n`);
+    // }
+
+    // if (youth.YOUTH_VIDEO_REWARD3 && youth.YOUTH_LOTTERY_REWARD3) {
+    //     console.log(`===============🤡账号3收青豆开始🤡===============\n\n`);
+
+    //     console.log(`-------------------------\n开始小视频收青豆\n`);
+    //     await getVideoScore(youth.YOUTH_VIDEO_REWARD3);
+
+    //     console.log(`-------------------------\n开始100抽奖收青豆\n`);
+    //     await getLotteryScore(youth.YOUTH_LOTTERY_REWARD3);
+
+    //     console.log(`===============🤡账号3收青豆结束🤡===============\n\n`);
+    // }
+
+    // if (youth.YOUTH_VIDEO_REWARD4 && youth.YOUTH_LOTTERY_REWARD4) {
+    //     console.log(`===============🤡账号4收青豆开始🤡===============\n\n`);
+
+    //     console.log(`-------------------------\n开始小视频收青豆\n`);
+    //     await getVideoScore(youth.YOUTH_VIDEO_REWARD4);
+
+    //     console.log(`-------------------------\n开始100抽奖收青豆\n`);
+    //     await getLotteryScore(youth.YOUTH_LOTTERY_REWARD4);
+
+    //     console.log(`===============🤡账号4收青豆结束🤡===============\n\n`);
+    // }
+
+
+
+    // if (youth.YOUTH_VIDEO_REWARD5 && youth.YOUTH_LOTTERY_REWARD5) {
+    //     console.log(`===============🤡账号5收青豆开始🤡===============\n\n`);
+
+    //     console.log(`-------------------------\n开始小视频收青豆\n`);
+    //     await getVideoScore(youth.YOUTH_VIDEO_REWARD5);
+
+    //     console.log(`-------------------------\n开始100抽奖收青豆\n`);
+    //     await getLotteryScore(youth.YOUTH_LOTTERY_REWARD5);
+
+    //     console.log(`===============🤡账号5收青豆结束🤡===============\n\n`);
+    // }
+
+    // if (youth.YOUTH_VIDEO_REWARD6 && youth.YOUTH_LOTTERY_REWARD6) {
+    //     console.log(`===============🤡账号6收青豆开始🤡===============\n\n`);
+
+    //     console.log(`-------------------------\n开始小视频收青豆\n`);
+    //     await getVideoScore(youth.YOUTH_VIDEO_REWARD6);
+
+    //     console.log(`-------------------------\n开始100抽奖收青豆\n`);
+    //     await getLotteryScore(youth.YOUTH_LOTTERY_REWARD6);
+
+    //     console.log(`===============🤡账号6收青豆结束🤡===============\n\n`);
+    // }
+
+    // if (youth.YOUTH_VIDEO_REWARD7 && youth.YOUTH_LOTTERY_REWARD7) {
+    //     console.log(`===============🤡账号7收青豆开始🤡===============\n\n`);
+
+    //     console.log(`-------------------------\n开始小视频收青豆\n`);
+    //     await getVideoScore(youth.YOUTH_VIDEO_REWARD7);
+
+    //     console.log(`-------------------------\n开始100抽奖收青豆\n`);
+    //     await getLotteryScore(youth.YOUTH_LOTTERY_REWARD7);
+
+    //     console.log(`===============🤡账号7收青豆结束🤡===============\n\n`);
+    // }
+
+    // if (youth.YOUTH_VIDEO_REWARD8 && youth.YOUTH_LOTTERY_REWARD8) {
+    //     console.log(`===============🤡账号8收青豆开始🤡===============\n\n`);
+
+    //     console.log(`-------------------------\n开始小视频收青豆\n`);
+    //     await getVideoScore(youth.YOUTH_VIDEO_REWARD8);
+
+    //     console.log(`-------------------------\n开始100抽奖收青豆\n`);
+    //     await getLotteryScore(youth.YOUTH_LOTTERY_REWARD8);
+
+    //     console.log(`===============🤡账号8收青豆结束🤡===============\n\n`);
+    // }
+
+    // if (youth.YOUTH_VIDEO_REWARD9 && youth.YOUTH_LOTTERY_REWARD9) {
+    //     console.log(`===============🤡账号9收青豆开始🤡===============\n\n`);
+
+    //     console.log(`-------------------------\n开始小视频收青豆\n`);
+    //     await getVideoScore(youth.YOUTH_VIDEO_REWARD9);
+
+    //     console.log(`-------------------------\n开始100抽奖收青豆\n`);
+    //     await getLotteryScore(youth.YOUTH_LOTTERY_REWARD9);
+
+    //     console.log(`===============🤡账号9收青豆结束🤡===============\n\n`);
+    // }
+
+    // if (youth.YOUTH_VIDEO_REWARD10 && youth.YOUTH_LOTTERY_REWARD10) {
+    //     console.log(`===============🤡账号10收青豆开始🤡===============\n\n`);
+
+    //     console.log(`-------------------------\n开始小视频收青豆\n`);
+    //     await getVideoScore(youth.YOUTH_VIDEO_REWARD10);
+
+    //     console.log(`-------------------------\n开始100抽奖收青豆\n`);
+    //     await getLotteryScore(youth.YOUTH_LOTTERY_REWARD10);
+
+    //     console.log(`===============🤡账号10收青豆结束🤡===============\n\n`);
+    // }
+
+    // if (youth.YOUTH_VIDEO_REWARD11 && youth.YOUTH_LOTTERY_REWARD11) {
+    //     console.log(`===============🤡账号11收青豆开始🤡===============\n\n`);
+
+    //     console.log(`-------------------------\n开始小视频收青豆\n`);
+    //     await getVideoScore(youth.YOUTH_VIDEO_REWARD11);
+
+    //     console.log(`-------------------------\n开始100抽奖收青豆\n`);
+    //     await getLotteryScore(youth.YOUTH_LOTTERY_REWARD11);
+
+    //     console.log(`===============🤡账号11收青豆结束🤡===============\n\n`);
+    // }
+
+    // if (youth.YOUTH_VIDEO_REWARD12 && youth.YOUTH_LOTTERY_REWARD12) {
+    //     console.log(`===============🤡账号12收青豆开始🤡===============\n\n`);
+
+    //     console.log(`-------------------------\n开始小视频收青豆\n`);
+    //     await getVideoScore(youth.YOUTH_VIDEO_REWARD12);
+
+    //     console.log(`-------------------------\n开始100抽奖收青豆\n`);
+    //     await getLotteryScore(youth.YOUTH_LOTTERY_REWARD12);
+
+    //     console.log(`===============🤡账号12收青豆结束🤡===============\n\n`);
+    // }
+
+    // if (youth.YOUTH_VIDEO_REWARD13 && youth.YOUTH_LOTTERY_REWARD13) {
+    //     console.log(`===============🤡账号13收青豆开始🤡===============\n\n`);
+
+    //     console.log(`-------------------------\n开始小视频收青豆\n`);
+    //     await getVideoScore(youth.YOUTH_VIDEO_REWARD13);
+
+    //     console.log(`-------------------------\n开始100抽奖收青豆\n`);
+    //     await getLotteryScore(youth.YOUTH_LOTTERY_REWARD13);
+
+    //     console.log(`===============🤡账号13收青豆结束🤡===============\n\n`);
+    // }
+
+    let chou100Array = youth.youth_get_100chou_Reward
+    for (let index = 0; index < chou100Array.length; index++) {
+        console.log(`--------第 ${index + 1} 个账号100抽奖执行中--------\n`)
+        await getLotteryScore(chou100Array[index]);
+
     }
-
-    if (youth.YOUTH_VIDEO_REWARD2 && youth.YOUTH_LOTTERY_REWARD2) {
-        console.log(`===============🤡账号2收青豆开始🤡===============\n\n`);
-
-        console.log(`-------------------------\n开始小视频收青豆\n`);
-        await getVideoScore(youth.YOUTH_VIDEO_REWARD2);
-
-        console.log(`-------------------------\n开始100抽奖收青豆\n`);
-        await getLotteryScore(youth.YOUTH_LOTTERY_REWARD2);
-
-        console.log(`===============🤡账号2收青豆结束🤡===============\n\n`);
-    }
-
-    if (youth.YOUTH_VIDEO_REWARD3 && youth.YOUTH_LOTTERY_REWARD3) {
-        console.log(`===============🤡账号3收青豆开始🤡===============\n\n`);
-
-        console.log(`-------------------------\n开始小视频收青豆\n`);
-        await getVideoScore(youth.YOUTH_VIDEO_REWARD3);
-
-        console.log(`-------------------------\n开始100抽奖收青豆\n`);
-        await getLotteryScore(youth.YOUTH_LOTTERY_REWARD3);
-
-        console.log(`===============🤡账号3收青豆结束🤡===============\n\n`);
-    }
-
-    if (youth.YOUTH_VIDEO_REWARD4 && youth.YOUTH_LOTTERY_REWARD4) {
-        console.log(`===============🤡账号4收青豆开始🤡===============\n\n`);
-
-        console.log(`-------------------------\n开始小视频收青豆\n`);
-        await getVideoScore(youth.YOUTH_VIDEO_REWARD4);
-
-        console.log(`-------------------------\n开始100抽奖收青豆\n`);
-        await getLotteryScore(youth.YOUTH_LOTTERY_REWARD4);
-
-        console.log(`===============🤡账号4收青豆结束🤡===============\n\n`);
-    }
-
-
-
-    if (youth.YOUTH_VIDEO_REWARD5 && youth.YOUTH_LOTTERY_REWARD5) {
-        console.log(`===============🤡账号5收青豆开始🤡===============\n\n`);
-
-        console.log(`-------------------------\n开始小视频收青豆\n`);
-        await getVideoScore(youth.YOUTH_VIDEO_REWARD5);
-
-        console.log(`-------------------------\n开始100抽奖收青豆\n`);
-        await getLotteryScore(youth.YOUTH_LOTTERY_REWARD5);
-
-        console.log(`===============🤡账号5收青豆结束🤡===============\n\n`);
-    }
-
-    if (youth.YOUTH_VIDEO_REWARD6 && youth.YOUTH_LOTTERY_REWARD6) {
-        console.log(`===============🤡账号6收青豆开始🤡===============\n\n`);
-
-        console.log(`-------------------------\n开始小视频收青豆\n`);
-        await getVideoScore(youth.YOUTH_VIDEO_REWARD6);
-
-        console.log(`-------------------------\n开始100抽奖收青豆\n`);
-        await getLotteryScore(youth.YOUTH_LOTTERY_REWARD6);
-
-        console.log(`===============🤡账号6收青豆结束🤡===============\n\n`);
-    }
-
-    if (youth.YOUTH_VIDEO_REWARD7 && youth.YOUTH_LOTTERY_REWARD7) {
-        console.log(`===============🤡账号7收青豆开始🤡===============\n\n`);
-
-        console.log(`-------------------------\n开始小视频收青豆\n`);
-        await getVideoScore(youth.YOUTH_VIDEO_REWARD7);
-
-        console.log(`-------------------------\n开始100抽奖收青豆\n`);
-        await getLotteryScore(youth.YOUTH_LOTTERY_REWARD7);
-
-        console.log(`===============🤡账号7收青豆结束🤡===============\n\n`);
-    }
-
-    if (youth.YOUTH_VIDEO_REWARD8 && youth.YOUTH_LOTTERY_REWARD8) {
-        console.log(`===============🤡账号8收青豆开始🤡===============\n\n`);
-
-        console.log(`-------------------------\n开始小视频收青豆\n`);
-        await getVideoScore(youth.YOUTH_VIDEO_REWARD8);
-
-        console.log(`-------------------------\n开始100抽奖收青豆\n`);
-        await getLotteryScore(youth.YOUTH_LOTTERY_REWARD8);
-
-        console.log(`===============🤡账号8收青豆结束🤡===============\n\n`);
-    }
-
-    if (youth.YOUTH_VIDEO_REWARD9 && youth.YOUTH_LOTTERY_REWARD9) {
-        console.log(`===============🤡账号9收青豆开始🤡===============\n\n`);
-
-        console.log(`-------------------------\n开始小视频收青豆\n`);
-        await getVideoScore(youth.YOUTH_VIDEO_REWARD9);
-
-        console.log(`-------------------------\n开始100抽奖收青豆\n`);
-        await getLotteryScore(youth.YOUTH_LOTTERY_REWARD9);
-
-        console.log(`===============🤡账号9收青豆结束🤡===============\n\n`);
-    }
-
-    if (youth.YOUTH_VIDEO_REWARD10 && youth.YOUTH_LOTTERY_REWARD10) {
-        console.log(`===============🤡账号10收青豆开始🤡===============\n\n`);
-
-        console.log(`-------------------------\n开始小视频收青豆\n`);
-        await getVideoScore(youth.YOUTH_VIDEO_REWARD10);
-
-        console.log(`-------------------------\n开始100抽奖收青豆\n`);
-        await getLotteryScore(youth.YOUTH_LOTTERY_REWARD10);
-
-        console.log(`===============🤡账号10收青豆结束🤡===============\n\n`);
-    }
-
-    if (youth.YOUTH_VIDEO_REWARD11 && youth.YOUTH_LOTTERY_REWARD11) {
-        console.log(`===============🤡账号11收青豆开始🤡===============\n\n`);
-
-        console.log(`-------------------------\n开始小视频收青豆\n`);
-        await getVideoScore(youth.YOUTH_VIDEO_REWARD11);
-
-        console.log(`-------------------------\n开始100抽奖收青豆\n`);
-        await getLotteryScore(youth.YOUTH_LOTTERY_REWARD11);
-
-        console.log(`===============🤡账号11收青豆结束🤡===============\n\n`);
-    }
-
-    if (youth.YOUTH_VIDEO_REWARD12 && youth.YOUTH_LOTTERY_REWARD12) {
-        console.log(`===============🤡账号12收青豆开始🤡===============\n\n`);
-
-        console.log(`-------------------------\n开始小视频收青豆\n`);
-        await getVideoScore(youth.YOUTH_VIDEO_REWARD12);
-
-        console.log(`-------------------------\n开始100抽奖收青豆\n`);
-        await getLotteryScore(youth.YOUTH_LOTTERY_REWARD12);
-
-        console.log(`===============🤡账号12收青豆结束🤡===============\n\n`);
-    }
-
-    if (youth.YOUTH_VIDEO_REWARD13 && youth.YOUTH_LOTTERY_REWARD13) {
-        console.log(`===============🤡账号13收青豆开始🤡===============\n\n`);
-
-        console.log(`-------------------------\n开始小视频收青豆\n`);
-        await getVideoScore(youth.YOUTH_VIDEO_REWARD13);
-
-        console.log(`-------------------------\n开始100抽奖收青豆\n`);
-        await getLotteryScore(youth.YOUTH_LOTTERY_REWARD13);
-
-        console.log(`===============🤡账号13收青豆结束🤡===============\n\n`);
-    }
-
     console.log(`===========🐱🤡结束小视频和100抽奖，收青豆🤡🐱===========\n\n`);
 
 
 
-    console.log(`===============🤡收取看看赚上方宝箱奖励开始🤡===============\n\n`);
-    let cookieArray = youth.YOUTH_HEADER.split('\n');
-    for (let index = 0; index < cookieArray.length; index++) {
-        console.log(`--------第 ${index + 1} 个账号看看赚上方宝箱奖励执行中--------\n`)
-        let cookie = cookieArray[index].trim();
-        var time1 = Date.parse(new Date()).toString();
-        time1 = time1.substr(0, 10);
-        zq_cookie1 = cookie + '&device_brand=xfdg&device_id=cc7dgdsgfsz83e&device_model=1gx&device_platform=android&device_type=android&inner_version=202107261526&mi=0&openudid=cc7dgdsgfsz83e&os_api=27&os_version=bdftgsdfga&phone_network=WIFI&phone_sim=1' + '&request_time=' + time1 + '&time=' + time1
-        for (let k = 0; k < 3; k++) {
-            id = k.toString()
-            await openbox(id, zq_cookie1)
-            console.log(`看广告30秒--\n`)
-            await $.wait(30000);
-        }
-    }
-    console.log(`===============🤡收取看看赚上方宝箱奖励结束🤡===============\n\n`);
+    // console.log(`===============🤡收取看看赚上方宝箱奖励开始🤡===============\n\n`);
+    // let cookieArray = youth.YOUTH_HEADER.split('\n');
+    // for (let index = 0; index < cookieArray.length; index++) {
+    //     console.log(`--------第 ${index + 1} 个账号看看赚上方宝箱奖励执行中--------\n`)
+    //     let cookie = cookieArray[index].trim();
+    //     var time1 = Date.parse(new Date()).toString();
+    //     time1 = time1.substr(0, 10);
+    //     zq_cookie1 = cookie + '&device_brand=xfdg&device_id=cc7dgdsgfsz83e&device_model=1gx&device_platform=android&device_type=android&inner_version=202107261526&mi=0&openudid=cc7dgdsgfsz83e&os_api=27&os_version=bdftgsdfga&phone_network=WIFI&phone_sim=1' + '&request_time=' + time1 + '&time=' + time1
+    //     for (let k = 0; k < 3; k++) {
+    //         id = k.toString()
+    //         await openbox(id, zq_cookie1)
+    //         console.log(`看广告30秒--\n`)
+    //         await $.wait(30000);
+    //     }
+    // }
+    // console.log(`===============🤡收取看看赚上方宝箱奖励结束🤡===============\n\n`);
 
 
 
-    console.log(`===============🤡收取500，188，288，368 奖励开始🤡===============\n\n`);
-    let bodyRewardArray = youth.youth_get_Reward
-    for (let index = 0; index < bodyRewardArray.length; index++) {
-        let reArray = bodyRewardArray[index]
-        if(reArray.length > 0) {
-            console.log(`--------第 ${index + 1} 个账号宝箱奖励执行中--------\n`)
-            for (let i = 0; i < reArray.length; i++) {
-                let body = reArray[i];
-                await getRewardAndroid(body)
-                await $.wait(2000);
-            }
-        }
-    }
-    console.log(`===============🤡收取500，188，288，368 奖励结束🤡===============\n\n`);
+    // console.log(`===============🤡收取500，188，288，368 奖励开始🤡===============\n\n`);
+    // let bodyRewardArray = youth.youth_get_Reward
+    // for (let index = 0; index < bodyRewardArray.length; index++) {
+    //     let reArray = bodyRewardArray[index]
+    //     if(reArray.length > 0) {
+    //         console.log(`--------第 ${index + 1} 个账号宝箱奖励执行中--------\n`)
+    //         for (let i = 0; i < reArray.length; i++) {
+    //             let body = reArray[i];
+    //             await getLotteryScore(body);
+    //             await $.wait(2000);
+    //         }
+    //     }
+    // }
+    // console.log(`===============🤡收取500，188，288，368 奖励结束🤡===============\n\n`);
 
 
 
