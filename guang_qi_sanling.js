@@ -11,12 +11,13 @@ const $ = new Env('广汽三菱');//声明必须
 let taskArray = [4, 5, 6]
 
 
+
 /*
 1.18253169060
 2.17862926330
 3.15069131632
 4.15964395867
-5.
+5.13127359628
 */
 
 // token抓这里的 https://mspace.gmmc.com.cn/customer-app/task-mapi/sign-count?noLoad=true
@@ -25,7 +26,8 @@ let tokenArray =
 `SERVERID=127fe9b0e348ead063cb2ed79076ff4e|${Math.floor((new Date()).valueOf() / 1000)}|1644561782; Hm_lpvt_d79e324d263704c4dac81376058ddf10=1644561788; Hm_lvt_d79e324d263704c4dac81376058ddf10=1644393653,1644450129,1644544669,1644561788; acw_tc=78c052a116445616651597564ea9510291fdbefd94ff9017b9b03e5ac9`,
 `SERVERID=127fe9b0e348ead063cb2ed79076ff4e|${Math.floor((new Date()).valueOf() / 1000)}|1644563017; Hm_lpvt_d79e324d263704c4dac81376058ddf10=1644563020; Hm_lvt_d79e324d263704c4dac81376058ddf10=1644202957,1644502567,1644561602,1644563020; acw_tc=791d26a916445615651582532e01462825092a84089e8a26e316b4938f`,
 `SERVERID=127fe9b0e348ead063cb2ed79076ff4e|${Math.floor((new Date()).valueOf() / 1000)}|1644563537; Hm_lpvt_d79e324d263704c4dac81376058ddf10=1644563540; Hm_lvt_d79e324d263704c4dac81376058ddf10=1644563347,1644563540; acw_tc=7b81f49d16445632602457824e6aa521ff322526204c59764429319843`,
-`SERVERID=127fe9b0e348ead063cb2ed79076ff4e|${Math.floor((new Date()).valueOf() / 1000)}|1645200737; Hm_lpvt_d79e324d263704c4dac81376058ddf10=1645200738; Hm_lvt_d79e324d263704c4dac81376058ddf10=1645200738; acw_tc=78ddb52116452006229654594ee551ce6c1406733e36aa1296d4f20f89`
+`SERVERID=127fe9b0e348ead063cb2ed79076ff4e|${Math.floor((new Date()).valueOf() / 1000)}|1645200737; Hm_lpvt_d79e324d263704c4dac81376058ddf10=1645200738; Hm_lvt_d79e324d263704c4dac81376058ddf10=1645200738; acw_tc=78ddb52116452006229654594ee551ce6c1406733e36aa1296d4f20f89`,
+`SERVERID=127fe9b0e348ead063cb2ed79076ff4e|${Math.floor((new Date()).valueOf() / 1000)}|1645357100; Hm_lpvt_d79e324d263704c4dac81376058ddf10=1645357102; Hm_lvt_d79e324d263704c4dac81376058ddf10=1645357102; acw_tc=78ddb52316453570928133978ee445a23689f3d34f951c31b355c9c3c6`
 ]
 
 let authorizationArray = 
@@ -33,7 +35,8 @@ let authorizationArray =
 'befc596591c6b4956bbcbb4c18f0da96',
 '557661d6d5dbbac4d778af406d216e7a',
 'ce9ece7febeef4db536a8d39c07f3cf4',
-'a8a4b87bb8ef530ee9f19e26fec892b4'
+'a8a4b87bb8ef530ee9f19e26fec892b4',
+'95dfa228dd0bca2b771fdc9fa2077937'
 ]
 
 let agentArray = 
@@ -41,7 +44,8 @@ let agentArray =
 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 DSApp/2.2.4 StatusBarHeight/47 BottomBarHeight/34',
 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 DSApp/2.2.4 StatusBarHeight/20 BottomBarHeight/0',
 'guang qi san ling/2.2.4 (iPhone; iOS 14.0.1; Scale/2.00)',
-'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 DSApp/2.2.4 StatusBarHeight/44 BottomBarHeight/34'
+'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 DSApp/2.2.4 StatusBarHeight/44 BottomBarHeight/34',
+'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_8 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 DSApp/2.2.4 StatusBarHeight/20 BottomBarHeight/0'
 ]
 
 
