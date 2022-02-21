@@ -6,6 +6,9 @@ cron "20 8 * * *"  script-path=guang_qi_sanling.js,tag=广汽三菱
 
 // host :  https://mspace.gmmc.com.cn
 
+const notify = require('./sendNotify') || '';
+
+let isnotify = true;
 
 const $ = new Env('广汽三菱');//声明必须
 let taskArray = [4, 5, 6]
@@ -143,6 +146,9 @@ let messageNotify = '';
         await accountInfo(index + 1)
     }
     console.log(messageNotify);
+	
+	
+	await notify.sendNotify(`广汽三菱通知`, messageNotify);
     
 })()
 
