@@ -147,8 +147,11 @@ let messageNotify = '';
     }
     console.log(messageNotify);
 	
-	
+	if (isnotify == true) {
 	await notify.sendNotify(`广汽三菱通知`, messageNotify);
+		
+    
+}
     
 })()
 
