@@ -45,6 +45,10 @@ https://wzq.tenpay.com/cgi-bin/activity_task_daily.fcgi? url script-request-head
 [MITM]
 hostname = wzq.tenpay.com
 
+[Script]
+
+cron "35 11,16 * * *" script-path=tencent_zixuan.js
+
 */
 
 const jsname = '腾讯自选股'
