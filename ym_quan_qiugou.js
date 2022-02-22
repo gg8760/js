@@ -23,7 +23,7 @@ https://market.chuxingyouhui.com/promo-bargain-api/activity/mqq/api/indexTopInfo
 hostname = market.chuxingyouhui.com
 
 [Script]
-cron "3 * * * *"  script-path=quan_qiugou.js
+cron "1 * * * *"  script-path=quan_qiugou.js
 
 */
 
