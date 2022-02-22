@@ -23,6 +23,9 @@ https://raw.githubusercontent.com/YaphetS0903/JStest/main/YaphteS0903.boxjs.json
 export flgReferer='抓取的Referer1@抓取的Referer2'
 圈X配置如下，其他自行测试，运行一次即可
 
+[Script]
+cron "0,30 8 * * *" script-path=ym_fanli_gou.js
+
 请务必在早上7-9点之间运行脚本
 [task_local]
 #返利购
