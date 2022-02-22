@@ -30,8 +30,9 @@ module.exports = {"code":200,
 ]}
 }
 
+[Script]
+cron "0-59/10 6-20 * * *" script-path=ym_kuai_yin.js
 
-cron 0-59/10 6-20 * * *
 
 脚本地址:https://gitee.com/soy-tool/app-script/raw/master/app_kyin.js
 
