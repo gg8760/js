@@ -37,9 +37,8 @@ const iv = CryptoJS.enc.Utf8.parse('fb58a618fd5accb0');
 /* 1.feng 2.feng0306  3. ge0306
 */
 
-let ddtjtokenArr = ['pTbB8DetwvB53vTd1644979928943883','IlWIXryo7SLwdJiw1645494978700242','gr8nfTOIzOrBbG751645496702315588'];
-
-let ddtjunionidArr = ['oazvGwoyT2PDdevhiJAHUOmq_Mus',"oazvGwvAaQ57W0gNh_VG6hz_kf5I",'oazvGwgd7tqPcKHsi_GpAGZGcwdY'];
+let ddtjtokenArr = require('./yang_mao_parameter').dianTaoJin.ddtjtokenArr;
+let ddtjunionidArr = require('./yang_mao_parameter').dianTaoJin.ddtjunionidArr;
 
 
 
