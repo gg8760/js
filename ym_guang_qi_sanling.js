@@ -96,6 +96,13 @@ let newArray = [
 	"btype": 0,
 	"backgroundContent": "心情愉悦的一天"
 },
+{
+	"content": "心情愉悦的一天",
+	"dynamicFileList": [],
+	"topicList": [],
+	"btype": 0,
+	"backgroundContent": "心情愉悦的一天"
+},
 ]
 
 let token = '';
