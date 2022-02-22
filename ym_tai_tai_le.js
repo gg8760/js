@@ -10,9 +10,9 @@
 ttlhd=''    多账号@隔开
 ==========
 
+[Script]
+cron "20 0 * * *" script-path=ym_tai_tai_le.js
 
-[task_local]
-20 0 * * * http://47.101.146.160/scripts/tttl.js, tag=太太乐, img-url=circles.hexagongrid.fill.system, enabled=true
 */
 
 
