@@ -4,7 +4,7 @@
 赞赏:电视家邀请码`893988`,农妇山泉 -> 有点咸，万分感谢
 本脚本仅适用于电视家签到，支持Actions多账号运行，请用'#'或者换行隔开‼️
 
-cron "5 * * * *"  script-path=dianshi_jia.js,tag=电视家
+cron "5 * * * *"  script-path=ym_dianshi_jia.js,tag=电视家
 
 */
 const walkstep = '20000'; //每日步数设置，可设置0-20000
