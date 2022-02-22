@@ -37,8 +37,10 @@ const iv = CryptoJS.enc.Utf8.parse('fb58a618fd5accb0');
 /* 1.feng 2.feng0306  3. ge0306
 */
 
-let ddtjunionidArr = ['oazvGwoyT2PDdevhiJAHUOmq_Mus',"IlWIXryo7SLwdJiw1645494978700242",'gr8nfTOIzOrBbG751645496702315588'];
-let ddtjtokenArr = ['pTbB8DetwvB53vTd1644979928943883','oazvGwvAaQ57W0gNh_VG6hz_kf5I','oazvGwgd7tqPcKHsi_GpAGZGcwdY'];
+let ddtjtokenArr = ['pTbB8DetwvB53vTd1644979928943883','IlWIXryo7SLwdJiw1645494978700242','gr8nfTOIzOrBbG751645496702315588'];
+
+let ddtjunionidArr = ['oazvGwoyT2PDdevhiJAHUOmq_Mus',"oazvGwvAaQ57W0gNh_VG6hz_kf5I",'oazvGwgd7tqPcKHsi_GpAGZGcwdY'];
+
 
 
 function Encrypt(word) {
@@ -58,13 +60,15 @@ function Encrypt(word) {
     // ddtjtokenArr = ddtjtoken.split('@')
     console.log(`------------- 提供${ddtjunionidArr.length}个账号-------------\n`)
     for (let i = 0; i < ddtjunionidArr.length; i++) {
-      ddtjunionid = ddtjunionidArr[i]
-      ddtjtoken = ddtjtokenArr[i]
-      console.log(ddtjtoken);
-      console.log(ddtjunionid);
 
       $.index = i + 1;
       console.log(`\n开始账号${$.index}`)
+
+      ddtjunionid = ddtjunionidArr[i]
+      ddtjtoken = ddtjtokenArr[i]
+      console.log('token=',ddtjtoken);
+      console.log('unionid=',ddtjunionid);
+
       await ddtjhq()
       await ddtjye()
 
