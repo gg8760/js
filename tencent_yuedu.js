@@ -21,6 +21,11 @@
 hostname=commontgw6.reader.qq.com,eventv36.reader.qq.com
 
 
+[Script]
+
+cron "20 8-22/2 * * *" script-path=tencent_yuedu.js
+
+
 */
 
 const jsname = 'QQ阅读APP'
