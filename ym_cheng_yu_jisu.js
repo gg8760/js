@@ -29,7 +29,7 @@
  * 
  
 [Script]
-cron "5,20,35,50 7-22 * * *"  script-path=chengyu_jisu.js
+cron "5,20,35,50 7-22 * * *"  script-path=ym_cheng_yu_jisu.js
  
  */
 
