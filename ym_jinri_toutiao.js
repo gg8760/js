@@ -23,6 +23,10 @@ hostname = *.snssdk.com
 hostname = *.toutiaoapi.com
 
 青龙把极速版捉包里面的cookie放到jrttjsbHeader里，多账户用@隔开
+
+[Script]
+cron "1-59/10 6-23 * * *" script-path=ym_jinri_toutiao.js
+
 */
 
 const jsname = '今日头条极速版'
