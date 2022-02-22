@@ -11,7 +11,7 @@ mitm      api.gzswin.cn,api.gezs.cc
 -------1.14淇鍔犲瘑---------
 
 [Script]
-cron "30 8,15,22 * * *" script-path=duo_diantaojin.js
+cron "30 8,15,22 * * *" script-path=ym_duo_diantaojin.js
 
 */
 //多点淘金青龙脚本  青龙变量 ddtjunionid ddtjtoken 多账号@隔开
