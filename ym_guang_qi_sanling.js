@@ -1,7 +1,7 @@
 
 /* 
 [Script]
-cron "20 8 * * *"  script-path=guang_qi_sanling.js,tag=广汽三菱
+cron "25 8 * * *"  script-path=ym_guang_qi_sanling.js,tag=广汽三菱
 */
 
 // host :  https://mspace.gmmc.com.cn
