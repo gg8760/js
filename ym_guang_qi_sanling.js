@@ -337,7 +337,7 @@ function getArticleList() {
             try {
                 let obj = JSON.parse(data)
                 let ary = obj.data.list
-                  console.log(ary)
+//                   console.log(ary)
                   let arraySource = [];
                   for (let index = 0; index < ary.length; index++) {
                       const element = ary[index];
