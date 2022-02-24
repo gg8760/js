@@ -8,7 +8,7 @@ cron "3 6,9,12,18,20 * * *" script-path=jd_fruit.js,tag=东东农场
 export DO_TEN_WATER_AGAIN="" 默认再次浇水
 */
 
-const $ = new Env('东东农场');
+const $ = new Env('东东农场助力');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let cookiesArr = [], cookie = '', jdFruitShareArr = [], isBox = false, notify, newShareCodes, allMessage = '';
 notify = $.isNode() ? require('./sendNotify') : '';
