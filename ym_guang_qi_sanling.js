@@ -1,18 +1,14 @@
 
 /* 
 [Script]
-cron "25 8 * * *"  script-path=ym_guang_qi_sanling.js,tag=广汽三菱
+cron "20 8 * * *"  script-path=guang_qi_sanling.js,tag=广汽三菱
 */
 
 // host :  https://mspace.gmmc.com.cn
 
-const notify = require('./sendNotify') || '';
-
-let isnotify = true;
 
 const $ = new Env('广汽三菱');//声明必须
 let taskArray = [4, 5, 6]
-
 
 
 /*
@@ -24,86 +20,15 @@ let taskArray = [4, 5, 6]
 */
 
 // token抓这里的 https://mspace.gmmc.com.cn/customer-app/task-mapi/sign-count?noLoad=true
-let tokenArray = 
-[
-`SERVERID=127fe9b0e348ead063cb2ed79076ff4e|${Math.floor((new Date()).valueOf() / 1000)}|1644561782; Hm_lpvt_d79e324d263704c4dac81376058ddf10=1644561788; Hm_lvt_d79e324d263704c4dac81376058ddf10=1644393653,1644450129,1644544669,1644561788; acw_tc=78c052a116445616651597564ea9510291fdbefd94ff9017b9b03e5ac9`,
-`SERVERID=127fe9b0e348ead063cb2ed79076ff4e|${Math.floor((new Date()).valueOf() / 1000)}|1644563017; Hm_lpvt_d79e324d263704c4dac81376058ddf10=1644563020; Hm_lvt_d79e324d263704c4dac81376058ddf10=1644202957,1644502567,1644561602,1644563020; acw_tc=791d26a916445615651582532e01462825092a84089e8a26e316b4938f`,
-`SERVERID=127fe9b0e348ead063cb2ed79076ff4e|${Math.floor((new Date()).valueOf() / 1000)}|1644563537; Hm_lpvt_d79e324d263704c4dac81376058ddf10=1644563540; Hm_lvt_d79e324d263704c4dac81376058ddf10=1644563347,1644563540; acw_tc=7b81f49d16445632602457824e6aa521ff322526204c59764429319843`,
-`SERVERID=127fe9b0e348ead063cb2ed79076ff4e|${Math.floor((new Date()).valueOf() / 1000)}|1645200737; Hm_lpvt_d79e324d263704c4dac81376058ddf10=1645200738; Hm_lvt_d79e324d263704c4dac81376058ddf10=1645200738; acw_tc=78ddb52116452006229654594ee551ce6c1406733e36aa1296d4f20f89`,
-`SERVERID=127fe9b0e348ead063cb2ed79076ff4e|${Math.floor((new Date()).valueOf() / 1000)}|1645357100; Hm_lpvt_d79e324d263704c4dac81376058ddf10=1645357102; Hm_lvt_d79e324d263704c4dac81376058ddf10=1645357102; acw_tc=78ddb52316453570928133978ee445a23689f3d34f951c31b355c9c3c6`
-]
+let tokenArray = require('./guang_qi_sanling_parameter').tokenArray
 
-let authorizationArray = 
-[
-'befc596591c6b4956bbcbb4c18f0da96',
-'557661d6d5dbbac4d778af406d216e7a',
-'ce9ece7febeef4db536a8d39c07f3cf4',
-'a8a4b87bb8ef530ee9f19e26fec892b4',
-'95dfa228dd0bca2b771fdc9fa2077937'
-]
+let authorizationArray = require('./guang_qi_sanling_parameter').authorizationArray
 
-let agentArray = 
-[
-'Mozilla/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 DSApp/2.2.4 StatusBarHeight/47 BottomBarHeight/34',
-'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 DSApp/2.2.4 StatusBarHeight/20 BottomBarHeight/0',
-'guang qi san ling/2.2.4 (iPhone; iOS 14.0.1; Scale/2.00)',
-'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 DSApp/2.2.4 StatusBarHeight/44 BottomBarHeight/34',
-'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_8 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 DSApp/2.2.4 StatusBarHeight/20 BottomBarHeight/0'
-]
+let agentArray = require('./guang_qi_sanling_parameter').agentArray
 
+let cotentArray = require('./guang_qi_sanling_parameter').cotentArray
 
-let cotentArray = require('./guang_qi_sanling_parameter')
-
-let newArray = [
-// {
-//     "content": "又是美好的一天呀",
-//     "dynamicFileList": [{
-//         "fileType": 2,
-//         "thirdId": "",
-//         "extroInfo": "{\"width\":999,\"duration\":0,\"height\":678}",
-//         "fileRelativePath": "",
-//         "filePath": "https:\/\/mspace-static.gmmc.com.cn\/upload\/prod\/image\/dynamic\/2022-01-26\/87A9C473-36C8-4F43-B5DD-E18930266520.jpg"
-//     }],
-//     "topicList": [],
-//     "btype": 0,
-//     "backgroundContent": "又是美好的一天呀"
-// },
-{
-	"content": "心情愉悦的一天",
-	"dynamicFileList": [],
-	"topicList": [],
-	"btype": 0,
-	"backgroundContent": "心情愉悦的一天"
-},
-{
-	"content": "心情愉悦的一天",
-	"dynamicFileList": [],
-	"topicList": [],
-	"btype": 0,
-	"backgroundContent": "心情愉悦的一天"
-},
-{
-	"content": "心情愉悦的一天",
-	"dynamicFileList": [],
-	"topicList": [],
-	"btype": 0,
-	"backgroundContent": "心情愉悦的一天"
-},
-{
-	"content": "心情愉悦的一天",
-	"dynamicFileList": [],
-	"topicList": [],
-	"btype": 0,
-	"backgroundContent": "心情愉悦的一天"
-},
-{
-	"content": "心情愉悦的一天",
-	"dynamicFileList": [],
-	"topicList": [],
-	"btype": 0,
-	"backgroundContent": "心情愉悦的一天"
-},
-]
+let newArray = require('./guang_qi_sanling_parameter').newArray
 
 let token = '';
 let agent = '';
@@ -137,28 +62,22 @@ let messageNotify = '';
 
         console.log(`开始第${index + 1}个账号的任务-----`);
 
-        await signin()
+        // await signin()
         
-        for (let index = 0; index < taskArray.length; index++) {
-            const element = taskArray[index];
-            await shareWechat(element)
-            await $.wait(10 * 1000);
-        }
-        await getArticleList()
+        // for (let index = 0; index < taskArray.length; index++) {
+        //     const element = taskArray[index];
+        //     await shareWechat(element)
+        //     await $.wait(10 * 1000);
+        // }
+        // await getArticleList()
 
-        let timeWait = getRandomInt(20,40)
-        console.log(`随机等待${timeWait}秒-----`)
-        await $.wait(timeWait * 1000);
-        await addNews()
+        // let timeWait = getRandomInt(20,40)
+        // console.log(`随机等待${timeWait}秒-----`)
+        // await $.wait(timeWait * 1000);
+        // await addNews()
         await accountInfo(index + 1)
     }
     console.log(messageNotify);
-	
-	if (isnotify == true) {
-	await notify.sendNotify(`广汽三菱通知`, messageNotify);
-		
-    
-}
     
 })()
 
@@ -227,7 +146,7 @@ function getRandomInt(min, max) {
 // 	"success": true
 // }
 function accountInfo(index) {
-    console.log(`\n获取用户信息-----\n`)
+    
     return new Promise((resolve, reject) => {
         let url = {
             url: `https://mspace.gmmc.com.cn/customer-app/customer/user/info`,
@@ -255,7 +174,9 @@ function accountInfo(index) {
                 messageNotify = messageNotify + account + name + mobile + score
                 console.log(account);
 
+                console.log(`\n获取用户信息-----success\n`)
             } catch (e) {
+                console.log(`\n获取用户信息-----fail\n`)
             } finally {
                 resolve();
             }
